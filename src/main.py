@@ -1,18 +1,22 @@
+import math
 import sys
 import time
-import math
-def printxy(x, y, text):
-     sys.stdout.write("\x1b7\x1b[%d;%df%s\x1b8" % (x, y, text))
-     sys.stdout.flush()
+def printxy(y, x, text):
+	sys.stdout.write("\x1b7\x1b[%d;%df%s\x1b8" % (x, y, text))
+	sys.stdout.flush()
+def wipe():
+	for y in range(1,26):
+		printxy(1,y,"                                                            ")
 def refresh():
 	raw_input()
-	print(chr(27) + "[2J")
+	wipe()
 def clear():
-	print(chr(27) + "[2J")
-	
+	wipe()
+
 for d in range(0,360):
 	d = math.radians(d)
-	printxy(math.floor(11 + (10 * math.cos(d))),math.floor(21 - ((10 * math.sin(d))* 2)),"X")
-	printxy(math.floor(11,21,"0")
+	printxy(21,11,math.cos(d))
+	printxy(21,12,math.sin(d))
+	printxy(math.floor(21 + 2*(10 * math.cos(d))),math.floor(11 -(10 * math.sin(d))),"X")
+	time.sleep(0.05)
 	clear()
-	time.sleep(0.1)
