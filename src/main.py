@@ -6,8 +6,11 @@ def printxy(x, y, text):
 def refresh():
 	raw_input()
 	print(chr(27) + "[2J")
+def clear():
+	print(chr(27) + "[2J")
 	
-for d in range(0,360)
+for d in range(0,360):
+	d = math.radians(d)
 	printxy(math.floor(10 + (11 * math.cos(d))),math.floor(10 - (11 * math.sin(d))),"X")
-	refresh()
+	clear()
 	time.sleep(0.1)
