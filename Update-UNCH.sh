@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 rm -rf ./Project-UNCH
 git clone https://github.com/EdricY/Project-UNCH.git
 cd ./Project-UNCH/src
