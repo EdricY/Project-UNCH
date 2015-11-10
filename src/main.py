@@ -15,6 +15,7 @@ os.system('clear')
 os.system("stty -echo")
 def signalhandler(signal, frame):
 	os.system("stty echo")
+	os.system('clear')
 	print "Project UNCH has quit."
 	sys.exit(0)
 signal.signal(signal.SIGINT, signalhandler)
