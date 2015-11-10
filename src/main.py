@@ -4,6 +4,7 @@ import sys
 import time
 import os
 import glob
+import signal
 
 #Module imports
 import gui
@@ -11,6 +12,12 @@ import method
 
 #Platform code
 os.system('clear')
+os.system("stty -echo")
+def signalhandler(signal, frame):
+	os.system("stty echo")
+	print "Project UNCH has quit."
+	sys.exit(0)
+signal.signal(signal.SIGINT, signal_handler)
 
 #Global variables
 FRAMES_PER_SECOND = 1
