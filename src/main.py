@@ -28,13 +28,9 @@ for i in MOB_FILES:
 	f.close()
 
 #Definitions and methods
-def printxy(y, x, text):
-	sys.stdout.write("\x1b7\x1b[%d;%df%s\x1b8" % (x, y, text))
-	sys.stdout.flush()
-
 def wipe():
 	for y in range(1,26):
-		printxy(1,y,"                                                            ")
+		method.printxy(1,y,"                                                            ")
 
 def refresh():
 	raw_input()
@@ -51,6 +47,7 @@ def update():
 
 def draw():
 	wipe()
+	gui.drawgui()
 #	for i in range(0,10):
 #		printxy(0,i+1,MOBS[currentMob][i])
 
