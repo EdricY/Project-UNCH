@@ -1,4 +1,7 @@
-#Module import
+#System imports
+import sys
+
+#Module imports
 import method
 
 #load GUI file.
