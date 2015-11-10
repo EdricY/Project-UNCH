@@ -1,5 +1,5 @@
 #Module import
-import method as method
+import method
 
 #load GUI file.
 f=open("../resources/gui/gui.txt")
@@ -10,4 +10,4 @@ for line in f:
 #Definitions and methods
 def drawgui():
 	for i in range(0,len(GUI_LINES)):
-	method.printxy(0,i+1,GUI_LINES[i])
+		method.printxy(0,i+1,GUI_LINES[i])

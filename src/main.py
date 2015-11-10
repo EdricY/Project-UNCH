@@ -6,8 +6,8 @@ import os
 import glob
 
 #Module imports
-import gui as gui
-import method as method
+import gui
+import method
 
 #Platform code
 os.system('clear')
