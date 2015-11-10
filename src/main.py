@@ -17,7 +17,7 @@ def signalhandler(signal, frame):
 	os.system("stty echo")
 	print "Project UNCH has quit."
 	sys.exit(0)
-signal.signal(signal.SIGINT, signal_handler)
+signal.signal(signal.SIGINT, signalhandler)
 
 #Global variables
 FRAMES_PER_SECOND = 1
