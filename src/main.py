@@ -7,6 +7,7 @@ import glob
 
 #Module imports
 import gui
+import method
 
 #Platform code
 os.system('clear')
