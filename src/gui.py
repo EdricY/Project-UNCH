@@ -1,5 +1,5 @@
 #Module import
-import method
+import method as method
 
 #load GUI file.
 f=open("../resources/gui/gui.txt")
