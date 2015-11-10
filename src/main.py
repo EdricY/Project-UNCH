@@ -48,7 +48,7 @@ while game_running:
 	update()
 
 	draw()
-	currentMob=(currentMob+1)%12
+	currentMob=(currentMob+1)%ifile
 	endTime=time.time()
 	timeElapsed=endTime-startTime
 	sleepTime=1/FRAMES_PER_SECOND-timeElapsed
