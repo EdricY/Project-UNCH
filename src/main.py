@@ -5,6 +5,7 @@ import time
 import os
 import glob
 import signal
+import getch
 
 #Module imports
 import gui
@@ -24,7 +25,7 @@ signal.signal(signal.SIGINT, signalhandler)
 
 #Global variables
 FRAMES_PER_SECOND = 1
-GAME_RUNNING = True
+GAME_RUNNING = False
 MOB_FILES = glob.glob("../resources/mobs/*.txt")
 COUNT_FILES=0
 MOBS=[]
@@ -37,7 +38,8 @@ for i in MOB_FILES:
 		MOBS[COUNT_FILES].append(line)
 	COUNT_FILES+=1
 	f.close()
-
+#Draw Title
+gui.drawtitle()
 #Definitions and methods
 def writesave():
 	todo="write"
@@ -52,6 +54,10 @@ def draw():
 	gui.drawgui()
 	for i in range(0,len(MOBS[0])):
 		method.printxy(33,6+i,MOBS[0][i])
+g = getch.getch()
+while g != " "
+	g = getch.getch()
+
 
 #Main loop
 while GAME_RUNNING:
