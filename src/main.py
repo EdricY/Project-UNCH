@@ -25,7 +25,7 @@ signal.signal(signal.SIGINT, signalhandler)
 
 #Global variables
 FRAMES_PER_SECOND = 1
-GAME_RUNNING = False
+GAME_RUNNING = True
 MOB_FILES = glob.glob("../resources/mobs/*.txt")
 COUNT_FILES=0
 MOBS=[]
