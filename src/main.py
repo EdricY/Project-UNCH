@@ -37,14 +37,6 @@ for i in MOB_FILES:
 	f.close()
 
 #Definitions and methods
-def wipe():
-	for y in range(1,26):
-		method.printxy(1,y,"                                                            ")
-
-def refresh():
-	raw_input()
-	wipe()
-
 def writesave():
 	todo="write"
 
@@ -55,7 +47,6 @@ def update():
 	todo="everything"
 
 def draw():
-	wipe()
 	gui.drawgui()
 #	for i in range(0,10):
 #		printxy(0,i+1,MOBS[currentMob][i])
