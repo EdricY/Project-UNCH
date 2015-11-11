@@ -57,6 +57,7 @@ def draw():
 g = getch.getch()
 while g != ' ':
 	g = getch.getch()
+	print g,
 
 
 #Main loop
