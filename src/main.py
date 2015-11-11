@@ -48,8 +48,6 @@ def update():
 
 def draw():
 	gui.drawgui()
-#	for i in range(0,10):
-#		printxy(0,i+1,MOBS[currentMob][i])
 
 #Main loop
 while GAME_RUNNING:

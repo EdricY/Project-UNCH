@@ -1,7 +1,7 @@
-O=Money========O O=Tabs======O O====================O I==I
+O=&GKMoney&XX========O O=&YKTabs&XX======O O====================O I==I
 |              | |hero |stats| <(-)              (+)> |  |
 O==============O O=F11===F12=O O====================O |  |
-O=Heroes=======O O=Skills====O O=Monster====(  /10)=O |  |
+O=&YKHeroes&XX=======O O=&GKSkills&XX====O O=&RKMonster&XX====(  /10)=O |  |
 |              | |           | |                    | |  |
 |              | |           | |                    | |  |
 |--------------| |-----------| |                    | |  |
@@ -13,10 +13,10 @@ O=Heroes=======O O=Skills====O O=Monster====(  /10)=O |  |
 |--------------| |-----------| |                    | |  |
 |              | |           | |                    | |  |
 |              | |           | |                    | |  |
-|(Page Down/Up)| |(Pg Dn/Up) | |                    | |  |
-O==============O O===========O O=HP:================O |  |
-O=Information=======================================O |  |
-|Press TAB (KEY) for more information               | |  |
+|&BK(Page Down/Up)&XX| |&BK(Pg Dn/Up)&XX | |                    | |  |
+O==============O O===========O O=&RKHP:&XX================O |  |
+O=&GKInformation&XX=======================================O |  |
+|Press &KWTAB (KEY)&XX for more information               | |  |
 |                                                   | |  |
 |                                                   | |  |
 O===================================================O |  |
