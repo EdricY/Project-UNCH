@@ -11,11 +11,13 @@ import gui
 import method
 
 #Platform code
-os.system('clear')
+os.system("clear")
 os.system("stty -echo")
+os.system("setterm -cursor off")
 def signalhandler(signal, frame):
 	os.system("stty echo")
 	os.system('clear')
+	os.system("setterm -cursor on")
 	print "Project UNCH has quit."
 	sys.exit(0)
 signal.signal(signal.SIGINT, signalhandler)
