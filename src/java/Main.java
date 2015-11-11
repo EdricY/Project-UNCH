@@ -13,12 +13,12 @@ public class Main
         
         JTextArea right = new JTextArea();
         right.setEditable(false);
-        right.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
+        right.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 14));
         JScrollPane rightScroller = new JScrollPane(right);
         
         JTextArea left = new JTextArea();
         left.setEditable(true);
-        left.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 16));
+        left.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 14));
         left.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void insertUpdate(DocumentEvent de) {
