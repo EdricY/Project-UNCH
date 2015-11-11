@@ -9,3 +9,4 @@ UNCH is a recursive acronym that stands for “UNCH’s not Clicker Heroes.” U
 - http://www.chris.com/ascii/
 - http://www.oocities.org/spunk1111/small.htm
 - http://patorjk.com/software/taag/
+- http://code.activestate.com/recipes/134892/
