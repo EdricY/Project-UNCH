@@ -1,6 +1,11 @@
 #Project-UNCH
-UNCH is a recursive acronym that stands for ìUNCHís not Clicker Heroes.î UNCH will be based on the popular game Clicker Heroes, but without its core element: clicking.
+UNCH is a recursive acronym that stands for ‚ÄúUNCH‚Äôs not Clicker Heroes.‚Äù UNCH will be based on the popular game Clicker Heroes, but without its core element: clicking. Written in Python and runnable on any linux machine, UNCH is played using the keyboard. Fight your way through the levels, upgrade your heroes, and enjoy the colorful text-based GUI.
 ###Credits
-Project Leader: Edric
+- Project Leader: Edric
+- Co-programmer: AJ
 
-Co-programmer: AJ
+###Resources from many websites:
+- http://www.asciiworld.com/
+- http://www.chris.com/ascii/
+- http://www.oocities.org/spunk1111/small.htm
+- http://patorjk.com/software/taag/
