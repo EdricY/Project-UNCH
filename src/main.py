@@ -50,7 +50,7 @@ def update():
 
 def draw():
 	gui.drawgui()
-	for i in range(0,len(MOBS[0]):
+	for i in range(0,len(MOBS[0])):
 		printxy(33,5,MOBS[0][i])
 
 #Main loop
