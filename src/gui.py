@@ -8,9 +8,16 @@ import method
 def drawgui():
 	for i in range(0,len(GUI_LINES)):
 		method.printxy(0,i+1,GUI_LINES[i])
-	
+def drawtitle():
+	for i in range(0,len(TITLE_LINES)):
+		method.printxy(0,i+1,TITLE_LINES[i])
 #load GUI file.
 f=open("../resources/gui/gui.txt")
 GUI_LINES = []
 for line in f:
 	GUI_LINES.append(method.color(line))
+#load title file.
+f=open("../resources/gui/title.txt")
+TITLE_LINES = []
+for line in f:
+	TITLE_LINES.append(method.color(line))
