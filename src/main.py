@@ -55,7 +55,7 @@ def draw():
 	for i in range(0,len(MOBS[0])):
 		method.printxy(33,6+i,MOBS[0][i])
 g = getch.getch()
-while g != " "
+while g != ' ':
 	g = getch.getch()
 
 
