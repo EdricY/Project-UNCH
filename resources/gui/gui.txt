@@ -1,6 +1,6 @@
-O=&GKMoney&XX========O O=&YKTabs&XX======O O====================O I==I
-|              | |hero |stats| <(-)              (+)> |  |
-O==============O O=F11===F12=O O====================O |  |
+&YKO=&GKMoney&YK========O&XX O=&YKTabs&XX======O O====================O I==I
+&YK|              |&XX |hero |stats| <(-)              (+)> |  |
+&YKO==============O&XX O=&BKF11&XX===&BKF12&XX=O O====================O |  |
 O=&YKHeroes&XX=======O O=&GKSkills&XX====O O=&RKMonster&XX====(  /10)=O |  |
 |              | |           | |                    | |  |
 |              | |           | |                    | |  |

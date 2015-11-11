@@ -10,23 +10,23 @@ def drawgui():
 		method.printxy(0,i+1,GUI_LINES[i])
 		
 def getintfromletter(string):
-	if string == "K":
+	if string == "K": #Black
 		return 0
-	if string == "R":
+	if string == "R": #Red
 		return 1
-	if string == "G":
+	if string == "G": #Green
 		return 2
-	if string == "Y":
+	if string == "Y": #Yellow
 		return 3
-	if string == "B":
+	if string == "B": #Blue
 		return 4
-	if string == "M":
+	if string == "M": #Magenta
 		return 5
-	if string == "C":
+	if string == "C": #Cyan
 		return 6
-	if string == "W":
+	if string == "W": #White
 		return 7
-	if string == "X":
+	if string == "X": #Clear
 		return 9
 	return 9
 
