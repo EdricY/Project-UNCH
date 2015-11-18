@@ -1,7 +1,6 @@
 #system import
 import sys
 
-import main
 
 #Definitions and methods
 def printxy(y, x, text):
@@ -41,13 +40,4 @@ def color(string):
 		else:
 			location = len(string)
 	return string
-def inputhandler():
-	while main.GAME_RUNNING:
-		g = getch.getch()
-		while g != '.' and g != '>':
-			g = getch.getch()
-		main.hit()
-		g = getch.getch()
-		while g != ',' and g != '<':
-			g = getch.getch()
-		main.hit()
+

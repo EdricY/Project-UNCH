@@ -50,27 +50,41 @@ for i in MOB_FILES:
 gui.drawtitle()
 
 #Definitions and methods
+
+#Saving
 def writesave():
 	todo="write"
 
 def readsave():
 	todo="read"
 
-def update():
-	todo="everything"
-	#test
-	
+#Methods
 def hit():
 	mobHP -= hitDmg
-	if mobHP < 0
+	if mobHP < 0:
 		mobHP = 0 #maybe change to "rekt" later
+		
+def inputhandler():
+	while main.GAME_RUNNING:
+		g = getch.getch()
+		while g != '.' and g != '>':
+			g = getch.getch()
+		hit()
+		g = getch.getch()
+		while g != ',' and g != '<':
+			g = getch.getch()
+		hit()
 
+def update(mobHP):
+	todo="everything"
+	#test
+	mobHP += 1
 def draw():
 	gui.drawgui()
 	for i in range(0,len(MOBS[0])):
 		method.printxy(33,6+i,MOBS[0][i])
 	method.printxy(37,17,mobHP)
-		
+
 #Wait for SPACE before moving on.
 g = getch.getch()
 while g != ' ':
@@ -78,13 +92,13 @@ while g != ' ':
 
 
 #Main loop
-hitter = threading.Thread(name='hitter', target=method.inputhandler)
+hitter = threading.Thread(name='hitter', target=inputhandler)
 while GAME_RUNNING:
 	startTime=time.time()
-	update()
+	update(mobHP)
 	draw()
 	endTime=time.time()
 	timeElapsed=endTime-startTime
-	sleepTime=1/FRAMES_PER_SECOND-timeElapsed
+	sleepTime=1.0/float(FRAMES_PER_SECOND)-float(timeElapsed)
 	time.sleep(sleepTime)
 	hitDmg = hitDmg + 1
