@@ -16,13 +16,12 @@ import method
 os.system("clear")
 os.system("stty -echo")
 os.system("setterm -cursor off")
-def signalhandler(signal, frame):
+def quit():
 	os.system("stty echo")
 	os.system('clear')
 	os.system("setterm -cursor on")
 	print "Project UNCH has quit."
 	sys.exit(0)
-signal.signal(signal.SIGINT, signalhandler)
 
 #Global variables
 FRAMES_PER_SECOND = 20
@@ -37,6 +36,7 @@ mobHP=10
 mobMaxHP=10
 ch=' '
 lastch=' '
+quitMenuOpen=False
 
 #Mob loading
 for i in MOB_FILES:
@@ -76,6 +76,8 @@ def draw():
 	for i in range(0,len(MOBS[0])):
 		method.printxy(33,6+i,MOBS[0][i])
 	method.printxy(37,17,mobHP)
+	if quitMenuOpen:
+		gui.drawquitmenu()
 
 #Wait for SPACE before moving on.
 ch = getch.getch()
@@ -103,7 +105,16 @@ while GAME_RUNNING:
 	lastch=ch
 	ch = getch.getch()
 	#cases
+	
+	if quitMenuOpen:
+		if ch=='y' or ch=='Y':
+			quit()
+		elif ch=='n' or ch=='N':
+			quitMenuOpen = False
+	else:
 	if ch=='.' and lastch!='.':
 		hit()
 	elif ch==',' and lastch=='.':
 		hit()
+	elif ch=='q':
+		quitMenuOpen = True
