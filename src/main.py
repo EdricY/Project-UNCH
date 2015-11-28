@@ -79,11 +79,11 @@ def draw():
             DEATH_FRAME = 0
             createMob()
         else:
-            for i in range(0,len(MOBS[0]) - (DEATH_FRAME/2)):
+            for i in range(1,len(MOBS[0]) - (DEATH_FRAME/2)):
                 method.printxy(33,(6.0 + (DEATH_FRAME/2)) +i,MOBS[0][i])
             DEATH_FRAME+=1
     else:
-        for i in range(0,len(MOBS[0])):
+        for i in range(1,len(MOBS[0])):
             method.printxy(33,6+i,MOBS[0][i])
         method.printxy(37,17,mobHP)
 	if quitMenuOpen:
