@@ -43,7 +43,7 @@ quitMenuOpen=False
 for i in MOB_FILES:
 	MOBS.append([])
 	f=open(i)
-	MOBS[COUNT_FILES].append(i[16+i.find("/resources/mobs/"):len(i)])
+	MOBS[COUNT_FILES].append(capitalize(i[16+i.find("/resources/mobs/"):len(i)-4]))
 	for line in f:
 		MOBS[COUNT_FILES].append(line)
 	COUNT_FILES+=1
@@ -80,21 +80,21 @@ def update():
 	#test
 def draw():
 	gui.drawgui()
-    if MOB_HP == 0:
-        if DEATH_FRAME == 20:
+	if MOB_HP == 0:
+	if DEATH_FRAME == 20:
             DEATH_FRAME = 0
             createMob()
-        else:
+	else:
             for i in range(1,len(MOBS[CURRENT_MOB]) - (DEATH_FRAME/2)):
                 method.printxy(33,(6.0 + (DEATH_FRAME/2)) +i,MOBS[CURRENT_MOB][i])
             DEATH_FRAME+=1
-    else:
-        for i in range(1,len(MOBS[CURRENT_MOB])):
-            method.printxy(33,6+i,MOBS[CURRENT_MOB][i])
-        method.printxy(37,17,MOB_HP)
-		method.printxy(33,4,MOBS[CURRENT_MOB][0])
-	if quitMenuOpen:
-		gui.drawquitmenu()
+	else:
+		for i in range(1,len(MOBS[CURRENT_MOB])):
+		method.printxy(33,6+i,MOBS[CURRENT_MOB][i])
+		method.printxy(37,17,MOB_HP)
+			method.printxy(33,4,MOBS[CURRENT_MOB][0])
+		if quitMenuOpen:
+			gui.drawquitmenu()
 
 #Wait for SPACE before moving on.
 ch=' '
