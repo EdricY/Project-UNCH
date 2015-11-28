@@ -29,6 +29,7 @@ GAME_RUNNING = True
 MOB_FILES = glob.glob("../resources/mobs/*.txt")
 COUNT_FILES=0
 MOBS=[]
+DEATH_FRAME = 0
 
 hitDmg=1
 dps=0
@@ -73,9 +74,18 @@ def update():
 	#test
 def draw():
 	gui.drawgui()
-	for i in range(0,len(MOBS[0])):
-		method.printxy(33,6+i,MOBS[0][i])
-	method.printxy(37,17,mobHP)
+    if mobHP == 0:
+        if DEATH_FRAME == 20:
+            DEATH_FRAME = 0
+            createMob()
+        else:
+            for i in range(0,len(MOBS[0]) - (DEATH_FRAME/2)):
+                method.printxy(33,(6.0 + (DEATH_FRAME/2)) +i,MOBS[0][i])
+            DEATH_FRAME+=1
+    else:
+        for i in range(0,len(MOBS[0])):
+            method.printxy(33,6+i,MOBS[0][i])
+        method.printxy(37,17,mobHP)
 	if quitMenuOpen:
 		gui.drawquitmenu()
 
