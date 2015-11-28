@@ -72,7 +72,6 @@ def update():
 	global mobHP
 	todo="everything"
 	#test
-	mobHP += 1
 def draw():
 	gui.drawgui()
 	for i in range(0,len(MOBS[0])):
@@ -88,7 +87,6 @@ while g != ' ':
 #Main loop
 def mainloop():
 	while GAME_RUNNING:
-		global hitDmg
 		startTime=time.time()
 		update()
 		draw()
@@ -96,7 +94,6 @@ def mainloop():
 		timeElapsed=endTime-startTime
 		sleepTime=1.0/float(FRAMES_PER_SECOND)-float(timeElapsed)
 		time.sleep(sleepTime)
-		hitDmg = hitDmg + 1
 
 mainthread = threading.Thread(name='main', target=mainloop)
 mainthread.setDaemon(True)
@@ -108,8 +105,7 @@ while GAME_RUNNING:
 	while g != '.' and g != '>':
 		g = getch.getch()
 	hit()
-
-	#g = getch.getch()
-	#while g != ',' and g != '<':
-	#	g = getch.getch()
-	#hit()
+	g = getch.getch()
+	while g != ',' and g != '<':
+		g = getch.getch()
+	hit()
