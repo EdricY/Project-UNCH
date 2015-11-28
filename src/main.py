@@ -7,6 +7,7 @@ import glob
 import signal
 import getch
 import threading
+import random
 
 #Module imports
 import gui
@@ -31,18 +32,18 @@ COUNT_FILES=0
 MOBS=[]
 DEATH_FRAME = 0
 
-hitDmg=1
-dps=0
-mobHP=10
-mobMaxHP=10
-ch=' '
-lastch=' '
-quitMenuOpen=False
+HIT_DMG=1
+DPS=0
+MOB_HP=10
+MOB_MAX_HP=10
+CURRENT_MOB=0
 
+quitMenuOpen=False
 #Mob loading
 for i in MOB_FILES:
 	MOBS.append([])
 	f=open(i)
+	MOBS[COUNT_FILES].append(i[16+i.find("/resources/mobs/"):len(i)])
 	for line in f:
 		MOBS[COUNT_FILES].append(line)
 	COUNT_FILES+=1
@@ -62,34 +63,43 @@ def readsave():
 
 #Methods
 def hit():
-	global hitDmg
-	global mobHP
-	mobHP -= hitDmg
-	if mobHP < 0:
-		mobHP = 0 #maybe change to "rekt" later
+	global HIT_DMG
+	global MOB_HP
+	MOB_HP -= HIT_DMG
+	if MOB_HP < 0:
+		MOB_HP = 0 #maybe change to "rekt" later
+def createMob():
+	global MOB_MAX_HP, MOB_HP, CURRENT_MOB
+	MOB_MAX_HP = 10
+	MOB_HP = MOB_MAX_HP
+	CURRENT_MOB=random.randint(0,COUNT_FILES)
 
 def update():
-	global mobHP
+	global MOB_HP
 	todo="everything"
 	#test
 def draw():
 	gui.drawgui()
-    if mobHP == 0:
+    if MOB_HP == 0:
         if DEATH_FRAME == 20:
             DEATH_FRAME = 0
             createMob()
         else:
-            for i in range(0,len(MOBS[0]) - (DEATH_FRAME/2)):
-                method.printxy(33,(6.0 + (DEATH_FRAME/2)) +i,MOBS[0][i])
+            for i in range(1,len(MOBS[CURRENT_MOB]) - (DEATH_FRAME/2)):
+                method.printxy(33,(6.0 + (DEATH_FRAME/2)) +i,MOBS[CURRENT_MOB][i])
             DEATH_FRAME+=1
     else:
-        for i in range(0,len(MOBS[0])):
-            method.printxy(33,6+i,MOBS[0][i])
-        method.printxy(37,17,mobHP)
+        for i in range(1,len(MOBS[CURRENT_MOB])):
+            method.printxy(33,6+i,MOBS[CURRENT_MOB][i])
+        method.printxy(37,17,MOB_HP)
+		method.printxy(33,4,MOBS[CURRENT_MOB][0])
 	if quitMenuOpen:
 		gui.drawquitmenu()
 
 #Wait for SPACE before moving on.
+ch=' '
+lastch=' '
+
 ch = getch.getch()
 while ch != ' ':
 	ch = getch.getch()
