@@ -31,10 +31,12 @@ MOB_FILES = glob.glob("../resources/mobs/*.txt")
 COUNT_FILES=0
 MOBS=[]
 
-#Private variables
 hitDmg=1
+global dps
 dps=0
+
 mobHP=10
+global mobMaxHP
 mobMaxHP=10
 
 #Mob loading
@@ -60,11 +62,14 @@ def readsave():
 
 #Methods
 def hit():
+	global hitDmg
+	global mobHP
 	mobHP -= hitDmg
 	if mobHP < 0:
 		mobHP = 0 #maybe change to "rekt" later
 
-def update(mobHP):
+def update():
+	global mobHP
 	todo="everything"
 	#test
 	mobHP += 1
@@ -83,8 +88,9 @@ while g != ' ':
 #Main loop
 def mainloop():
 	while GAME_RUNNING:
+		global hitDmg
 		startTime=time.time()
-		update(mobHP)
+		update()
 		draw()
 		endTime=time.time()
 		timeElapsed=endTime-startTime
