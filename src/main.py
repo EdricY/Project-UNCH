@@ -43,7 +43,7 @@ quitMenuOpen=False
 for i in MOB_FILES:
 	MOBS.append([])
 	f=open(i)
-	MOBS[COUNT_FILES].append(capitalize(i[16+i.find("/resources/mobs/"):len(i)-4]))
+	MOBS[COUNT_FILES].append(i[16+i.find("/resources/mobs/"):len(i)-4].capitalize())
 	for line in f:
 		MOBS[COUNT_FILES].append(line)
 	COUNT_FILES+=1
