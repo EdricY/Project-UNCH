@@ -82,8 +82,8 @@ def draw():
 	gui.drawgui()
 	if MOB_HP == 0:
 	if DEATH_FRAME == 20:
-            DEATH_FRAME = 0
-            createMob()
+		 DEATH_FRAME = 0
+		createMob()
 	else:
             for i in range(1,len(MOBS[CURRENT_MOB]) - (DEATH_FRAME/2)):
                 method.printxy(33,(6.0 + (DEATH_FRAME/2)) +i,MOBS[CURRENT_MOB][i])
