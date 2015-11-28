@@ -32,12 +32,11 @@ COUNT_FILES=0
 MOBS=[]
 
 hitDmg=1
-global dps
 dps=0
-
 mobHP=10
-global mobMaxHP
 mobMaxHP=10
+ch=' '
+lastch=' '
 
 #Mob loading
 for i in MOB_FILES:
@@ -79,9 +78,9 @@ def draw():
 	method.printxy(37,17,mobHP)
 
 #Wait for SPACE before moving on.
-g = getch.getch()
-while g != ' ':
-	g = getch.getch()
+ch = getch.getch()
+while ch != ' ':
+	ch = getch.getch()
 
 
 #Main loop
@@ -101,11 +100,13 @@ mainthread.start()
 
 #Handle Input
 while GAME_RUNNING:
-	g = getch.getch()
-	while g != '.' and g != '>':
-		g = getch.getch()
-	hit()
-	g = getch.getch()
-	while g != ',' and g != '<':
-		g = getch.getch()
-	hit()
+	lastch=ch
+	ch = getch.getch()
+	#cases
+	if ch=='.' and lastch!='.'
+		hit()
+	elif ch==',' and lastch=='.'
+		hit()
+	elif ch=='y' and lastch=='q'
+	elif ch=='q'
+		
