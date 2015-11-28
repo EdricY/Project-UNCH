@@ -1,4 +1,4 @@
-&RBO===============================O&XX
-&RB|&XX Are you sure you want to quit?&RB|&XX
-&RB|&XX       &RB(Y)&XXes       &GB(N)&XXo        &RB|&XX
-&RBO===============================O&XX
+&RKO===============================O&XX
+&RK|&XX Are you sure you want to quit?&RK|&XX
+&RK|&XX       &RK(Y)&XXes       &GK(N)&XXo        &RK|&XX
+&RKO===============================O&XX
