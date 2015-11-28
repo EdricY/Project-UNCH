@@ -67,7 +67,7 @@ def hit():
 	global MOB_HP
 	MOB_HP -= HIT_DMG
 	if MOB_HP < 0:
-		MOB_HP = 0 #maybe change to "rekt" later
+		MOB_HP = "rekt" #maybe change to "rekt" later
 def createMob():
 	global MOB_MAX_HP, MOB_HP, CURRENT_MOB
 	MOB_MAX_HP = 10
