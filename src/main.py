@@ -63,17 +63,6 @@ def hit():
 	mobHP -= hitDmg
 	if mobHP < 0:
 		mobHP = 0 #maybe change to "rekt" later
-		
-def inputhandler():
-	while main.GAME_RUNNING:
-		g = getch.getch()
-		while g != '.' and g != '>':
-			g = getch.getch()
-		hit()
-		g = getch.getch()
-		while g != ',' and g != '<':
-			g = getch.getch()
-		hit()
 
 def update(mobHP):
 	todo="everything"
@@ -92,13 +81,29 @@ while g != ' ':
 
 
 #Main loop
-hitter = threading.Thread(name='hitter', target=inputhandler)
+def mainloop():
+	while GAME_RUNNING:
+		startTime=time.time()
+		update(mobHP)
+		draw()
+		endTime=time.time()
+		timeElapsed=endTime-startTime
+		sleepTime=1.0/float(FRAMES_PER_SECOND)-float(timeElapsed)
+		time.sleep(sleepTime)
+		hitDmg = hitDmg + 1
+
+mainthread = threading.Thread(name='main', target=mainloop)
+mainthread.setDaemon(True)
+mainthread.start()
+
+#Handle Input
 while GAME_RUNNING:
-	startTime=time.time()
-	update(mobHP)
-	draw()
-	endTime=time.time()
-	timeElapsed=endTime-startTime
-	sleepTime=1.0/float(FRAMES_PER_SECOND)-float(timeElapsed)
-	time.sleep(sleepTime)
-	hitDmg = hitDmg + 1
+	g = getch.getch()
+	while g != '.' and g != '>':
+		g = getch.getch()
+	hit()
+
+	#g = getch.getch()
+	#while g != ',' and g != '<':
+	#	g = getch.getch()
+	#hit()
