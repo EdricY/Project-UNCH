@@ -72,7 +72,7 @@ def createMob():
 	global MOB_MAX_HP, MOB_HP, CURRENT_MOB
 	MOB_MAX_HP = 10
 	MOB_HP = MOB_MAX_HP
-	CURRENT_MOB=random.randint(0,COUNT_FILES)
+	CURRENT_MOB=random.randint(0,COUNT_FILES-1)
 
 def update():
 	global MOB_HP
