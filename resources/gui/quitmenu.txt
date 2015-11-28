@@ -1,24 +1,4 @@
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-       O===============================O                  
-       | Are you sure you want to quit?|                  
-       |       (Y)es       (N)o        |                     
-       O===============================O                  
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
-                                                           
+&RKO===============================O&XX
+&RK|&XX Are you sure you want to quit?&RK|&XX
+&RK|&XX       &RK(Y)&XXes       &GK(N)&XXo        &RK|&XX
+&RKO===============================O&XX
