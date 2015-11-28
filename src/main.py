@@ -79,6 +79,7 @@ def update():
 	todo="everything"
 	#test
 def draw():
+	global DEATH_FRAME
 	gui.drawgui()
 	method.printxy(33,4,MOBS[CURRENT_MOB][0])
 	if MOB_HP == 0:
