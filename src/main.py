@@ -103,10 +103,7 @@ while GAME_RUNNING:
 	lastch=ch
 	ch = getch.getch()
 	#cases
-	if ch=='.' and lastch!='.'
+	if ch=='.' and lastch!='.':
 		hit()
-	elif ch==',' and lastch=='.'
+	elif ch==',' and lastch=='.':
 		hit()
-	elif ch=='y' and lastch=='q'
-	elif ch=='q'
-		
