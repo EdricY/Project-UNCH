@@ -80,19 +80,19 @@ def update():
 	#test
 def draw():
 	gui.drawgui()
+	method.printxy(33,4,MOBS[CURRENT_MOB][0])
 	if MOB_HP == 0:
-	if DEATH_FRAME == 20:
-		 DEATH_FRAME = 0
-		createMob()
-	else:
-            for i in range(1,len(MOBS[CURRENT_MOB]) - (DEATH_FRAME/2)):
-                method.printxy(33,(6.0 + (DEATH_FRAME/2)) +i,MOBS[CURRENT_MOB][i])
-            DEATH_FRAME+=1
+		if DEATH_FRAME == 20:
+			DEATH_FRAME = 0
+			createMob()
+		else:
+			for i in range(1,len(MOBS[CURRENT_MOB]) - (DEATH_FRAME/2)):
+				method.printxy(33,(6.0 + (DEATH_FRAME/2)) +i,MOBS[CURRENT_MOB][i])
+			DEATH_FRAME+=1
 	else:
 		for i in range(1,len(MOBS[CURRENT_MOB])):
-		method.printxy(33,6+i,MOBS[CURRENT_MOB][i])
-		method.printxy(37,17,MOB_HP)
-			method.printxy(33,4,MOBS[CURRENT_MOB][0])
+			method.printxy(33,6+i,MOBS[CURRENT_MOB][i])
+			method.printxy(37,17,MOB_HP)
 		if quitMenuOpen:
 			gui.drawquitmenu()
 
