@@ -112,9 +112,9 @@ while GAME_RUNNING:
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
 	else:
-	if ch=='.' and lastch!='.':
-		hit()
-	elif ch==',' and lastch=='.':
-		hit()
-	elif ch=='q':
-		quitMenuOpen = True
+		if ch=='.' and lastch!='.':
+			hit()
+		elif ch==',' and lastch=='.':
+			hit()
+		elif ch=='q':
+			quitMenuOpen = True
