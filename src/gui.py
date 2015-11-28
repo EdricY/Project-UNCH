@@ -11,6 +11,9 @@ def drawgui():
 def drawtitle():
 	for i in range(0,len(TITLE_LINES)):
 		method.printxy(0,i+1,TITLE_LINES[i])
+def drawquitmenu():
+	for i in range(0,len(QUIT_LINES)):
+		method.printxy(0,i+1,QUIT_LINES[i])
 #load GUI file.
 f=open("../resources/gui/gui.txt")
 GUI_LINES = []
@@ -21,3 +24,8 @@ f=open("../resources/gui/title.txt")
 TITLE_LINES = []
 for line in f:
 	TITLE_LINES.append(method.color(line))
+#load quitmenu file.
+	f=open("../resources/gui/quitmenu.txt")
+QUIT_LINES = []
+for line in f:
+	QUIT_LINES.append(method.color(line))
