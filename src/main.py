@@ -43,7 +43,7 @@ quitMenuOpen=False
 for i in MOB_FILES:
 	MOBS.append([])
 	f=open(i)
-	MOBS[COUNT_FILES].append(i[16+i.find("/resources/mobs/"):len(i)-4].capitalize())
+	MOBS[COUNT_FILES].append(method.color("&RK"+i[16+i.find("/resources/mobs/"):len(i)-4].capitalize()+"&XX"))
 	for line in f:
 		MOBS[COUNT_FILES].append(line)
 	COUNT_FILES+=1
@@ -81,7 +81,7 @@ def update():
 def draw():
 	global DEATH_FRAME
 	gui.drawgui()
-	method.printxy(33,4,MOBS[CURRENT_MOB][0])
+	method.printxy(34,4,MOBS[CURRENT_MOB][0])
 	if MOB_HP == 0:
 		if DEATH_FRAME == 20:
 			DEATH_FRAME = 0
