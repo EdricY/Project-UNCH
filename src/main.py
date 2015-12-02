@@ -86,8 +86,9 @@ def update():
 def draw():
 	global DEATH_FRAME
 	gui.drawgui()
-	method.printxy(34,4,MOBS[CURRENT_MOB][0])
-	if MOB_HP <= 0:
+	method.printxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
+	method.printxy(46,4,ZONE_MOBS_KILLED) #zone mob number
+	if MOB_HP <= 0: #mob death animation
 		method.printxy(37,17,"rekt")
 		if DEATH_FRAME == 20:
 			DEATH_FRAME = 0
@@ -97,7 +98,7 @@ def draw():
 				method.printxy(33,(5 + (DEATH_FRAME/2)) +i,MOBS[CURRENT_MOB][i])
 			DEATH_FRAME+=1
 	else:
-		for i in range(1,len(MOBS[CURRENT_MOB])):
+		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
 			method.printxy(33,5+i,MOBS[CURRENT_MOB][i])
 			method.printxy(37,17,MOB_HP)
 		if quitMenuOpen:
