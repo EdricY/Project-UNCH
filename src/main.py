@@ -98,8 +98,8 @@ def draw():
 	if CURRENT_ZONE-1>0:
 		method.printxy(36,2,str(CURRENT_ZONE-1)) #zone num -
 	if CURRENT_ZONE != HIGHEST_ZONE:
-		method.printxy(40,2,str(CURRENT_ZONE+1)) #zone num + 
-	method.printxy(44,2,str(CURRENT_ZONE)) #zone num
+		method.printxy(45,2,str(CURRENT_ZONE+1)) #zone num + 
+	method.printxy(42,2,str(CURRENT_ZONE)) #zone num
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
 		method.printxy(45,4,"(0/1)")
 	else:
