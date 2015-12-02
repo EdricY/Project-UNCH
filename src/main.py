@@ -37,7 +37,9 @@ DPS=0
 MOB_HP=10
 MOB_MAX_HP=10
 CURRENT_MOB=0
-
+HIGHEST_ZONE=1
+CURRENT_ZONE=1
+ZONE_MOBS_KILLED=0
 quitMenuOpen=False
 #Mob loading
 for i in MOB_FILES:
@@ -75,14 +77,17 @@ def createMob():
 	CURRENT_MOB=random.randint(0,COUNT_FILES-1)
 
 def update():
-	global MOB_HP
-	todo="everything"
-	#test
+	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED
+	if MOB_HP <= 0:
+		if CURRENT_ZONE % 5 != 0:
+			ZONE_MOBS_KILLED = max(ZONE_MOBS_KILLED + 1, 10)
+		else:
+			ZONE_MOBS_KILLED = 1
 def draw():
 	global DEATH_FRAME
 	gui.drawgui()
 	method.printxy(34,4,MOBS[CURRENT_MOB][0])
-	if MOB_HP == 0:
+	if MOB_HP <= 0:
 		method.printxy(37,17,"rekt")
 		if DEATH_FRAME == 20:
 			DEATH_FRAME = 0
