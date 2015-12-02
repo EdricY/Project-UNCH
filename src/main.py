@@ -84,10 +84,16 @@ def update():
 		else:
 			ZONE_MOBS_KILLED = 1
 def draw():
-	global DEATH_FRAME
+	global DEATH_FRAME, ZONE_MOBS_KILLED
 	gui.drawgui()
 	method.printxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
-	method.printxy(46,4,ZONE_MOBS_KILLED) #zone mob number
+	if CURRENT_ZONE % 5 != 0:
+		ZONE_MOBS_KILLED = max(ZONE_MOBS_KILLED + 1, 10)
+	else:
+		if ZONE_MOBS_KILLED == 10:
+			method.printxy(45,4,"(10/10)") #zone mob number
+		else:
+			method.printxy(46,4,"("+ZONE_MOBS_KILLED+"/10)") #zone mob number
 	if MOB_HP <= 0: #mob death animation
 		method.printxy(37,17,"rekt")
 		if DEATH_FRAME == 20:
