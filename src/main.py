@@ -40,6 +40,7 @@ CURRENT_MOB=0
 HIGHEST_ZONE=1
 CURRENT_ZONE=1
 ZONE_MOBS_KILLED=0
+MOB_DEAD=False
 quitMenuOpen=False
 #Mob loading
 for i in MOB_FILES:
@@ -69,20 +70,27 @@ def hit():
 	global MOB_HP
 	MOB_HP -= HIT_DMG
 	if MOB_HP < 0:
-		MOB_HP = 0 #maybe change to "rekt" later
+		MOB_HP = 0
 def createMob():
-	global MOB_MAX_HP, MOB_HP, CURRENT_MOB
+	global MOB_MAX_HP, MOB_HP, CURRENT_MOB, MOB_DEAD
+	MOB_DEAD=False
 	MOB_MAX_HP = 10
 	MOB_HP = MOB_MAX_HP
 	CURRENT_MOB=random.randint(0,COUNT_FILES-1)
-
+def killMob():
+	global ZONE_MOBS_KILLED, HIGHEST_ZONE, MOB_DEAD
+	MOB_DEAD=True
+	if CURRENT_ZONE % 5 != 0:
+		ZONE_MOBS_KILLED = max(ZONE_MOBS_KILLED + 1, 10)
+		if ZONE_MOBS_KILLED==10:
+			HIGHEST_ZONE=max(HIGHEST_ZONE,CURRENT_ZONE+1)
+	else:
+		ZONE_MOBS_KILLED = 1
+		HIGHEST_ZONE=HIGHEST_ZONE+1
 def update():
 	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED
-	if MOB_HP <= 0:
-		if CURRENT_ZONE % 5 != 0:
-			ZONE_MOBS_KILLED = max(ZONE_MOBS_KILLED + 1, 10)
-		else:
-			ZONE_MOBS_KILLED = 1
+	if MOB_HP <= 0 and !MOB_DEAD:
+		killMob()
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED
 	gui.drawgui()
