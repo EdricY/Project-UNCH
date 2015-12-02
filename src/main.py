@@ -106,7 +106,7 @@ def draw():
 		if ZONE_MOBS_KILLED == 10:
 			method.printxy(45,4,"(10/10)")
 		else:
-			method.printxy(46,4,"("+str(ZONE_OBS_KILLED)+"/10)")
+			method.printxy(46,4,"("+str(ZONE_MOBS_KILLED)+"/10)")
 	if MOB_HP <= 0: #mob death animation
 		method.printxy(37,17,"rekt")
 		if DEATH_FRAME == 20:
