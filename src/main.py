@@ -89,7 +89,7 @@ def killMob():
 		HIGHEST_ZONE=HIGHEST_ZONE+1
 def update():
 	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED
-	if MOB_HP <= 0 and !MOB_DEAD:
+	if MOB_HP <= 0 and not MOB_DEAD:
 		killMob()
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED
