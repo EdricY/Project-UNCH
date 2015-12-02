@@ -165,3 +165,9 @@ while GAME_RUNNING:
 			hit()
 		elif ch=='q':
 			quitMenuOpen = True
+		if (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE
+			CURRENT_ZONE=CURRENT_ZONE+1
+			createMob()
+		if (ch=='-' or ch=='_') and CURRENT_ZONE-1>0
+			CURRENT_ZONE=CURRENT_ZONE-1
+			createMob()
