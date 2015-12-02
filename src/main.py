@@ -167,7 +167,13 @@ while GAME_RUNNING:
 			quitMenuOpen = True
 		elif (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE:
 			CURRENT_ZONE=CURRENT_ZONE+1
+			if CURRENT_ZONE == HIGHEST_ZONE:
+				ZONE_MOBS_KILLED=0
 			createMob()
 		elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
 			CURRENT_ZONE=CURRENT_ZONE-1
+			if CURRENT_ZONE % 5 != 0:
+				ZONE_MOBS_KILLED=10
+			else:
+				ZONE_MOBS_KILLED=1
 			createMob()
