@@ -95,13 +95,18 @@ def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED
 	gui.drawgui()
 	method.printxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
-	if CURRENT_ZONE % 5 == 0: #print zone mob nums
+	if CURRENT_ZONE-1>0:
+		method.printxy(36,2,str(CURRENT_ZONE-1)) #zone num -
+	if CURRENT_ZONE != HIGHEST_ZONE:
+		method.printxy(40,2,str(CURRENT_ZONE+1)) #zone num + 
+	method.printxy(44,2,str(CURRENT_ZONE)) #zone num
+	if CURRENT_ZONE % 5 == 0: #zone mob nums
 		method.printxy(45,4,"(0/1)")
 	else:
 		if ZONE_MOBS_KILLED == 10:
 			method.printxy(45,4,"(10/10)")
 		else:
-			method.printxy(46,4,"("+str(ZONE_MOBS_KILLED)+"/10)")
+			method.printxy(46,4,"("+str(ZONE_OBS_KILLED)+"/10)")
 	if MOB_HP <= 0: #mob death animation
 		method.printxy(37,17,"rekt")
 		if DEATH_FRAME == 20:
