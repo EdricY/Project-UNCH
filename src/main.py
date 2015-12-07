@@ -96,7 +96,7 @@ def update():
 	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED
 	if MOB_HP <= 0 and not MOB_DEAD:
 		killMob()
-	if CURRENT_ZONE % 5 != 0 and 30.0-time.time()+BOSS_TIMER<=0:
+	if CURRENT_ZONE % 5 == 0 and 30.0-time.time()+BOSS_TIMER<=0:
 		createMob()
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE
