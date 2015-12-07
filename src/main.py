@@ -40,6 +40,7 @@ CURRENT_MOB=0
 HIGHEST_ZONE=1
 CURRENT_ZONE=1
 ZONE_MOBS_KILLED=0
+BOSS_TIMER=0.0
 MOB_DEAD=False
 quitMenuOpen=False
 #Mob loading
@@ -72,11 +73,12 @@ def hit():
 	if MOB_HP < 0:
 		MOB_HP = 0
 def createMob():
-	global MOB_MAX_HP, MOB_HP, CURRENT_MOB, MOB_DEAD
+	global MOB_MAX_HP, MOB_HP, CURRENT_MOB, MOB_DEAD, BOSS_TIMER
 	MOB_DEAD=False
 	MOB_MAX_HP = CURRENT_ZONE+random.randint(0,5)
 	if CURRENT_ZONE % 5 == 0:
 		MOB_MAX_HP = 10*CURRENT_ZONE+50
+		BOSS_TIMER = time.time()
 	MOB_HP = MOB_MAX_HP
 	CURRENT_MOB=random.randint(0,COUNT_FILES-1)
 def killMob():
@@ -94,6 +96,8 @@ def update():
 	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED
 	if MOB_HP <= 0 and not MOB_DEAD:
 		killMob()
+	if CURRENT_ZONE % 5 != 0 and 30.0-time.time()+BOSS_TIMER<=0:
+		createMob()
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP
 	gui.drawgui()
@@ -108,6 +112,7 @@ def draw():
 		method.printxy(45,2,str(CURRENT_ZONE+1)) #zone num + 
 	method.printxy(42,2,str(CURRENT_ZONE)) #zone num
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
+		method.printxy(37,16,method.color("&RKTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX") #boss timer
 		if HIGHEST_ZONE > CURRENT_ZONE:
 			method.printxy(45,4,"(1/1)")
 		else:
@@ -129,7 +134,7 @@ def draw():
 	else:
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
 			method.printxy(33,5+i,MOBS[CURRENT_MOB][i])
-			method.printxy(37,17,MOB_HP)
+			method.printxy(37,17,MOB_HP) #mob hp
 		if quitMenuOpen:
 			gui.drawquitmenu()
 
