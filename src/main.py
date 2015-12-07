@@ -94,9 +94,9 @@ def update():
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP
 	gui.drawgui()
-	Y=int((((float(MOB_HP)/float(MOB_MAX_HP))*22.0) + 1.0))
+	Y=int((((float(MOB_HP)/float(MOB_MAX_HP))*22.0) + 2.0))
 	X=56
-	for i in range(Y, 23):
+	for i in range(24-Y, 24):
 		method.printxy(X,Y,"XX") #hashtag healthbar
 	method.printxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
