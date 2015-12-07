@@ -107,9 +107,12 @@ def draw():
 		method.printxy(45,2,str(CURRENT_ZONE+1)) #zone num + 
 	method.printxy(42,2,str(CURRENT_ZONE)) #zone num
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
-		method.printxy(45,4,"(0/1)")
+		if HIGHEST_ZONE > CURRENT_ZONE:
+			method.printxy(45,4,"(1/1)")
+		else
+			method.printxy(45,4,"(0/1)")
 	else:
-		if ZONE_MOBS_KILLED == 10:
+		if HIGHEST_ZONE > CURRENT_ZONE:
 			method.printxy(45,4,"(10/10)")
 		else:
 			method.printxy(46,4,"("+str(ZONE_MOBS_KILLED)+"/10)")
