@@ -112,7 +112,7 @@ def draw():
 		method.printxy(45,2,str(CURRENT_ZONE+1)) #zone num + 
 	method.printxy(42,2,str(CURRENT_ZONE)) #zone num
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
-		method.printxy(37,16,method.color("&RKTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX") #boss timer
+		method.printxy(37,16,method.color("&RKTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX")) #boss timer
 		if HIGHEST_ZONE > CURRENT_ZONE:
 			method.printxy(45,4,"(1/1)")
 		else:
