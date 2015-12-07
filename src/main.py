@@ -83,7 +83,7 @@ def killMob():
 	if CURRENT_ZONE % 5 != 0:
 		ZONE_MOBS_KILLED = min(ZONE_MOBS_KILLED + 1, 10)
 		if ZONE_MOBS_KILLED==10:
-			HIGHEST_ZONE=max(HIGHEST_ZONE,CURRENT_ZONE+1)
+			HIGHEST_ZONE=max(HIGHEST_ZONE,CURRENT_ZONE+)
 	else:
 		ZONE_MOBS_KILLED = 1
 		HIGHEST_ZONE=HIGHEST_ZONE+1
@@ -155,6 +155,7 @@ while GAME_RUNNING:
 	
 	if quitMenuOpen:
 		if ch=='y' or ch=='Y':
+			GAME_RUNNING=False
 			quit()
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
@@ -171,9 +172,6 @@ while GAME_RUNNING:
 				ZONE_MOBS_KILLED=0
 			createMob()
 		elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
-			CURRENT_ZONE=CURRENT_ZONE-1
-			if CURRENT_ZONE % 5 != 0:
-				ZONE_MOBS_KILLED=10
-			else:
-				ZONE_MOBS_KILLED=1
+			CURRENT_ZONE=CURRENT_ZONE-1c
+			ZONE_MOBS_KILLED=method.getMobsInZone(CURRENT_ZONE)
 			createMob()
