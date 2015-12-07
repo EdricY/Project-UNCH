@@ -109,7 +109,7 @@ def draw():
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
 		if HIGHEST_ZONE > CURRENT_ZONE:
 			method.printxy(45,4,"(1/1)")
-		else
+		else:
 			method.printxy(45,4,"(0/1)")
 	else:
 		if HIGHEST_ZONE > CURRENT_ZONE:
