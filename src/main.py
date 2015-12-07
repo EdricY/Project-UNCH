@@ -176,6 +176,6 @@ while GAME_RUNNING:
 				ZONE_MOBS_KILLED=0
 			createMob()
 		elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
-			CURRENT_ZONE=CURRENT_ZONE-1c
+			CURRENT_ZONE=CURRENT_ZONE-1
 			ZONE_MOBS_KILLED=method.getMobsInZone(CURRENT_ZONE)
 			createMob()
