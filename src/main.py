@@ -99,7 +99,7 @@ def update():
 	if CURRENT_ZONE % 5 != 0 and 30.0-time.time()+BOSS_TIMER<=0:
 		createMob()
 def draw():
-	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP
+	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE
 	gui.drawgui()
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
 	X=56
