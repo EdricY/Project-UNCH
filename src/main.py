@@ -74,7 +74,9 @@ def hit():
 def createMob():
 	global MOB_MAX_HP, MOB_HP, CURRENT_MOB, MOB_DEAD
 	MOB_DEAD=False
-	MOB_MAX_HP = 10
+	MOB_MAX_HP = CURRENT_ZONE+random.randint(0,5)
+	if CURRENT_ZONE % 5 ==0
+	MOB_MAX_HP *= 10
 	MOB_HP = MOB_MAX_HP
 	CURRENT_MOB=random.randint(0,COUNT_FILES-1)
 def killMob():
@@ -97,7 +99,7 @@ def draw():
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
 	X=56
 	for i in range(22-Y, 22):
-		method.printxy(X,i+2,method.color(("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "  " + "&XX")) #hashtag healthbar
+		method.printxy(X,i+2,method.color(("&GK" if Y > 0.5*22.0 else ("&YK" if Y > 0.25*22.0 else "&RK")) + "XX" + "&XX")) #hashtag healthbar
 	method.printxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
 		method.printxy(36,2,str(CURRENT_ZONE-1)) #zone num -
