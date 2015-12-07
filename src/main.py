@@ -88,16 +88,16 @@ def killMob():
 		ZONE_MOBS_KILLED = 1
 		HIGHEST_ZONE=HIGHEST_ZONE+1
 def update():
-	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, MOB_MAX_HP
-	Y=int((((float(MOB_HP)/float(MOB_MAX_HP))*22.0) + 1.0))
-	X=56
-	for i in range(Y, 23):
-		method.printxy(X,Y,"XX")
+	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED
 	if MOB_HP <= 0 and not MOB_DEAD:
 		killMob()
 def draw():
-	global DEATH_FRAME, ZONE_MOBS_KILLED
+	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP
 	gui.drawgui()
+	Y=int((((float(MOB_HP)/float(MOB_MAX_HP))*22.0) + 1.0))
+	X=56
+	for i in range(Y, 23):
+		method.printxy(X,Y,"XX") #hashtag healthbar
 	method.printxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
 		method.printxy(36,2,str(CURRENT_ZONE-1)) #zone num -
