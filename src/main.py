@@ -75,8 +75,8 @@ def createMob():
 	global MOB_MAX_HP, MOB_HP, CURRENT_MOB, MOB_DEAD
 	MOB_DEAD=False
 	MOB_MAX_HP = CURRENT_ZONE+random.randint(0,5)
-	if CURRENT_ZONE % 5 == 0
-	MOB_MAX_HP *= 10
+	if CURRENT_ZONE % 5 == 0:
+		MOB_MAX_HP *= 10
 	MOB_HP = MOB_MAX_HP
 	CURRENT_MOB=random.randint(0,COUNT_FILES-1)
 def killMob():
