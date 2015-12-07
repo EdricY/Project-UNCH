@@ -97,7 +97,7 @@ def draw():
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
 	X=56
 	for i in range(22-Y, 22):
-		method.printxy(X,i+2,method.color(("&GK" if Y < 0.5*22.0 else ("&YK" if Y < 0.25*22.0 else "&RK")) + "XX" + "&XX")) #hashtag healthbar
+		method.printxy(X,i+2,method.color(("&GK" if Y > 0.5*22.0 else ("&YK" if Y > 0.25*22.0 else "&RK")) + "XX" + "&XX")) #hashtag healthbar
 	method.printxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
 		method.printxy(36,2,str(CURRENT_ZONE-1)) #zone num -
