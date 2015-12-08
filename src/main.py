@@ -134,10 +134,7 @@ def draw():
 	else:
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
 			method.printxy(33,5+i,MOBS[CURRENT_MOB][i])
-			method.printxy(37,17,MOB_HP) #mob hp
-		if quitMenuOpen:
-			method.printxy(37,17,MOB_HP)
-			gui.drawquitmenu()
+			method.printxy(37,17,method.dispBigNum(MOB_HP)) #mob hp
 	if not quitMenuOpen:
 		if lastch=='.': #characters at bottom
 			method.printxy(38,25,"<")
@@ -145,6 +142,8 @@ def draw():
 			method.printxy(39,25,"?")
 		else:
 			method.printxy(37,25,">")
+	if quitMenuOpen:
+		gui.drawquitmenu()
 #Wait for SPACE before moving on.
 ch=' '
 lastch=' '
