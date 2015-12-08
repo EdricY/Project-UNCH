@@ -99,7 +99,7 @@ def update():
 	if CURRENT_ZONE % 5 == 0 and 30.0-time.time()+BOSS_TIMER<=0:
 		createMob()
 def draw():
-	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE
+	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
 	gui.drawgui()
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
 	X=56
@@ -136,8 +136,14 @@ def draw():
 			method.printxy(33,5+i,MOBS[CURRENT_MOB][i])
 			method.printxy(37,17,MOB_HP) #mob hp
 		if quitMenuOpen:
+			method.printxy(37,17,MOB_HP)
 			gui.drawquitmenu()
-
+	if lastch=='.' #characters at bottom
+		method.printxy(37,25,"<")
+	elif lastch=='h' or lastch=='H'
+		method.printxy(37,27,"?")
+	else
+		method.printxy(37,26,">")
 #Wait for SPACE before moving on.
 ch=' '
 lastch=' '
