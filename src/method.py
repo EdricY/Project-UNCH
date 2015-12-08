@@ -8,6 +8,11 @@ def printxy(y, x, text):
 	sys.stdout.flush()
 def getMobsInZone(zone): #returns 1 if zone==5, else returns 10
 	return 9*((zone%5+4)/5)+1
+def dispBigNum(num): #returns num as a string
+	num=str(num)
+	if int(num) >= 100000:
+		num = num[:1] + "." + num[1:3] + str(int(round(float(num[3:5])/10.0))) + "e" + str(len(num)-1)
+	return num
 def getintfromletter(string):
 	if string == "K": #Black
 		return 0
