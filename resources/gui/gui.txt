@@ -16,7 +16,7 @@ O=&YKHeroes&XX=======O O=&GKSkills&XX====O O====================O |  |
 |&BK(Page Down/Up)&XX| |&BK(Pg Dn/Up)&XX | |                    | |  |
 O==============O O===========O O=&RKHP:&XX================O |  |
 O=&GKInformation&XX=======================================O |  |
-|Press &KWTAB (KEY)&XX for more information               | |  |
+|Press &KWH (KEY)&XX for more information                 | |  |
 |                                                   | |  |
 |                                                   | |  |
 O===================================================O |  |
