@@ -138,12 +138,13 @@ def draw():
 		if quitMenuOpen:
 			method.printxy(37,17,MOB_HP)
 			gui.drawquitmenu()
-	if lastch=='.': #characters at bottom
-		method.printxy(38,25,"<")
-	elif lastch=='h' or lastch=='H':
-		method.printxy(39,25,"?")
-	else:
-		method.printxy(37,25,">")
+	if not quitMenuOpen:
+		if lastch=='.': #characters at bottom
+			method.printxy(38,25,"<")
+		elif lastch=='h' or lastch=='H':
+			method.printxy(39,25,"?")
+		else:
+			method.printxy(37,25,">")
 #Wait for SPACE before moving on.
 ch=' '
 lastch=' '
