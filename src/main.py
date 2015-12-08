@@ -141,9 +141,9 @@ def draw():
 	if lastch=='.': #characters at bottom
 		method.printxy(37,25,"<")
 	elif lastch=='h' or lastch=='H':
-		method.printxy(37,27,"?")
+		method.printxy(39,25,"?")
 	else:
-		method.printxy(37,26,">")
+		method.printxy(38,25,">")
 #Wait for SPACE before moving on.
 ch=' '
 lastch=' '
