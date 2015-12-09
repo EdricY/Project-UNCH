@@ -1,11 +1,25 @@
 #system import
 import sys
+
+#Global variables
 BUFFER_LINES = []
 GUI_LINES = []
+
+#Import code
+f=open("../resources/gui/gui.txt")
+for line in f:
+	BUFFER_LINES.append(line)
+	GUI_LINES.append(line)
+f.close()
+
 #Definitions and methods
-def printxy(y, x, text):
-	sys.stdout.write("\x1b7\x1b[%d;%df%s\x1b8" % (x, y, text))
+#@depricated
+#prints text directly to the running frame.
+def printxy(x, y, text):
+	sys.stdout.write("\x1b7\x1b[%d;%df%s\x1b8" % (y, x, text))
 	sys.stdout.flush()
+
+#param x and y where 0,0 is top left and text to write.
 def bufferxy(x, y, text):
 	temp=BUFFER_LINES[y]
 	counter=0
@@ -23,13 +37,22 @@ def bufferxy(x, y, text):
 	if i<len(temp) and temp[i]=="&": #check if it ends on &
 		i+=3
 	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text) - 3*text.count('&'):]
-def getMobsInZone(zone): #returns 1 if zone==5, else returns 10
+
+#param the current zone
+#returns 1 if zone==5, else returns 10
+def getMobsInZone(zone):
 	return 9*((zone%5+4)/5)+1
-def dispBigNum(num): #returns num as a string
+
+#param a number
+#returns num as a string
+def dispBigNum(num):
 	num=str(num)
 	if int(num) >= 100000:
 		num = num[:1] + "." + num[1:3] + str(int(round(float(num[3:5])/10.0))) + "e" + str(len(num)-1)
 	return num
+	
+#param a string with a single letter K,R,G,Y,B,M,C,W (or X to clear).
+#returns a number representing the inputed letter
 def getintfromletter(string):
 	if string == "K": #Black
 		return 0
@@ -51,6 +74,8 @@ def getintfromletter(string):
 		return 9
 	return 9
 
+#param a string with a character code in the format of &XX
+#returns a string with escape characters.
 def color(string):
 	location = 0
 	location = string.find("&", location)
@@ -63,15 +88,13 @@ def color(string):
 		else:
 			location = len(string)
 	return string
+	
+#Resets buffer with the GUI file.
 def refreshBuffer():
 	for i in range(0,len(GUI_LINES)):
 		BUFFER_LINES[i] = GUI_LINES[i]
 
+#Completely output the framebuffer to the frame.
 def printBuffer():
 	for i in range(0,len(BUFFER_LINES)):
 		printxy(0,i+1,color(BUFFER_LINES[i]))
-f=open("../resources/gui/gui.txt")
-for line in f:
-	BUFFER_LINES.append(line)
-	GUI_LINES.append(line)
-f.close()

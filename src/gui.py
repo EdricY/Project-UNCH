@@ -14,18 +14,24 @@ def drawtitle():
 def drawquitmenu():
 	for i in range(0,len(QUIT_LINES)):
 		method.bufferxy(12,i+9,QUIT_LINES[i][:-1])
+
 #load GUI file.
 f=open("../resources/gui/gui.txt")
 GUI_LINES = []
 for line in f:
 	GUI_LINES.append(method.color(line))
+f.close()
+
 #load title file.
 f=open("../resources/gui/title.txt")
 TITLE_LINES = []
 for line in f:
 	TITLE_LINES.append(method.color(line))
+f.close()
+
 #load quitmenu file.
-	f=open("../resources/gui/quitmenu.txt")
+f=open("../resources/gui/quitmenu.txt")
 QUIT_LINES = []
 for line in f:
 	QUIT_LINES.append(line)
+f.close()
