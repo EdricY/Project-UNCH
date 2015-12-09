@@ -22,7 +22,12 @@ def printxy(x, y, text):
 #param x and y where 0,0 is top left and text to write.
 def bufferxy(x, y, text):
 	temp=BUFFER_LINES[y]
-	counter=0
+	ampsInBuff=BUFFER_LINES[y][:x].count("&")
+	ampsInText=text.count("&")
+	i = x + ampsInBuff*3
+	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text) - 3*ampsInText:]
+	
+	'''
 	i=0
 	c=0
 	if temp[i]=="&": #check if it starts with &
@@ -36,6 +41,7 @@ def bufferxy(x, y, text):
 	if i<len(temp) and temp[i]=="&": #check if it ends on &
 		i+=3
 	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text) - 3*text.count("&"):]
+	'''
 
 #param the current zone
 #returns 1 if zone==5, else returns 10
