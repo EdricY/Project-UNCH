@@ -110,7 +110,7 @@ def draw():
 	if CURRENT_ZONE-1>0:
 		method.printxy(36,2,str(CURRENT_ZONE-1)) #zone num -
 	if CURRENT_ZONE != HIGHEST_ZONE:
-		method.printxy(50-len(str(CURRENT_ZONE)),2,str(CURRENT_ZONE+1)) #zone num + 
+		method.printxy(49-len(str(CURRENT_ZONE)),2,str(CURRENT_ZONE+1)) #zone num + 
 	method.printxy(43-len(str(CURRENT_ZONE))/2,2,str(CURRENT_ZONE)) #zone num
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
 		method.printxy(37,16,method.color("&RKTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX")) #boss timer
