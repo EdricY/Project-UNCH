@@ -17,9 +17,6 @@ def bufferxy(x, y, text):
 		c+=1
 		i+=1
 	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text):]
-def printBuffer():
-	for i in range(0,len(BUFFER_LINES)):
-		printxy(0,i+1,BUFFER_LINES[i])
 def getMobsInZone(zone): #returns 1 if zone==5, else returns 10
 	return 9*((zone%5+4)/5)+1
 def dispBigNum(num): #returns num as a string
@@ -65,3 +62,7 @@ f=open("../resources/gui/gui.txt")
 for line in f:
 	BUFFER_LINES.append(line)
 f.close()
+
+def printBuffer():
+	for i in range(0,len(BUFFER_LINES)):
+		printxy(0,i+1,color(BUFFER_LINES[i]))
