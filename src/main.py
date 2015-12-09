@@ -43,6 +43,7 @@ ZONE_MOBS_KILLED=0
 BOSS_TIMER=0.0
 MOB_DEAD=False
 quitMenuOpen=False
+cmddisp=False
 #Mob loading
 for i in MOB_FILES:
 	MOBS.append([])
@@ -149,6 +150,7 @@ def draw():
 			method.bufferxy(36,24," < ")
 		elif lastch=='h' or lastch=='H':
 			method.bufferxy(36,24,"  ?")
+			method.bufferxy(18,1,"Press &BXH&XX again for a list of commands.")
 		else:
 			method.bufferxy(36,24,">  ")
 	if quitMenuOpen:
@@ -192,6 +194,9 @@ while GAME_RUNNING:
 			quit()
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
+	elif lastch=='h':
+		if ch=='h' or ch=='H'
+			cmddisp=True
 	else:
 		if ch=='.' and lastch!='.':
 			hit()
