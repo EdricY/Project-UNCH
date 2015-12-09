@@ -2,7 +2,7 @@
 import sys
 
 f=open("../resources/gui/gui.txt")
-GUI_LINES = []
+BUFFER_LINES = []
 for line in f:
 	BUFFER_LINES.append(method.color(line))
 #Definitions and methods
