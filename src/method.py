@@ -19,7 +19,7 @@ def bufferxy(x, y, text):
 	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text):]
 def printBuffer():
 	for i in range(0,len(BUFFER_LINES)):
-		method.printxy(0,i+1,BUFFER_LINES[i])
+		printxy(0,i+1,BUFFER_LINES[i])
 def getMobsInZone(zone): #returns 1 if zone==5, else returns 10
 	return 9*((zone%5+4)/5)+1
 def dispBigNum(num): #returns num as a string
