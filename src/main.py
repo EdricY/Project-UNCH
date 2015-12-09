@@ -105,6 +105,7 @@ def draw():
 	X=56
 	for i in range(22-Y, 22):
 		method.printxy(X,i+2,method.color(("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX")) #hashtag healthbar
+	method.printxy(5,2,method.dispBigNum(MONEY)) #money
 	method.printxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
 		method.printxy(36,2,str(CURRENT_ZONE-1)) #zone num -
