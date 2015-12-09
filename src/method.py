@@ -14,7 +14,7 @@ def bufferxy(x, y, text):
 		c-=2
 		i+=1
 	while c<x:
-		if temp[i]=="&":
+		if i<len(temp) and temp[i]=="&":
 			c-=3
 
 		c+=1
