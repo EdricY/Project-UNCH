@@ -38,7 +38,7 @@ MOB_HP=10
 MOB_MAX_HP=10
 CURRENT_MOB=0
 HIGHEST_ZONE=1
-CURRENT_ZONE=50
+CURRENT_ZONE=1
 ZONE_MOBS_KILLED=0
 BOSS_TIMER=0.0
 MOB_DEAD=False
@@ -70,6 +70,11 @@ def hit():
 	global HIT_DMG
 	global MOB_HP
 	MOB_HP -= HIT_DMG
+	if MOB_HP < 0:
+		MOB_HP = 0
+def destroy():
+	global MOB_HP
+	MOB_HP -= 10000
 	if MOB_HP < 0:
 		MOB_HP = 0
 def createMob():
@@ -198,3 +203,5 @@ while GAME_RUNNING:
 			CURRENT_ZONE=CURRENT_ZONE-1
 			ZONE_MOBS_KILLED=method.getMobsInZone(CURRENT_ZONE)
 			createMob()
+		elif ch=='0': #THIS IS DEBUG CODE ONLY
+			destroy()
