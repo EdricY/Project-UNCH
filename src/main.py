@@ -175,8 +175,7 @@ mainthread.setDaemon(True)
 mainthread.start()
 
 #Data to save
-SD = 
-[MONEY,
+SD = [MONEY,
 HIT_DMG,
 DPS,
 HIGHEST_ZONE,
