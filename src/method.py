@@ -1,10 +1,6 @@
 #system import
 import sys
-
-f=open("../resources/gui/gui.txt")
 BUFFER_LINES = []
-for line in f:
-	BUFFER_LINES.append(method.color(line))
 #Definitions and methods
 def printxy(y, x, text):
 	sys.stdout.write("\x1b7\x1b[%d;%df%s\x1b8" % (x, y, text))
@@ -64,3 +60,6 @@ def color(string):
 			location = len(string)
 	return string
 
+f=open("../resources/gui/gui.txt")
+for line in f:
+	BUFFER_LINES.append(color(line))
