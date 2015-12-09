@@ -1,5 +1,5 @@
-def save()
+def save():
 	todo="save"
-def load()
+def load():
 	todo="Load"
 	
