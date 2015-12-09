@@ -107,6 +107,11 @@ def update():
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
 	#gui.drawgui()
+	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
+	X=55
+	for i in range(22-Y, 22):
+		method.bufferxy(X,i+1,("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX") #hashtag healthbar
+
 	method.bufferxy(4,1,method.dispBigNum(MONEY)) #money
 	if CURRENT_ZONE-1>0:
 		method.bufferxy(35,1,str(CURRENT_ZONE-1)) #zone num -
@@ -147,10 +152,6 @@ def draw():
 			method.bufferxy(36,24,">  ")
 	if quitMenuOpen:
 		gui.drawquitmenu()
-	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
-	X=55
-	for i in range(22-Y, 22):
-		method.bufferxy(X,i+1,("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX") #hashtag healthbar
 #Wait for SPACE before moving on.
 ch=' '
 lastch=' '
