@@ -62,12 +62,13 @@ def color(string):
 		else:
 			location = len(string)
 	return string
-
-f=open("../resources/gui/gui.txt")
-for line in f:
-	BUFFER_LINES.append(line)
-f.close()
+def refreshBuffer():
+	f=open("../resources/gui/gui.txt")
+	for line in f:
+		BUFFER_LINES.append(line)
+	f.close()
 
 def printBuffer():
 	for i in range(0,len(BUFFER_LINES)):
 		printxy(0,i+1,color(BUFFER_LINES[i]))
+refreshBuffer()
