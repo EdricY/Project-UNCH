@@ -19,7 +19,7 @@ def bufferxy(x, y, text):
 
 		c+=1
 		i+=1
-	if temp[i]=="&": #check if it ends on &
+	if i<len(temp) and temp[i]=="&": #check if it ends on &
 		i+=3
 	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text):]
 def getMobsInZone(zone): #returns 1 if zone==5, else returns 10
