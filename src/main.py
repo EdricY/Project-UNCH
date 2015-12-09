@@ -130,9 +130,6 @@ def draw():
 	for i in range(22-Y, 22):
 		method.bufferxy(X,i+1,("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX") #hashtag healthbar
 	
-	# HOPEFULLY WE CAN REMOVE THIS LATER
-	method.printBuffer() 
-	
 	if MOB_HP <= 0: #mob death animation
 		method.bufferxy(36,16,"rekt")
 		if DEATH_FRAME == 20:
