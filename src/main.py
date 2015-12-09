@@ -110,7 +110,7 @@ def draw():
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
 	X=55
 	for i in range(22-Y, 22):
-		method.bufferxy(X,i+2,  "XX")#("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX") #hashtag healthbar
+		method.bufferxy(X,i,  "XX")#("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX") #hashtag healthbar
 	method.bufferxy(5,2,method.dispBigNum(MONEY)) #money
 	method.bufferxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
