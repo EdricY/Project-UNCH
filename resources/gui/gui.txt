@@ -1,5 +1,5 @@
 &YKO=&GKMoney&YK========O&XX O=&YKTabs&XX======O O====================O I==I
-&YK|              |&XX |hero |stats| <(-)              (+)> |  |
+&YK|  &GK$&XX          |&XX |hero |stats| <(-)              (+)> |  |
 &YKO==============O&XX O=&BKF11&XX===&BKF12&XX=O O====================O |  |
 O=&YKHeroes&XX=======O O=&GKSkills&XX====O O====================O |  |
 |              | |           | |                    | |  |
