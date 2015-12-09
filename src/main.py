@@ -31,7 +31,7 @@ MOB_FILES = glob.glob("../resources/mobs/*.txt")
 COUNT_FILES=0
 MOBS=[]
 DEATH_FRAME = 0
-
+MONEY=0
 HIT_DMG=1
 DPS=0
 MOB_HP=10
