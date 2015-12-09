@@ -64,3 +64,4 @@ def color(string):
 f=open("../resources/gui/gui.txt")
 for line in f:
 	BUFFER_LINES.append(color(line))
+f.close()
