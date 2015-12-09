@@ -38,7 +38,7 @@ MOB_HP=10
 MOB_MAX_HP=10
 CURRENT_MOB=0
 HIGHEST_ZONE=1
-CURRENT_ZONE=6
+CURRENT_ZONE=5000
 ZONE_MOBS_KILLED=0
 BOSS_TIMER=0.0
 MOB_DEAD=False
@@ -111,7 +111,7 @@ def draw():
 		method.printxy(36,2,str(CURRENT_ZONE-1)) #zone num -
 	if CURRENT_ZONE != HIGHEST_ZONE:
 		method.printxy(50-len(str(CURRENT_ZONE)),2,str(CURRENT_ZONE+1)) #zone num + 
-	method.printxy(42-len(str(CURRENT_ZONE))/2,2,str(CURRENT_ZONE)) #zone num
+	method.printxy(43-len(str(CURRENT_ZONE))/2,2,str(CURRENT_ZONE)) #zone num
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
 		method.printxy(37,16,method.color("&RKTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX")) #boss timer
 		if HIGHEST_ZONE > CURRENT_ZONE:
