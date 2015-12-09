@@ -1,11 +1,28 @@
 #system import
 import sys
 
-
+f=open("../resources/gui/gui.txt")
+GUI_LINES = []
+for line in f:
+	BUFFER_LINES.append(method.color(line))
 #Definitions and methods
 def printxy(y, x, text):
 	sys.stdout.write("\x1b7\x1b[%d;%df%s\x1b8" % (x, y, text))
 	sys.stdout.flush()
+def bufferxy(x, y, text):
+	temp=BUFFER_LINES[y]
+	counter=0
+	i=0
+	while c<x:
+		if temp[i]=="&"
+			c-=3
+
+		c+=1
+		i+=1
+	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text):]
+def printBuffer():
+	for i in range(0,len(BUFFER_LINES)):
+		method.printxy(0,i+1,BUFFER_LINES[i])
 def getMobsInZone(zone): #returns 1 if zone==5, else returns 10
 	return 9*((zone%5+4)/5)+1
 def dispBigNum(num): #returns num as a string
