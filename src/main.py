@@ -165,6 +165,7 @@ createMob()
 def mainloop():
 	while GAME_RUNNING:
 		startTime=time.time()
+		method.refreshBuffer()
 		update()
 		draw()
 		method.printBuffer()
