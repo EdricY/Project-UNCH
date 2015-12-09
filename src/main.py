@@ -1,4 +1,4 @@
-#System imports 
+#System imports
 import math
 import sys
 import time
@@ -47,7 +47,7 @@ quitMenuOpen=False
 for i in MOB_FILES:
 	MOBS.append([])
 	f=open(i)
-	MOBS[COUNT_FILES].append(method.color("&RK"+i[16+i.find("/resources/mobs/"):len(i)-4].capitalize()+"&XX"))
+	MOBS[COUNT_FILES].append("&RK"+i[16+i.find("/resources/mobs/"):len(i)-4].capitalize()+"&XX")
 	for line in f:
 		MOBS[COUNT_FILES].append(line)
 	COUNT_FILES+=1
@@ -110,7 +110,7 @@ def draw():
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
 	X=56
 	for i in range(22-Y, 22):
-		method.bufferxy(X,i+2,method.color(("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX")) #hashtag healthbar
+		method.bufferxy(X,i+2,("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX") #hashtag healthbar
 	method.bufferxy(5,2,method.dispBigNum(MONEY)) #money
 	method.bufferxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
@@ -119,7 +119,7 @@ def draw():
 		method.bufferxy(50-len(str(CURRENT_ZONE)),2,str(CURRENT_ZONE+1)) #zone num + 
 	method.bufferxy(43-len(str(CURRENT_ZONE))/2,2,str(CURRENT_ZONE)) #zone num
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
-		method.bufferxy(37,16,method.color("&RKTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX")) #boss timer
+		method.bufferxy(37,16,"&RKTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX") #boss timer
 		if HIGHEST_ZONE > CURRENT_ZONE:
 			method.bufferxy(45,4,"(1/1)")
 		else:
