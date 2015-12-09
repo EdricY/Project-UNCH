@@ -27,7 +27,7 @@ def bufferxy(x, y, text):
 	oldText=BUFFER_LINES[y][x:x+len(text)]
 	#oldText.count("&")
 	i = x + ampsInBuff*4
-	BUFFER_LINES[y]=temp[:i] + text + temp[i + len(text)-4*ampsinText:]
+	BUFFER_LINES[y]=temp[:i] + text + temp[i + len(text)-4*ampsInText:]
 	
 	'''
 	i=0
