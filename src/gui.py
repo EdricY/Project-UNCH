@@ -13,7 +13,7 @@ def drawtitle():
 		method.printxy(0,i+1,TITLE_LINES[i])
 def drawquitmenu():
 	for i in range(0,len(QUIT_LINES)):
-		method.bufferxy(12,i+9,QUIT_LINES[i])
+		method.bufferxy(12,i+9,QUIT_LINES[i][:-1])
 #load GUI file.
 f=open("../resources/gui/gui.txt")
 GUI_LINES = []
