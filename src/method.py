@@ -36,7 +36,7 @@ def bufferxy(x, y, text):
 		i+=1
 	if i<len(temp) and temp[i]=="&": #check if it ends on &
 		i+=3
-	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text) - 3*text.count('&'):]
+	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text) - 3*text.count("&"):]
 
 #param the current zone
 #returns 1 if zone==5, else returns 10

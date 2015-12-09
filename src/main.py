@@ -43,6 +43,7 @@ ZONE_MOBS_KILLED=0
 BOSS_TIMER=0.0
 MOB_DEAD=False
 quitMenuOpen=False
+cmddisp=False
 #Mob loading
 for i in MOB_FILES:
 	MOBS.append([])
@@ -78,15 +79,16 @@ def createMob():
 	MOB_HP = MOB_MAX_HP
 	CURRENT_MOB=random.randint(0,COUNT_FILES-1)
 def killMob():
-	global ZONE_MOBS_KILLED, HIGHEST_ZONE, MOB_DEAD
+	global ZONE_MOBS_KILLED, HIGHEST_ZONE, MOB_DEAD, MONEY
 	MOB_DEAD=True
-	if CURRENT_ZONE % 5 != 0:
-		ZONE_MOBS_KILLED = min(ZONE_MOBS_KILLED + 1, 10)
-		if ZONE_MOBS_KILLED==10:
-			ZONE_MOBS_KILLED=0
-			HIGHEST_ZONE=max(HIGHEST_ZONE,CURRENT_ZONE+1)
-	else:
-		if CURRENT_ZONE==HIGHEST_ZONE:
+	MONEY += 1
+	if CURRENT_ZONE==HIGHEST_ZONE:
+		if CURRENT_ZONE % 5 != 0:
+			ZONE_MOBS_KILLED = min(ZONE_MOBS_KILLED + 1, 10)
+			if ZONE_MOBS_KILLED==10:
+				ZONE_MOBS_KILLED=0
+				HIGHEST_ZONE=max(HIGHEST_ZONE,CURRENT_ZONE+1)
+		else:
 			HIGHEST_ZONE=HIGHEST_ZONE+1
 			ZONE_MOBS_KILLED=0
 def update():
@@ -116,6 +118,14 @@ def draw():
 		else:
 			method.bufferxy(45,3,"("+str(ZONE_MOBS_KILLED)+"/10)")
 	method.bufferxy(33,3,MOBS[CURRENT_MOB][0]) #mob name
+	if not quitMenuOpen:
+		if lastch=='.': #characters at bottom
+			method.bufferxy(36,24," < ")
+		elif lastch=='h' or lastch=='H':
+			method.bufferxy(36,24,"  ?")
+			method.bufferxy(1,18,"Press &BXH&XX again for a list of commands.")
+		else:
+			method.bufferxy(36,24,">  ")
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
 	X=55
 	for i in range(22-Y, 22):
@@ -134,13 +144,6 @@ def draw():
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
 			method.bufferxy(32,4+i,MOBS[CURRENT_MOB][i][:-1])
 			method.bufferxy(36,16,method.dispBigNum(MOB_HP)) #mob hp num
-	if not quitMenuOpen:
-		if lastch=='.': #characters at bottom
-			method.bufferxy(36,24," < ")
-		elif lastch=='h' or lastch=='H':
-			method.bufferxy(36,24,"  ?")
-		else:
-			method.bufferxy(36,24,">  ")
 	if quitMenuOpen:
 		gui.drawquitmenu()
 #Wait for SPACE before moving on.
@@ -200,6 +203,9 @@ while GAME_RUNNING:
 			quit()
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
+	elif lastch=='h':
+		if ch=='h' or ch=='H':
+			cmddisp=True
 	else:
 		if ch=='.' and lastch!='.':
 			hit()
