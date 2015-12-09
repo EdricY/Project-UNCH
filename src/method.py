@@ -9,6 +9,7 @@ def bufferxy(x, y, text):
 	temp=BUFFER_LINES[y]
 	counter=0
 	i=0
+	c=0
 	while c<x:
 		if temp[i]=="&":
 			c-=3
