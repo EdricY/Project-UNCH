@@ -167,6 +167,7 @@ def mainloop():
 		startTime=time.time()
 		update()
 		draw()
+		method.printBuffer()
 		endTime=time.time()
 		timeElapsed=endTime-startTime
 		sleepTime=1.0/float(FRAMES_PER_SECOND)-float(timeElapsed)
