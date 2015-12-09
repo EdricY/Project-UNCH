@@ -110,45 +110,45 @@ def draw():
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
 	X=56
 	for i in range(22-Y, 22):
-		method.printxy(X,i+2,method.color(("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX")) #hashtag healthbar
-	method.printxy(5,2,method.dispBigNum(MONEY)) #money
-	method.printxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
+		method.bufferxy(X,i+2,method.color(("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX")) #hashtag healthbar
+	method.bufferxy(5,2,method.dispBigNum(MONEY)) #money
+	method.bufferxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
-		method.printxy(36,2,str(CURRENT_ZONE-1)) #zone num -
+		method.bufferxy(36,2,str(CURRENT_ZONE-1)) #zone num -
 	if CURRENT_ZONE != HIGHEST_ZONE:
-		method.printxy(50-len(str(CURRENT_ZONE)),2,str(CURRENT_ZONE+1)) #zone num + 
-	method.printxy(43-len(str(CURRENT_ZONE))/2,2,str(CURRENT_ZONE)) #zone num
+		method.bufferxy(50-len(str(CURRENT_ZONE)),2,str(CURRENT_ZONE+1)) #zone num + 
+	method.bufferxy(43-len(str(CURRENT_ZONE))/2,2,str(CURRENT_ZONE)) #zone num
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
-		method.printxy(37,16,method.color("&RKTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX")) #boss timer
+		method.bufferxy(37,16,method.color("&RKTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX")) #boss timer
 		if HIGHEST_ZONE > CURRENT_ZONE:
-			method.printxy(45,4,"(1/1)")
+			method.bufferxy(45,4,"(1/1)")
 		else:
-			method.printxy(45,4,"(0/1)")
+			method.bufferxy(45,4,"(0/1)")
 	else:
 		if HIGHEST_ZONE > CURRENT_ZONE:
-			method.printxy(45,4,"(10/10)")
+			method.bufferxy(45,4,"(10/10)")
 		else:
-			method.printxy(46,4,"("+str(ZONE_MOBS_KILLED)+"/10)")
+			method.bufferxy(46,4,"("+str(ZONE_MOBS_KILLED)+"/10)")
 	if MOB_HP <= 0: #mob death animation
-		method.printxy(37,17,"rekt")
+		method.bufferxy(37,17,"rekt")
 		if DEATH_FRAME == 20:
 			DEATH_FRAME = 0
 			createMob()
 		else:
 			for i in range(1,len(MOBS[CURRENT_MOB]) - (DEATH_FRAME/2)):
-				method.printxy(33,(5 + (DEATH_FRAME/2)) +i,MOBS[CURRENT_MOB][i])
+				method.bufferxy(33,(5 + (DEATH_FRAME/2)) +i,MOBS[CURRENT_MOB][i])
 			DEATH_FRAME+=1
 	else:
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
-			method.printxy(33,5+i,MOBS[CURRENT_MOB][i])
-			method.printxy(37,17,method.dispBigNum(MOB_HP)) #mob hp
+			method.bufferxy(33,5+i,MOBS[CURRENT_MOB][i])
+			method.bufferxy(37,17,method.dispBigNum(MOB_HP)) #mob hp
 	if not quitMenuOpen:
 		if lastch=='.': #characters at bottom
-			method.printxy(38,25,"<")
+			method.bufferxy(37,25," < ")
 		elif lastch=='h' or lastch=='H':
-			method.printxy(39,25,"?")
+			method.bufferxy(37,25,"  ?")
 		else:
-			method.printxy(37,25,">")
+			method.bufferxy(37,25,">  ")
 	if quitMenuOpen:
 		gui.drawquitmenu()
 #Wait for SPACE before moving on.
