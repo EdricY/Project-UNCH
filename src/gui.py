@@ -28,4 +28,4 @@ for line in f:
 	f=open("../resources/gui/quitmenu.txt")
 QUIT_LINES = []
 for line in f:
-	QUIT_LINES.append(method.color(line))
+	QUIT_LINES.append(line)
