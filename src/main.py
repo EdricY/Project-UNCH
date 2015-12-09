@@ -150,7 +150,7 @@ def draw():
 			method.bufferxy(36,24," < ")
 		elif lastch=='h' or lastch=='H':
 			method.bufferxy(36,24,"  ?")
-			method.bufferxy(18,1,"Press &BXH&XX again for a list of commands.")
+			method.bufferxy(1,18,"Press &BXH&XX again for a list of commands.")
 		else:
 			method.bufferxy(36,24,">  ")
 	if quitMenuOpen:
