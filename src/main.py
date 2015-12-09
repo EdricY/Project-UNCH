@@ -108,9 +108,9 @@ def draw():
 	method.printxy(5,2,method.dispBigNum(MONEY)) #money
 	method.printxy(34,4,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
-		method.printxy(35,2,str(CURRENT_ZONE-1)) #zone num -
+		method.printxy(36,2,str(CURRENT_ZONE-1)) #zone num -
 	if CURRENT_ZONE != HIGHEST_ZONE:
-		method.printxy(49-len(str(CURRENT_ZONE)),2,str(CURRENT_ZONE+1)) #zone num + 
+		method.printxy(50-len(str(CURRENT_ZONE)),2,str(CURRENT_ZONE+1)) #zone num + 
 	method.printxy(42-len(str(CURRENT_ZONE))/2,2,str(CURRENT_ZONE)) #zone num
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
 		method.printxy(37,16,method.color("&RKTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX")) #boss timer
