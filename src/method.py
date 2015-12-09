@@ -1,6 +1,7 @@
 #system import
 import sys
 BUFFER_LINES = []
+GUI_LINES = []
 #Definitions and methods
 def printxy(y, x, text):
 	sys.stdout.write("\x1b7\x1b[%d;%df%s\x1b8" % (x, y, text))
@@ -63,12 +64,14 @@ def color(string):
 			location = len(string)
 	return string
 def refreshBuffer():
-	f=open("../resources/gui/gui.txt")
-	for line in f:
-		BUFFER_LINES.append(line)
-	f.close()
+	for i in range(0,len(GUI_LINES)):
+		BUFFER_LINES[i] = GUI_LINES[i]
 
 def printBuffer():
 	for i in range(0,len(BUFFER_LINES)):
 		printxy(0,i+1,color(BUFFER_LINES[i]))
-refreshBuffer()
+f=open("../resources/gui/gui.txt")
+for line in f:
+	BUFFER_LINES.append(line)
+	GUI_LINES.append(line)
+f.close()
