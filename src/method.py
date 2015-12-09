@@ -31,7 +31,6 @@ def bufferxy(x, y, text):
 	while c<x:
 		if i<len(temp) and temp[i]=="&":
 			c-=3
-
 		c+=1
 		i+=1
 	if i<len(temp) and temp[i]=="&": #check if it ends on &
