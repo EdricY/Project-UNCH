@@ -22,7 +22,7 @@ def bufferxy(x, y, text):
 		i+=1
 	if i<len(temp) and temp[i]=="&": #check if it ends on &
 		i+=3
-	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text) + 3*text.count('&'):]
+	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text) - 3*text.count('&'):]
 def getMobsInZone(zone): #returns 1 if zone==5, else returns 10
 	return 9*((zone%5+4)/5)+1
 def dispBigNum(num): #returns num as a string
