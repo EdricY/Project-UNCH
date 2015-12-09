@@ -13,6 +13,7 @@ import gui
 import method
 MOB_FILES = glob.glob("../resources/mobs/*.txt")
 COUNT_FILES=0
+CURRENT_MOB=0
 MOBS=[]
 for i in MOB_FILES:
 	MOBS.append([])
