@@ -106,7 +106,7 @@ def update():
 		createMob()
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
-	gui.drawgui()
+	#gui.drawgui()
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
 	X=55
 	for i in range(22-Y, 22):
