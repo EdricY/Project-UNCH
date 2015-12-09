@@ -151,7 +151,8 @@ lastch=' '
 ch = getch.getch()
 while ch != ' ':
 	ch = getch.getch()
-
+#Create first mob	
+createMob()
 
 #Main loop
 def mainloop():
