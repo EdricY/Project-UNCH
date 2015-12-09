@@ -175,20 +175,23 @@ mainthread.setDaemon(True)
 mainthread.start()
 
 #Data to save
-SD = [MONEY,
-HIT_DMG,
-DPS,
-HIGHEST_ZONE,
-CURRENT_ZONE,
-ZONE_MOBS_KILLED]
+def save():
+	SD = [MONEY,
+	HIT_DMG,
+	DPS,
+	HIGHEST_ZONE,
+	CURRENT_ZONE,
+	ZONE_MOBS_KILLED]
+	save.save(SD)
 
-LD = save.load()
-MONEY = LD[0]
-HIT_DMG = LD[1]
-DPS = LD[2]
-HIGHEST_ZONE = LD[3]
-CURRENT_ZONE = LD[4]
-ZONE_MOBS_KILLED = LD[5]
+def load():
+	LD = save.load()
+	MONEY = LD[0]
+	HIT_DMG = LD[1]
+	DPS = LD[2]
+	HIGHEST_ZONE = LD[3]
+	CURRENT_ZONE = LD[4]
+	ZONE_MOBS_KILLED = LD[5]
 
 
 #Handle Input
