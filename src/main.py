@@ -137,7 +137,7 @@ def draw():
 	else:
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
 			method.bufferxy(32,4+i,MOBS[CURRENT_MOB][i])
-			method.bufferxy(36,16,method.dispBigNum(MOB_HP)) #mob hp
+			method.bufferxy(36,16,method.dispBigNum(MOB_HP)) #mob hp num
 	if not quitMenuOpen:
 		if lastch=='.': #characters at bottom
 			method.bufferxy(36,24," < ")
