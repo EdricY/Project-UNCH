@@ -201,7 +201,7 @@ while GAME_RUNNING:
 			createMob()
 		elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
 			CURRENT_ZONE=CURRENT_ZONE-1
-			ZONE_MOBS_KILLED=method.getMobsInZone(CURRENT_ZONE)
+			#ZONE_MOBS_KILLED=method.getMobsInZone(CURRENT_ZONE)
 			createMob()
 		elif ch=='0': #THIS IS DEBUG CODE ONLY
 			destroy()
