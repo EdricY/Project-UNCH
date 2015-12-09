@@ -108,7 +108,7 @@ def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
 	gui.drawgui()
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
-	X=56
+	X=55
 	for i in range(22-Y, 22):
 		method.bufferxy(X,i+2,  "XX")#("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX") #hashtag healthbar
 	method.bufferxy(5,2,method.dispBigNum(MONEY)) #money
