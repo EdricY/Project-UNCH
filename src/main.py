@@ -57,15 +57,6 @@ for i in MOB_FILES:
 gui.drawtitle()
 
 #Definitions and methods
-
-#Saving
-def writesave():
-	todo="write"
-
-def readsave():
-	todo="read"
-
-#Methods
 def hit():
 	global HIT_DMG
 	global MOB_HP
@@ -179,6 +170,24 @@ mainthread = threading.Thread(name='main', target=mainloop)
 mainthread.setDaemon(True)
 mainthread.start()
 
+#Data to save
+SD = 
+[MONEY,
+HIT_DMG,
+DPS,
+HIGHEST_ZONE,
+CURRENT_ZONE,
+ZONE_MOBS_KILLED]
+
+LD = save.load()
+MONEY = LD[0]
+HIT_DMG = LD[1]
+DPS = LD[2]
+HIGHEST_ZONE = LD[3]
+CURRENT_ZONE = LD[4]
+ZONE_MOBS_KILLED = LD[5]
+
+
 #Handle Input
 while GAME_RUNNING:
 	lastch=ch
@@ -207,3 +216,4 @@ while GAME_RUNNING:
 			createMob()
 		elif ch=='0': #THIS IS DEBUG CODE ONLY
 			destroy()
+
