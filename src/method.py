@@ -10,12 +10,17 @@ def bufferxy(x, y, text):
 	counter=0
 	i=0
 	c=0
+	if temp[i]=="&": #check if it starts with &
+	c-=2
+	i+=1
 	while c<x:
 		if temp[i]=="&":
 			c-=3
 
 		c+=1
 		i+=1
+	if temp[i]=="&": #check if it ends on &
+		i+=3
 	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text):]
 def getMobsInZone(zone): #returns 1 if zone==5, else returns 10
 	return 9*((zone%5+4)/5)+1
