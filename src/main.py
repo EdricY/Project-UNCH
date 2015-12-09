@@ -102,6 +102,7 @@ def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
 	#gui.drawgui()
 	method.bufferxy(4,1,method.dispBigNum(MONEY)) #money
+	method.bufferxy(33,3,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
 		method.bufferxy(35,1,str(CURRENT_ZONE-1)) #zone num -
 	if CURRENT_ZONE != HIGHEST_ZONE:
@@ -118,7 +119,6 @@ def draw():
 			method.bufferxy(44,3,"(10/10)")
 		else:
 			method.bufferxy(45,3,"("+str(ZONE_MOBS_KILLED)+"/10)")
-	method.bufferxy(33,3,MOBS[CURRENT_MOB][0]) #mob name
 	if not quitMenuOpen:
 		if lastch=='.': #characters at bottom
 			method.bufferxy(36,24," < ")
