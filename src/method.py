@@ -11,8 +11,8 @@ def bufferxy(x, y, text):
 	i=0
 	c=0
 	if temp[i]=="&": #check if it starts with &
-	c-=2
-	i+=1
+		c-=2
+		i+=1
 	while c<x:
 		if temp[i]=="&":
 			c-=3
