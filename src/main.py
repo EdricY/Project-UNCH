@@ -94,9 +94,9 @@ def killMob():
 		if ZONE_MOBS_KILLED==10:
 			HIGHEST_ZONE=max(HIGHEST_ZONE,CURRENT_ZONE+1)
 	else:
-		ZONE_MOBS_KILLED = 1
 		if CURRENT_ZONE==HIGHEST_ZONE:
 			HIGHEST_ZONE=HIGHEST_ZONE+1
+			ZONE_MOBS_KILLED=0
 def update():
 	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED
 	if MOB_HP <= 0 and not MOB_DEAD:
@@ -196,8 +196,6 @@ while GAME_RUNNING:
 			quitMenuOpen = True
 		elif (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE:
 			CURRENT_ZONE=CURRENT_ZONE+1
-			#if CURRENT_ZONE == HIGHEST_ZONE:
-			#	ZONE_MOBS_KILLED=0
 			createMob()
 		elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
 			CURRENT_ZONE=CURRENT_ZONE-1
