@@ -195,7 +195,7 @@ while GAME_RUNNING:
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
 	elif lastch=='h':
-		if ch=='h' or ch=='H'
+		if ch=='h' or ch=='H':
 			cmddisp=True
 	else:
 		if ch=='.' and lastch!='.':
