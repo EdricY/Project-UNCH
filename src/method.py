@@ -22,12 +22,12 @@ def printxy(x, y, text):
 #param x and y where 0,0 is top left and text to write.
 def bufferxy(x, y, text):
 	temp=BUFFER_LINES[y]
-	ampsInBuff=BUFFER_LINES[y][:x].count("&")
+	ampsInBuff=BUFFER_LINES[y][:x+1].count("&")
 	ampsInText=text.count("&")
 	oldText=BUFFER_LINES[y][x:x+len(text)]
 	#oldText.count("&")
 	i = x + ampsInBuff*4
-	BUFFER_LINES[y]=temp[:i] + text + temp[i + len(text):]
+	BUFFER_LINES[y]=temp[:i] + text + temp[i + len(text)-4*ampsinText:]
 	
 	'''
 	i=0
