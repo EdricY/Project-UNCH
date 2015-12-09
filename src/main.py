@@ -127,6 +127,14 @@ def draw():
 		else:
 			method.bufferxy(45,3,"("+str(ZONE_MOBS_KILLED)+"/10)")
 	method.bufferxy(33,3,MOBS[CURRENT_MOB][0]) #mob name
+	if not quitMenuOpen:
+		if lastch=='.': #characters at bottom
+			method.bufferxy(36,24," < ")
+		elif lastch=='h' or lastch=='H':
+			method.bufferxy(36,24,"  ?")
+			method.bufferxy(1,18,"Press &BXH&XX again for a list of commands.")
+		else:
+			method.bufferxy(36,24,">  ")
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
 	X=55
 	for i in range(22-Y, 22):
@@ -145,14 +153,6 @@ def draw():
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
 			method.bufferxy(32,4+i,MOBS[CURRENT_MOB][i][:-1])
 			method.bufferxy(36,16,method.dispBigNum(MOB_HP)) #mob hp num
-	if not quitMenuOpen:
-		if lastch=='.': #characters at bottom
-			method.bufferxy(36,24," < ")
-		elif lastch=='h' or lastch=='H':
-			method.bufferxy(36,24,"  ?")
-			method.bufferxy(1,18,"Press &BXH&XX again for a list of commands.")
-		else:
-			method.bufferxy(36,24,">  ")
 	if quitMenuOpen:
 		gui.drawquitmenu()
 #Wait for SPACE before moving on.
