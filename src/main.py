@@ -116,9 +116,9 @@ def draw():
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
 		method.bufferxy(36,15,"&RKTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX") #boss timer
 		if HIGHEST_ZONE > CURRENT_ZONE:
-			method.bufferxy(44,3,"(1/1)")
+			method.bufferxy(46,3,"(1/1)")
 		else:
-			method.bufferxy(44,3,"(0/1)")
+			method.bufferxy(46,3,"(0/1)")
 	else:
 		if HIGHEST_ZONE > CURRENT_ZONE:
 			method.bufferxy(44,3,"(10/10)")
