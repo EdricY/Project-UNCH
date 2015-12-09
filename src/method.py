@@ -8,6 +8,8 @@ def printxy(y, x, text):
 def bufferxy(x, y, text):
 	temp=BUFFER_LINES[y]
 	counter=0
+	x-=1
+	y-=1
 	i=0
 	c=0
 	if temp[i]=="&": #check if it starts with &
