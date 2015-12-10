@@ -221,7 +221,7 @@ while GAME_RUNNING:
 			hit()
 		elif ch=='q':
 			quitMenuOpen = True
-		if MOB_DEAD==False
+		if MOB_DEAD==False:
 			elif (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE:
 				CURRENT_ZONE=CURRENT_ZONE+1
 				createMob()
