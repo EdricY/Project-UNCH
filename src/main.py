@@ -177,13 +177,13 @@ def mainloop():
 		ROWS = int(ROWS)
 		COLUMNS = int(COLUMNS)
 		if ROWS!=lastROWS or COLUMNS!=lastCOLS: #refresh screen
-			for y in range(0, ROWS):
-				for x in range(0, COLUMNS):
+			for y in range(1, ROWS+1):
+				for x in range(1, COLUMNS+1):
 					method.printxy(x,y," ")
 		lastROWS=ROWS
 		lastCOLS=COLUMNS
 		if ROWS<24 or COLUMNS<58:
-			method.printxy(0,0,method.color("&RXYOUR SCREEN IS TOO SMALL!&XX"))
+			method.printxy(1,1,method.color("&RXYOUR SCREEN IS TOO SMALL!&XX"))
 		else:
 			method.refreshBuffer()
 			draw()
