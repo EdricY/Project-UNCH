@@ -169,6 +169,8 @@ createMob()
 def mainloop():
 	while GAME_RUNNING:
 		ROWS, COLUMNS = os.popen('stty size', 'r').read().split()
+		ROWS = int(ROWS)
+		COLUMNS = int(COLUMNS)
 		startTime=time.time()
 		method.refreshBuffer()
 		update()
