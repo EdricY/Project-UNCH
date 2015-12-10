@@ -1,7 +1,7 @@
-&YKO=&GKMoney&YK========O&XX O=&YKTabs&XX======O O====================O I==I
-&YK|  &GK$&XX           |&XX |hero |stats| <(-)              (+)> |  |
-&YKO==============O&XX O=&BKF11&XX===&BKF12&XX=O O====================O |  |
-O=&YKHeroes&XX=======O O=&GKSkills&XX====O O====================O |  |
+&YXO=&GXMoney&YX========O&XX O=&YXTabs&XX======O O====================O I==I
+&YX|  &GX$&XX           |&XX |hero |stats| <(-)              (+)> |  |
+&YXO==============O&XX O=&BXF11&XX===&BXF12&XX=O O====================O |  |
+O=&YXHeroes&XX=======O O=&GXSkills&XX====O O====================O |  |
 |              | |           | |                    | |  |
 |              | |           | |                    | |  |
 |--------------| |-----------| |                    | |  |
@@ -13,9 +13,9 @@ O=&YKHeroes&XX=======O O=&GKSkills&XX====O O====================O |  |
 |--------------| |-----------| |                    | |  |
 |              | |           | |                    | |  |
 |              | |           | |                    | |  |
-|&BK(Page Down/Up)&XX| |&BK(Pg Dn/Up)&XX | |                    | |  |
-O==============O O===========O O=&RKHP:&XX================O |  |
-O=&GKInformation&XX=======================================O |  |
+|&BX(Page Down/Up)&XX| |&BX(Pg Dn/Up)&XX | |                    | |  |
+O==============O O===========O O=&RXHP:&XX================O |  |
+O=&GXInformation&XX=======================================O |  |
 |Press &KWH (KEY)&XX for more information                 | |  |
 |                                                   | |  |
 |                                                   | |  |
