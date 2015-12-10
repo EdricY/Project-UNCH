@@ -25,56 +25,27 @@ def bufferxy(x, y, text):
 	
 	#phase 1: get the actual index we need to start at
 	putIndex=0
-	for int in range(0,len(temp)):
+	for i in range(0,len(temp)):
 		if(putIndex==x):
-			putIndex = int
+			putIndex = i
 			break
-		if(temp[int:int+1]=="&"):
+		if(temp[i:i+1]=="&"):
 			putIndex-=3
 		putIndex+=1
 	
 	#phase 2: get the actual length of the things we will be replacing
 	charsInText=len(text) - text.count("&")*3
 	rangeToRemove=0
-	for int in range(putIndex,len(temp)):
+	for i in range(putIndex,len(temp)):
 		if(rangeToRemove==charsInText):
-			rangeToRemove = int - putIndex
+			rangeToRemove = i - putIndex
 			break
-		if(temp[int:int+1]=="&"):
+		if(temp[i:i+1]=="&"):
 			rangeToRemove-=3
 		rangeToRemove+=1	
 	
 	#phase 3: tack it all together
 	BUFFER_LINES[y]=temp[:putIndex] + text + temp[putIndex+rangeToRemove:]
-	
-	'''
-	ampsUpToX=temp[:x].count("&")
-	charsInBuff=len(temp) - temp[:x].count("&")*3
-	charsInText=len(text) - text.count("&")*3
-	BUFFER_LINES[y]=temp[:
-	i = 1 + x + 3*ampsInBuff
-	end=i
-	for index in range(i, i+charsInText):
-		if temp[end]=="&":
-			end+=3
-	BUFFER_LINES[y]=temp[:i] + text + temp[end:]
-	'''
-	
-	'''
-	i=0
-	c=0
-	if temp[i]=="&": #check if it starts with &
-		c-=2
-		i+=1
-	while c<x:
-		if i<len(temp) and temp[i]=="&":
-			c-=3
-		c+=1
-		i+=1
-	if i<len(temp) and temp[i]=="&": #check if it ends on &
-		i+=3
-	BUFFER_LINES[y]=temp[:i] + text + temp[i+len(text) - 3*text.count("&"):]
-	'''
 
 #param the current zone
 #returns 1 if zone==5, else returns 10
