@@ -191,13 +191,7 @@ def mainloop():
 		endTime=time.time()
 		timeElapsed=endTime-startTime
 		sleepTime=1.0/float(FRAMES_PER_SECOND)-float(timeElapsed)
-		awake = True
-		while awake: #got dang :'s
-			try:
-				time.sleep(sleepTime)
-				awake = False
-			except IOError:
-				continue
+		time.sleep(sleepTime)
 
 mainthread = threading.Thread(name='main', target=mainloop)
 mainthread.setDaemon(True)
