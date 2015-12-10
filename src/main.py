@@ -133,7 +133,7 @@ def draw():
 		method.bufferxy(X,i+1,("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX") #hashtag healthbar
 	
 	if MOB_HP <= 0: #mob death animation
-		method.bufferxy(36,16,"rekt")
+		method.bufferxy(36,16,"rekt&XX")
 		if DEATH_FRAME == 20:
 			DEATH_FRAME = 0
 			createMob()
