@@ -197,7 +197,7 @@ def mainloop():
 				time.sleep(sleepTime)
 				awake = False
 			except IOError:
-				pass
+				continue
 
 mainthread = threading.Thread(name='main', target=mainloop)
 mainthread.setDaemon(True)
