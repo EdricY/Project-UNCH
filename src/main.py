@@ -125,14 +125,14 @@ def draw():
 			method.bufferxy(45,3,"("+str(ZONE_MOBS_KILLED)+"/10)")
 	if not quitMenuOpen:
 		if lastch=='.' or lastch=='>': #characters at bottom
-			method.bufferxy(36,24," < ")
+			method.bufferxy(49,22," < ")
 		elif lastch=='h' or lastch=='H':
-			method.bufferxy(36,24,"  ?")
+			method.bufferxy(49,22,"  ?")
 			method.bufferxy(1,18,"Press hero/skill key to find information about it.")
 			method.bufferxy(1,19,"Press &KWQ&XX to Quit.")
 			method.bufferxy(1,20,"Use &KW>&XX and &KW<&XX to attack (no need to press SHIFT)")
 		else:
-			method.bufferxy(36,24,">  ")
+			method.bufferxy(49,22,">  ")
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
 	X=55
 	for i in range(22-Y, 22):
