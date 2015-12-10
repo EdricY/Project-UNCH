@@ -19,6 +19,8 @@ os.system("clear")
 os.system("stty -echo")
 os.system("setterm -cursor off")
 ROWS, COLUMNS = os.popen('stty size', 'r').read().split()
+ROWS = int(ROWS)
+COLUMNS = int(COLUMNS)
 def quit():
 	os.system("stty echo")
 	os.system('clear')
