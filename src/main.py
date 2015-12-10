@@ -172,7 +172,10 @@ def mainloop():
 		endTime=time.time()
 		timeElapsed=endTime-startTime
 		sleepTime=1.0/float(FRAMES_PER_SECOND)-float(timeElapsed)
-		time.sleep(sleepTime)
+		try:
+			time.sleep(sleepTime)
+		except IOError:
+			bufferxy(0,0,"&RKCatching up!&XX")
 
 mainthread = threading.Thread(name='main', target=mainloop)
 mainthread.setDaemon(True)
