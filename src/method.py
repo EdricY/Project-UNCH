@@ -45,7 +45,7 @@ def bufferxy(x, y, text):
 		rangeToRemove+=1	
 	
 	#phase 3: tack it all together
-	BUFFER_LINES[y]=temp[:putIndex+1] + text + temp[rangeToRemove:]
+	BUFFER_LINES[y]=temp[:putIndex+1] + text + temp[putIndex+rangeToRemove:]
 	
 	'''
 	ampsUpToX=temp[:x].count("&")
