@@ -45,7 +45,7 @@ def bufferxy(x, y, text):
 		rangeToRemove+=1	
 	
 	#phase 3: tack it all together
-	BUFFER_LINES[y]=temp[:putIndex+1] + text + temp[putIndex+rangeToRemove:]
+	BUFFER_LINES[y]=temp[:putIndex] + text + temp[putIndex+rangeToRemove:]
 	
 	'''
 	ampsUpToX=temp[:x].count("&")
@@ -130,6 +130,7 @@ def color(string):
 #Resets buffer with the GUI file.
 def refreshBuffer():
 	for i in range(0,len(GUI_LINES)):
+		BUFFER_LINES[i] = ""
 		BUFFER_LINES[i] = GUI_LINES[i]
 
 #Completely output the framebuffer to the frame.
