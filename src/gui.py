@@ -15,7 +15,7 @@ def drawtitle(rows, columns):
 		method.printxy(columns/2 - 29, rows/2-12 + i+1,TITLE_LINES[i])
 def drawquitmenu(rows, columns):
 	for i in range(0,len(QUIT_LINES)):
-		method.bufferxy(columns/2 + 29,rows/2-12 + i+9,QUIT_LINES[i][:-1])
+		method.bufferxy(12, i+9,QUIT_LINES[i][:-1])
 
 #load GUI file.
 f=open("../resources/gui/gui.txt")
