@@ -53,7 +53,7 @@ quitMenuOpen=False
 for i in MOB_FILES:
 	MOBS.append([])
 	f=open(i)
-	MOBS[COUNT_FILES].append("&RK"+i[16+i.find("/resources/mobs/"):len(i)-4].capitalize()+"&XX")
+	MOBS[COUNT_FILES].append("&RX"+i[16+i.find("/resources/mobs/"):len(i)-4].capitalize()+"&XX")
 	for line in f:
 		MOBS[COUNT_FILES].append(line)
 	COUNT_FILES+=1
@@ -110,7 +110,7 @@ def update():
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
 	#gui.drawgui()
-	method.bufferxy(4,1,method.dispBigNum(MONEY) + "&YK") #money
+	method.bufferxy(4,1,method.dispBigNum(MONEY) + "&YX") #money
 	method.bufferxy(33,3,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
 		method.bufferxy(35,1,str(CURRENT_ZONE-1)) #zone num -
@@ -118,7 +118,7 @@ def draw():
 		method.bufferxy(49-len(str(CURRENT_ZONE)),1,str(CURRENT_ZONE+1)) #zone num + 
 	method.bufferxy(42-len(str(CURRENT_ZONE))/2,1,str(CURRENT_ZONE)) #zone num
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
-		method.bufferxy(36,15,"&RKTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX") #boss timer
+		method.bufferxy(36,15,"&RXTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX") #boss timer
 		if HIGHEST_ZONE > CURRENT_ZONE:
 			method.bufferxy(46,3,"(1/1)")
 		else:
