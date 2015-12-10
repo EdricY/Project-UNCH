@@ -19,6 +19,6 @@ I========================================================I
 |                                                        |
 |                  Press &BKSPACE&XX to play                   |
 |                                                        |
-|          by &GKEdric Yu&XX with much help                    |
-|    &YK Please resize your window to fit this box&XX          |
+|               by &GKEdric Yu&XX with much help               |
+|       &YK Please resize your window to fit this box&XX       |
 I========================================================I
