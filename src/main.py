@@ -221,7 +221,9 @@ while GAME_RUNNING:
 			hit()
 		elif ch=='q':
 			quitMenuOpen = True
-		if MOB_DEAD==False:
+		elif ch=='0': #THIS IS DEBUG CODE ONLY
+			destroy()
+		elif MOB_DEAD==False:
 			if (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE:
 				CURRENT_ZONE=CURRENT_ZONE+1
 				createMob()
@@ -230,8 +232,3 @@ while GAME_RUNNING:
 				createMob()
 #		elif lastch=='h':
 #			if ch=='1':
-				
-		elif ch=='0': #THIS IS DEBUG CODE ONLY
-			destroy()
-		
-
