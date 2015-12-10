@@ -175,7 +175,7 @@ def mainloop():
 		try:
 			time.sleep(sleepTime)
 		except IOError:
-			method.bufferxy(0,0,"&RKCatching up!&XX")
+			pass
 
 mainthread = threading.Thread(name='main', target=mainloop)
 mainthread.setDaemon(True)
