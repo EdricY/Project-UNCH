@@ -168,16 +168,17 @@ createMob()
 #Main loop
 def mainloop():
 	while GAME_RUNNING:
+		startTime=time.time()
+		update()
 		ROWS, COLUMNS = os.popen('stty size', 'r').read().split()
 		ROWS = int(ROWS)
 		COLUMNS = int(COLUMNS)
 		if ROWS<24 or COLUMNS<58:
 			method.printxy(0,0,method.color("&RXYOUR SCREEN IS TOO SMALL!&XX"))
-		startTime=time.time()
-		method.refreshBuffer()
-		update()
-		draw()
-		method.printBuffer(ROWS,COLUMNS)
+		else:
+			method.refreshBuffer()
+			draw()
+			method.printBuffer(ROWS,COLUMNS)
 		endTime=time.time()
 		timeElapsed=endTime-startTime
 		sleepTime=1.0/float(FRAMES_PER_SECOND)-float(timeElapsed)
