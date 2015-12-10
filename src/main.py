@@ -131,7 +131,7 @@ def draw():
 			method.bufferxy(36,24,"  ?")
 			method.bufferxy(1,18,"Press another key to find information about it.")
 			method.bufferxy(1,19,"Press &XWQ&XX to Quit.")
-			method.bufferxy(1,19,"Use &XW>&XX and &XW<&XX to attack (no need to press SHIFT)")
+			method.bufferxy(1,20,"Use &XW>&XX and &XW<&XX to attack (no need to press SHIFT)")
 		else:
 			method.bufferxy(36,24,">  ")
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
