@@ -179,7 +179,7 @@ def mainloop():
 		if ROWS!=lastROWS or COLUMNS!=lastCOLS: #refresh screen
 			for y in range(0, ROWS):
 				for x in range(0, COLUMNS):
-					printxy(x,y," ")
+					method.printxy(x,y," ")
 		lastROWS=ROWS
 		lastCOLS=COLUMNS
 		if ROWS<24 or COLUMNS<58:
