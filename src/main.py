@@ -18,6 +18,7 @@ import save
 os.system("clear")
 os.system("stty -echo")
 os.system("setterm -cursor off")
+ROWS, COLUMNS = os.popen('stty size', 'r').read().split()
 def quit():
 	os.system("stty echo")
 	os.system('clear')
@@ -169,7 +170,7 @@ def mainloop():
 		method.refreshBuffer()
 		update()
 		draw()
-		method.printBuffer()
+		method.printBuffer(ROWS,COLUMNS)
 		endTime=time.time()
 		timeElapsed=endTime-startTime
 		sleepTime=1.0/float(FRAMES_PER_SECOND)-float(timeElapsed)
