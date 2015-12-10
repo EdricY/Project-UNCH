@@ -58,7 +58,7 @@ for i in MOB_FILES:
 	f.close()
 	
 #Draw Title
-gui.drawtitle()
+gui.drawtitle(ROWS,COLUMNS)
 
 #Definitions and methods
 def hit():
@@ -154,7 +154,7 @@ def draw():
 			method.bufferxy(32,4+i,MOBS[CURRENT_MOB][i][:-1])
 			method.bufferxy(36,16,method.dispBigNum(MOB_HP) + "&XX") #mob hp num
 	if quitMenuOpen:
-		gui.drawquitmenu()
+		gui.drawquitmenu(ROWS,COLUMNS)
 
 #Wait for SPACE before moving on.
 ch=' '
