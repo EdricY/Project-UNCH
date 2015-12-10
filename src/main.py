@@ -192,7 +192,7 @@ def mainloop():
 		timeElapsed=endTime-startTime
 		sleepTime=1.0/float(FRAMES_PER_SECOND)-float(timeElapsed)
 		awake = True
-		while awake
+		while awake: #got dang :'s
 			try:
 				time.sleep(sleepTime)
 				awake = False
