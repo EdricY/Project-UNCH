@@ -105,6 +105,7 @@ def refreshBuffer():
 		BUFFER_LINES[i] = GUI_LINES[i]
 
 #Completely output the framebuffer to the frame.
-def printBuffer():
+#24 X 58
+def printBuffer(rows, columns):
 	for i in range(0,len(BUFFER_LINES)):
-		printxy(0,i+1,color(BUFFER_LINES[i]))
+		printxy(columns/2 - 12, rows/2-29+i+1,color(BUFFER_LINES[i]))
