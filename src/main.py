@@ -169,6 +169,7 @@ createMob()
 
 #Main loop
 def mainloop():
+	global ROWS, COLUMNS, lastROWS, lastCOLS
 	while GAME_RUNNING:
 		startTime=time.time()
 		update()
