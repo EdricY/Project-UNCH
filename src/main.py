@@ -21,6 +21,8 @@ os.system("setterm -cursor off")
 ROWS, COLUMNS = os.popen('stty size', 'r').read().split()
 ROWS = int(ROWS)
 COLUMNS = int(COLUMNS)
+lastROWS=0
+lastCOLS=0
 def quit():
 	os.system("stty echo")
 	os.system('clear')
@@ -173,6 +175,12 @@ def mainloop():
 		ROWS, COLUMNS = os.popen('stty size', 'r').read().split()
 		ROWS = int(ROWS)
 		COLUMNS = int(COLUMNS)
+		if ROWS!=lastROWS or COLUMNS!=lastCOLS: #refresh screen
+			for y in range(0, ROWS):
+				for x in range(0, COLUMNS):
+					printxy(x,y," ")
+		lastROWS=ROWS
+		lastCOLS=COLUMNS
 		if ROWS<24 or COLUMNS<58:
 			method.printxy(0,0,method.color("&RXYOUR SCREEN IS TOO SMALL!&XX"))
 		else:
