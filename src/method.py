@@ -22,14 +22,43 @@ def printxy(x, y, text):
 #param x and y where 0,0 is top left and text to write.
 def bufferxy(x, y, text):
 	temp=BUFFER_LINES[y]
-	ampsInBuff=temp[:x].count("&")
-	charsInText=len(text)-text.count("&")*3
+	
+	#phase 1: get the actual index we need to start at
+	putIndex=0
+	for int in range(0,len(temp)):
+		if(putIndex==x)
+			putIndex = int
+			break
+		if(temp[int:int+1]=="&"):
+			putIndex-=4
+		putIndex+=1
+	
+	#phase 2: get the actual length of the things we will be replacing
+	charsInText=len(text) - text.count("&")*3
+	rangeToRemove=0
+	for int in range(putIndex,len(temp)):
+		if(rangeToRemove==charsInText)
+			rangeToRemove = int - putIndex
+			break
+		if(temp[int:int+1]=="&"):
+			rangeToRemove-=4
+		rangeToRemove+=1	
+	
+	#phase 3: tack it all together
+	BUFFER_LINES[y]=temp[:putIndex+1] + text + temp[rangeToRemove:]
+	
+	'''
+	ampsUpToX=temp[:x].count("&")
+	charsInBuff=len(temp) - temp[:x].count("&")*3
+	charsInText=len(text) - text.count("&")*3
+	BUFFER_LINES[y]=temp[:
 	i = 1 + x + 3*ampsInBuff
 	end=i
 	for index in range(i, i+charsInText):
 		if temp[end]=="&":
 			end+=3
 	BUFFER_LINES[y]=temp[:i] + text + temp[end:]
+	'''
 	
 	'''
 	i=0
