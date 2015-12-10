@@ -44,7 +44,6 @@ ZONE_MOBS_KILLED=0
 BOSS_TIMER=0.0
 MOB_DEAD=False
 quitMenuOpen=False
-cmddisp=False
 #Mob loading
 for i in MOB_FILES:
 	MOBS.append([])
@@ -125,11 +124,11 @@ def draw():
 		else:
 			method.bufferxy(45,3,"("+str(ZONE_MOBS_KILLED)+"/10)")
 	if not quitMenuOpen:
-		if lastch=='.': #characters at bottom
+		if lastch=='.' or lastch=='>': #characters at bottom
 			method.bufferxy(36,24," < ")
 		elif lastch=='h' or lastch=='H':
 			method.bufferxy(36,24,"  ?")
-			method.bufferxy(1,18,"Press another key to find information about it.")
+			method.bufferxy(1,18,"Press hero/skill key to find information about it.")
 			method.bufferxy(1,19,"Press &KWQ&XX to Quit.")
 			method.bufferxy(1,20,"Use &KW>&XX and &KW<&XX to attack (no need to press SHIFT)")
 		else:
@@ -215,9 +214,6 @@ while GAME_RUNNING:
 			quit()
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
-	elif lastch=='h':
-		if ch=='h' or ch=='H':
-			cmddisp=True
 	else:
 		if (ch=='.' or ch=='>') and lastch!='.' and lastch!='>':
 			hit()
@@ -231,6 +227,9 @@ while GAME_RUNNING:
 		elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
 			CURRENT_ZONE=CURRENT_ZONE-1
 			createMob()
+#		elif lastch=='h':
+#			if ch=='1':
+				
 		elif ch=='0': #THIS IS DEBUG CODE ONLY
 			destroy()
 
