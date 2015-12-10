@@ -129,7 +129,9 @@ def draw():
 			method.bufferxy(36,24," < ")
 		elif lastch=='h' or lastch=='H':
 			method.bufferxy(36,24,"  ?")
-			method.bufferxy(1,18,"Press &BXH&XX again for a list of commands.")
+			method.bufferxy(1,18,"Press another key to find information about it.")
+			method.bufferxy(1,19,"Press &XWQ&XX to Quit.")
+			method.bufferxy(1,19,"Use &XW>&XX and &XW<&XX to attack (no need to press SHIFT)")
 		else:
 			method.bufferxy(36,24,">  ")
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
@@ -217,9 +219,9 @@ while GAME_RUNNING:
 		if ch=='h' or ch=='H':
 			cmddisp=True
 	else:
-		if ch=='.' and lastch!='.':
+		if (ch=='.' or ch=='>') and lastch!='.' and lastch!='>':
 			hit()
-		elif ch==',' and lastch=='.':
+		elif (ch==',' or ch=='<') and (lastch=='.' or lastch=='>'):
 			hit()
 		elif ch=='q':
 			quitMenuOpen = True
@@ -228,7 +230,6 @@ while GAME_RUNNING:
 			createMob()
 		elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
 			CURRENT_ZONE=CURRENT_ZONE-1
-			#ZONE_MOBS_KILLED=method.getMobsInZone(CURRENT_ZONE)
 			createMob()
 		elif ch=='0': #THIS IS DEBUG CODE ONLY
 			destroy()
