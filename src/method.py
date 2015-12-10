@@ -26,7 +26,7 @@ def bufferxy(x, y, text):
 	#phase 1: get the actual index we need to start at
 	putIndex=0
 	for int in range(0,len(temp)):
-		if(putIndex==x)
+		if(putIndex==x):
 			putIndex = int
 			break
 		if(temp[int:int+1]=="&"):
@@ -37,7 +37,7 @@ def bufferxy(x, y, text):
 	charsInText=len(text) - text.count("&")*3
 	rangeToRemove=0
 	for int in range(putIndex,len(temp)):
-		if(rangeToRemove==charsInText)
+		if(rangeToRemove==charsInText):
 			rangeToRemove = int - putIndex
 			break
 		if(temp[int:int+1]=="&"):
