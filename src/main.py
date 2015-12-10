@@ -222,7 +222,7 @@ while GAME_RUNNING:
 		elif ch=='q':
 			quitMenuOpen = True
 		if MOB_DEAD==False:
-			elif (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE:
+			if (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE:
 				CURRENT_ZONE=CURRENT_ZONE+1
 				createMob()
 			elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
