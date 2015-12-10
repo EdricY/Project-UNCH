@@ -101,7 +101,7 @@ def update():
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
 	#gui.drawgui()
-	method.bufferxy(4,1,method.dispBigNum(MONEY)) #money
+	method.bufferxy(4,1,method.dispBigNum(MONEY) + "&YK") #money
 	method.bufferxy(33,3,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
 		method.bufferxy(35,1,str(CURRENT_ZONE-1)) #zone num -
@@ -144,7 +144,7 @@ def draw():
 	else:
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
 			method.bufferxy(32,4+i,MOBS[CURRENT_MOB][i][:-1])
-			method.bufferxy(36,16,method.dispBigNum(MOB_HP)) #mob hp num
+			method.bufferxy(36,16,method.dispBigNum(MOB_HP) + "&XX") #mob hp num
 	if quitMenuOpen:
 		gui.drawquitmenu()
 #Wait for SPACE before moving on.
