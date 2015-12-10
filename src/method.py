@@ -30,7 +30,7 @@ def bufferxy(x, y, text):
 			putIndex = int
 			break
 		if(temp[int:int+1]=="&"):
-			putIndex-=4
+			putIndex-=3
 		putIndex+=1
 	
 	#phase 2: get the actual length of the things we will be replacing
@@ -41,7 +41,7 @@ def bufferxy(x, y, text):
 			rangeToRemove = int - putIndex
 			break
 		if(temp[int:int+1]=="&"):
-			rangeToRemove-=4
+			rangeToRemove-=3
 		rangeToRemove+=1	
 	
 	#phase 3: tack it all together
