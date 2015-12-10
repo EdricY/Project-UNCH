@@ -172,7 +172,7 @@ def mainloop():
 		ROWS = int(ROWS)
 		COLUMNS = int(COLUMNS)
 		if ROWS<24 or COLUMNS<58:
-			method.printxy(method.color("&RXYOUR SCREEN IS TOO SMALL!&XX"))
+			method.printxy(0,0,method.color("&RXYOUR SCREEN IS TOO SMALL!&XX"))
 		startTime=time.time()
 		method.refreshBuffer()
 		update()
