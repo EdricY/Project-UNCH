@@ -65,11 +65,13 @@ def hit():
 	MOB_HP -= HIT_DMG
 	if MOB_HP < 0:
 		MOB_HP = 0
+
 def destroy():
 	global MOB_HP
 	MOB_HP -= 10000
 	if MOB_HP < 0:
 		MOB_HP = 0
+
 def createMob():
 	global MOB_MAX_HP, MOB_HP, CURRENT_MOB, MOB_DEAD, BOSS_TIMER
 	MOB_DEAD=False
@@ -79,6 +81,7 @@ def createMob():
 		BOSS_TIMER = time.time()
 	MOB_HP = MOB_MAX_HP
 	CURRENT_MOB=random.randint(0,COUNT_FILES-1)
+
 def killMob():
 	global ZONE_MOBS_KILLED, HIGHEST_ZONE, MOB_DEAD, MONEY
 	MOB_DEAD=True
@@ -92,12 +95,14 @@ def killMob():
 		else:
 			HIGHEST_ZONE=HIGHEST_ZONE+1
 			ZONE_MOBS_KILLED=0
+
 def update():
 	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED
 	if MOB_HP <= 0 and not MOB_DEAD:
 		killMob()
 	if CURRENT_ZONE % 5 == 0 and 30.0-time.time()+BOSS_TIMER<=0:
 		createMob()
+
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
 	#gui.drawgui()
@@ -131,7 +136,6 @@ def draw():
 	X=55
 	for i in range(22-Y, 22):
 		method.bufferxy(X,i+1,("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX") #hashtag healthbar
-	
 	if MOB_HP <= 0: #mob death animation
 		method.bufferxy(36,16,"rekt&XX")
 		if DEATH_FRAME == 20:
@@ -147,10 +151,10 @@ def draw():
 			method.bufferxy(36,16,method.dispBigNum(MOB_HP) + "&XX") #mob hp num
 	if quitMenuOpen:
 		gui.drawquitmenu()
+
 #Wait for SPACE before moving on.
 ch=' '
 lastch=' '
-
 ch = getch.getch()
 while ch != ' ':
 	ch = getch.getch()
