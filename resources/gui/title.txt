@@ -22,4 +22,4 @@ I========================================================I
 |                                                        |
 |    &YK Please resize your window to fit this box&XX          |
 I========================================================I
-	     by &GKEdric Yu&XX with much help
+	             by &GKEdric Yu&XX with much help
