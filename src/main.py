@@ -21,6 +21,8 @@ os.system("setterm -cursor off")
 ROWS, COLUMNS = os.popen('stty size', 'r').read().split()
 ROWS = int(ROWS)
 COLUMNS = int(COLUMNS)
+lastROWS=0
+lastCOLS=0
 def quit():
 	os.system("stty echo")
 	os.system('clear')
@@ -167,15 +169,25 @@ createMob()
 
 #Main loop
 def mainloop():
+	global ROWS, COLUMNS, lastROWS, lastCOLS
 	while GAME_RUNNING:
+		startTime=time.time()
+		update()
 		ROWS, COLUMNS = os.popen('stty size', 'r').read().split()
 		ROWS = int(ROWS)
 		COLUMNS = int(COLUMNS)
-		startTime=time.time()
-		method.refreshBuffer()
-		update()
-		draw()
-		method.printBuffer(ROWS,COLUMNS)
+		if ROWS!=lastROWS or COLUMNS!=lastCOLS: #refresh screen
+			for y in range(1, ROWS+1):
+				for x in range(1, COLUMNS+1):
+					method.printxy(x,y," ")
+		lastROWS=ROWS
+		lastCOLS=COLUMNS
+		if ROWS<24 or COLUMNS<58:
+			method.printxy(1,1,method.color("&RXYOUR SCREEN IS TOO SMALL!&XX"))
+		else:
+			method.refreshBuffer()
+			draw()
+			method.printBuffer(ROWS,COLUMNS)
 		endTime=time.time()
 		timeElapsed=endTime-startTime
 		sleepTime=1.0/float(FRAMES_PER_SECOND)-float(timeElapsed)
