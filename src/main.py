@@ -270,7 +270,7 @@ while GAME_RUNNING:
 	elif lastch=='h':
 		try:
 			HERO_DISP_NUM = int(ch)
-			if 0 < HERO_DISP_NUM and HERO_DISP_NUM < 9:
+			if 0 < HERO_DISP_NUM or HERO_DISP_NUM > 9:
 				HERO_DISP_NUM = 0
 		except ValueError:
 			pass
