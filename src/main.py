@@ -249,7 +249,7 @@ def checkTypes(list1, list2):
 		if element.__name__ != list2[index].__name__:
 			return False
 		if element.__name__ == "list":
-			if !checkTypes(element, list2[index]):
+			if not checkTypes(element, list2[index]):
 				return False
 		index++
 	return True
