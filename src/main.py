@@ -27,8 +27,8 @@ def quit():
 	os.system("stty echo")
 	os.system("setterm -cursor on")
 	print "Project UNCH has quit."
-	sys.exit(0)
 	os.system('clear')
+	sys.exit(0)
 
 #Global variables
 FRAMES_PER_SECOND = 20
