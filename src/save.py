@@ -29,13 +29,19 @@ def save(ls):
 				f.write("2dl:" + "\n")
 				for list1 in index:
 					for element in list1:
-						f.write(element + "	")
+						if type(element).__name__ == "int":
+							f.write("int:" + str(element) + "	")
+						elif type(element).__name__ == "str":
+							f.write("str:" + element + "	")
 					f.write("\n")
 				f.write("end\n")
 			else:
-				f.write("1dl:" + "\n")
+				f.write("1dl:")
 				for element in index:
-					f.write(element + "	")
+					if type(element).__name__ == "int":
+						f.write("int:" + str(element) + "	")
+					elif type(element).__name__ == "str":
+						f.write("str:" + element + "	")
 				f.write("\n")
 		else:
 			f.write("not a real type\n")
@@ -44,17 +50,40 @@ def save(ls):
 def load():
 	f = open("../save1.sav","r")
 	returnList = []
+	isLoading2D = False
+	loading2DiIndex = 0
 	for line in f:
-		if line[0:4] == "int:":
-			returnList.append(int(line[4:]))
-		elif line[0:4] == "str:":
-			returnList.append(str(line[4:]))
-		elif line[0:4] == "2dl:":
-			returnList.append("oh noe 2 deee")
-		elif line[0:4] == "1dl:":
-			returnList.append("oh noe 1 deee")
+		if isLoading2D:
+			if line == "end"
+				continue
+			firstDim = []
+			firstDim.append(line)
+			firstDim[loading2DiIndex] = firstDim[loading2DiIndex].split("	")
+			for element in firstDim[loading2DiIndex]
+				if element[0:4] == "int:":
+					newList[index] = int(newList[index][:4])
+				else 
+					newList[index] = newList[index][:4]
+			loading2DiIndex += 1
 		else:
-			returnList.append("not a real type")
+			if line[0:4] == "int:":
+				returnList.append(int(line[4:]))
+			elif line[0:4] == "str:":
+				returnList.append(str(line[4:]))
+			elif line[0:4] == "2dl:":
+				isLoading2D = True
+				returnList.append("oh noe 2 deee")
+			elif line[0:4] == "1dl:":
+				newList = line[4:].split("	")
+				index = 0
+				while index < len(newList):
+					if newList[index][0:4] == "int:":
+						newList[index] = int(newList[index][:4])
+					else 
+						newList[index] = newList[index][:4]
+				returnList.append(newList)
+			else:
+				returnList.append("not a real type")
 	return returnList
 	f.close()
 	
