@@ -23,11 +23,34 @@ ROWS = int(ROWS)
 COLUMNS = int(COLUMNS)
 lastROWS=0
 lastCOLS=0
+
+#Data to save
+def save():
+	SD = [MONEY,
+	HIT_DMG,
+	DPS,
+	HIGHEST_ZONE,
+	CURRENT_ZONE,
+	ZONE_MOBS_KILLED,
+	HEROES]
+	save.save(SD)
+
+def load():
+	LD = save.load()
+	MONEY = LD[0]
+	HIT_DMG = LD[1]
+	DPS = LD[2]
+	HIGHEST_ZONE = LD[3]
+	CURRENT_ZONE = LD[4]
+	ZONE_MOBS_KILLED = LD[5]
+	HEROES = LD[6]
+
 def quit():
 	os.system("stty echo")
 	os.system("setterm -cursor on")
 	print "Project UNCH has quit."
 	os.system('clear')
+	save()
 	sys.exit(0)
 
 #Global variables
@@ -70,7 +93,7 @@ HERO_DESC.append(["Blah Blah5 Blah", "And More Blah"])#Betty
 HERO_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Sam
 HERO_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
 HERO_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
-HERO_DISP_NUM=0
+HERO_DISP_NUM=0 #display info for # hero
 
 #Mob loading
 for i in MOB_FILES:
@@ -232,28 +255,6 @@ mainthread = threading.Thread(name='main', target=mainloop)
 mainthread.setDaemon(True)
 mainthread.start()
 
-#Data to save
-def save():
-	SD = [MONEY,
-	HIT_DMG,
-	DPS,
-	HIGHEST_ZONE,
-	CURRENT_ZONE,
-	ZONE_MOBS_KILLED,
-	HEROES]
-	save.save(SD)
-
-def load():
-	LD = save.load()
-	MONEY = LD[0]
-	HIT_DMG = LD[1]
-	DPS = LD[2]
-	HIGHEST_ZONE = LD[3]
-	CURRENT_ZONE = LD[4]
-	ZONE_MOBS_KILLED = LD[5]
-	HEROES = LD[6]
-
-
 #Handle Input
 while GAME_RUNNING:
 	lastch=ch
@@ -263,8 +264,8 @@ while GAME_RUNNING:
 	if quitMenuOpen:
 		if ch=='y' or ch=='Y':
 			GAME_RUNNING=False
-			save()
 			quit()
+
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
 	elif HERO_DISP_NUM != 0 and ch != lastch:
@@ -294,6 +295,7 @@ while GAME_RUNNING:
 			elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
 				CURRENT_ZONE=CURRENT_ZONE-1
 				createMob()
+		
 		else:
 			for i in range(8):
 				if ch==str(i+1):
