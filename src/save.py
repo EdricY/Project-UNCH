@@ -51,20 +51,22 @@ def load():
 	f = open("../save1.sav","r")
 	returnList = []
 	isLoading2D = False
-	loading2DiIndex = 0
+	firstDim = []
 	for line in f:
 		if isLoading2D:
-			if line == "end"
+			if line == "end":
+				isLoading2D = False
+				returnList.append(firstDim)
 				continue
-			firstDim = []
-			firstDim.append(line)
-			firstDim[loading2DiIndex] = firstDim[loading2DiIndex].split("	")
-			for element in firstDim[loading2DiIndex]
-				if element[0:4] == "int:":
-					newList[index] = int(newList[index][:4])
-				else 
-					newList[index] = newList[index][:4]
-			loading2DiIndex += 1
+			secondDim = line.split("	")
+			index = 0
+			while index < len(secondDim):
+				if secondDim[index][0:4] == "int:":
+					secondDim[index] = int(secondDim[index][:4])
+				else:
+					secondDim[index] = secondDim[index][:4]
+				index += 1
+			firstDim.append(secondDim)
 		else:
 			if line[0:4] == "int:":
 				returnList.append(int(line[4:]))
@@ -72,15 +74,16 @@ def load():
 				returnList.append(str(line[4:]))
 			elif line[0:4] == "2dl:":
 				isLoading2D = True
-				returnList.append("oh noe 2 deee")
+				firstDim = []
 			elif line[0:4] == "1dl:":
 				newList = line[4:].split("	")
 				index = 0
 				while index < len(newList):
 					if newList[index][0:4] == "int:":
 						newList[index] = int(newList[index][:4])
-					else 
+					else:
 						newList[index] = newList[index][:4]
+					index += 1
 				returnList.append(newList)
 			else:
 				returnList.append("not a real type")
