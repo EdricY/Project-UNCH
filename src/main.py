@@ -44,6 +44,7 @@ ZONE_MOBS_KILLED=0
 BOSS_TIMER=0.0
 MOB_DEAD=False
 quitMenuOpen=False
+purchaseComplete=0
 
 HEROES=[] # hero names 9 chars max
 HEROES.append(["Treebeast", 0, 0, 25]) # name, level, dps, cost
@@ -180,6 +181,11 @@ def draw():
 			method.bufferxy(1, 18,HEROES[HERO_DISP_NUM-1+4*HERO_SCREEN][0] + "                                          ")
 			for i in range(2):
 				method.bufferxy(3, 19+i,HERO_DESC[HERO_DISP_NUM-1+4*HERO_SCREEN][i])
+		elif purchaseComplete!=0:
+			if purchaseComplete==-1:
+				method.bufferxy(1,18,"Not enough money!                                  ")
+			else:
+				method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " Gained a level!                          ")
 		else:
 			method.bufferxy(49,22,"&MX>&XX  ")
 	else:
@@ -306,6 +312,9 @@ while GAME_RUNNING:
 		else:
 			for i in range(4):
 				if ch==str(i+1):
-					MONEY-=HEROES[i+4*HERO_SCREEN][3]
-					HEROES[i+4*HERO_SCREEN][1]+=1
-
+					if MONEY>=HEROES[i+4*HERO_SCREEN][3]:
+						MONEY-=HEROES[i+4*HERO_SCREEN][3]
+						HEROES[i+4*HERO_SCREEN][1]+=1
+						purchaseComplete=i+4*HERO_SCREEN
+					else:
+						purchaseComplete=-1
