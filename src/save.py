@@ -26,14 +26,14 @@ def save(ls):
 			f.write("str:" + index + "\n")
 		elif type(index).__name__ == "list":
 			if(isinstance(index[0],list)):
-				f.write("2st:" + "\n")
+				f.write("2dl:" + "\n")
 				for list1 in index:
 					for element in list1:
 						f.write(element + "	")
 					f.write("\n")
 				f.write("end\n")
 			else:
-				f.write("1st:" + "\n")
+				f.write("1dl:" + "\n")
 				for element in index:
 					f.write(element + "	")
 				f.write("\n")
@@ -49,9 +49,9 @@ def load():
 			returnList.append(int(line[4:]))
 		elif line[0:4] == "str:":
 			returnList.append(str(line[4:]))
-		elif line[0:4] == "2st:":
+		elif line[0:4] == "2dl:":
 			returnList.append("oh noe 2 deee")
-		elif line[0:4] == "1st:":
+		elif line[0:4] == "1dl:":
 			returnList.append("oh noe 1 deee")
 		else:
 			returnList.append("not a real type")
