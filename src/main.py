@@ -264,13 +264,16 @@ while GAME_RUNNING:
 			quit()
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
+	elif HERO_DISP_NUM != 0:
+		HERO_DISP_NUM = 0
 	elif lastch=='h':
 		try:
 			HERO_DISP_NUM = int(ch)
+			if 0 < HERO_DISP_NUM and HERO_DISP_NUM < 9:
+				HERO_DISP_NUM = 0
 		except ValueError:
 			pass
 	else:
-		HERO_DISP_NUM = 0
 		if (ch=='.' or ch=='>') and lastch!='.' and lastch!='>':
 			hit()
 		elif (ch==',' or ch=='<') and (lastch=='.' or lastch=='>'):
