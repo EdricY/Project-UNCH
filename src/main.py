@@ -177,14 +177,13 @@ def draw():
 		if lastch=='.' or lastch=='>': #characters at bottom
 			method.bufferxy(49,22," &MX<&XX ")
 		elif lastch=='h' or lastch=='H': # Information box
-			if HERO_DISP_NUM == 0:
-				method.bufferxy(49,22,"  &MX?&XX")
-				method.bufferxy(1,18,"Press hero/skill key to find information about it.")
-				method.bufferxy(1,19,"Press &CXQ&XX to Quit.")
-				method.bufferxy(1,20,"Use &CX>&XX and &CX<&XX to attack (no need to press SHIFT)")
-			else:
-				for i in range(2):
-					method.bufferxy(1 if i==1 else 3, 18+i,HERO_DESC[i])
+			method.bufferxy(49,22,"  &MX?&XX")
+			method.bufferxy(1,18,"Press hero/skill key to find information about it.")
+			method.bufferxy(1,19,"Press &CXQ&XX to Quit.")
+			method.bufferxy(1,20,"Use &CX>&XX and &CX<&XX to attack (no need to press SHIFT)")
+		if HERO_DISP_NUM != 0:
+			for i in range(2):
+				method.bufferxy(1 if i==1 else 3, 18+i,HERO_DESC[i])
 		else:
 			method.bufferxy(49,22,"&MX>&XX  ")
 	else:
@@ -266,6 +265,8 @@ while GAME_RUNNING:
 			quitMenuOpen = False
 	elif HERO_DISP_NUM != 0:
 		HERO_DISP_NUM = 0
+		ch = " "
+		lastch = " "
 	elif lastch=='h':
 		try:
 			HERO_DISP_NUM = int(ch)
