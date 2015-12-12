@@ -232,6 +232,7 @@ mainthread = threading.Thread(name='main', target=mainloop)
 mainthread.setDaemon(True)
 mainthread.start()
 
+#Data to save
 def updateVarsToSave():
 	SD = [MONEY,
 	HIT_DMG,
@@ -241,15 +242,28 @@ def updateVarsToSave():
 	ZONE_MOBS_KILLED,
 	HEROES]
 	return SD
+	
+def checkTypes(list1, list2)
+	index = 0
+	for element in list1:
+		if element.__name__ != list2[index].__name__:
+			return False
+		if element.__name__ == "list":
+			if !checkTypes(element, list2[index]):
+				return False
+		index++
+	return True
 
-#Data to save
+#Actually save
 def save():
 	SaveData = updateVarsToSave()
 	gamesave.save(SaveData)
 
+#Actually load
 def load():
 	LD = save.load()
-	if len(updateVarsToSave()) == len(LD):
+	typesMatch checkTypes(updateVarsToSave(), LD)
+	if typesMatch && len(updateVarsToSave()) == len(LD):
 		MONEY = LD[0]
 		HIT_DMG = LD[1]
 		DPS = LD[2]
