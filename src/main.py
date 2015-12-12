@@ -264,7 +264,7 @@ while GAME_RUNNING:
 			quit()
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
-	elif HERO_DISP_NUM != 0 and ch == "z":
+	elif HERO_DISP_NUM != 0 and ch != lastch:
 		HERO_DISP_NUM = 0
 		ch = " "
 		lastch = " "
