@@ -1,3 +1,23 @@
+l1 = []
+l1.append("test string")
+l1.append(15)
+l1.append("test string 2")
+lsub = []
+lsub.append("test")
+lsub.append("test")
+l1.append(lsub)
+lsub1 = []
+lsub1.append("test1")
+lsub1.append("test2")
+lsub2 = []
+lsub2.append("test3")
+lsub2.append("test4")
+lsu = []
+lsu.append(lsub1)
+lsu.append(lsub2)
+l1.append(lsu)
+
+
 def save(list):
 	f = open("../save1.sav","w")
 	for index in list:
