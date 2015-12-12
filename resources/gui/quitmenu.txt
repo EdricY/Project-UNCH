@@ -1,4 +1,5 @@
-&RKO===============================O&XX
-&RK|&XX Are you sure you want to quit?&RK|&XX
-&RK|&XX       &RK(Y)&XXes       &GK(N)&XXo        &RK|&XX
-&RKO===============================O&XX
+&RXO===============================O&XX
+&RX|&XX Are you sure you want to quit?&RK|&XX
+&RX|&GX    Your game will be saved.   &RK|&XX
+&RX|&XX       &RX(Y)&XXes       &GX(N)&XXo        &RX|&XX
+&RXO===============================O&XX
