@@ -142,14 +142,14 @@ def draw():
 			method.bufferxy(45,3,"("+str(ZONE_MOBS_KILLED)+"/10)")
 	if not quitMenuOpen:
 		if lastch=='.' or lastch=='>': #characters at bottom
-			method.bufferxy(49,22," < ")
+			method.bufferxy(49,22," &MX<&XX ")
 		elif lastch=='h' or lastch=='H':
-			method.bufferxy(49,22,"  ?")
+			method.bufferxy(49,22,"  &MX?&XX")
 			method.bufferxy(1,18,"Press hero/skill key to find information about it.")
-			method.bufferxy(1,19,"Press &KWQ&XX to Quit.")
-			method.bufferxy(1,20,"Use &KW>&XX and &KW<&XX to attack (no need to press SHIFT)")
+			method.bufferxy(1,19,"Press &CXQ&XX to Quit.")
+			method.bufferxy(1,20,"Use &CX>&XX and &CX<&XX to attack (no need to press SHIFT)")
 		else:
-			method.bufferxy(49,22,">  ")
+			method.bufferxy(49,22,"&MX>&XX  ")
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
 	for i in range(22-Y, 22):
 		method.bufferxy(55,i+1,("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX") #hashtag healthbar
@@ -170,7 +170,7 @@ def draw():
 	for i in range(4):
 		method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
 		method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
-		method.bufferxy(1,5+3*i,"&BW" + str(i+HERO_SCREEN*4) + "&XX:")
+		method.bufferxy(1,5+3*i,"&CX" + str(i+HERO_SCREEN*4) + "&XX:")
 		method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
 
 	if quitMenuOpen:
