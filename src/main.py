@@ -283,6 +283,6 @@ while GAME_RUNNING:
 					x = int(ch)
 				except ValueError:
 					pass
-				elif x < 9  and x > 0:
+				if x < 9  and x > 0:
 					for i in range(2):
 					method.bufferxy(1,18+i,HERO_DESC[i])
