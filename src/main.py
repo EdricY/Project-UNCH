@@ -244,7 +244,7 @@ def updateVarsToSave():
 	return SD
 	
 def checkTypes(list1, list2):
-	if len(updateVarsToSave()) != len(LD):
+	if len(list1) != len(list2):
 		return False
 	index = 0
 	for element in list1:
