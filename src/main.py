@@ -226,6 +226,14 @@ mainthread = threading.Thread(name='main', target=mainloop)
 mainthread.setDaemon(True)
 mainthread.start()
 
+SD = [MONEY,
+HIT_DMG,
+DPS,
+HIGHEST_ZONE,
+CURRENT_ZONE,
+ZONE_MOBS_KILLED,
+HEROES]
+
 #Data to save
 def save():
 	SD = [MONEY,
@@ -239,13 +247,14 @@ def save():
 
 def load():
 	LD = save.load()
-	MONEY = LD[0]
-	HIT_DMG = LD[1]
-	DPS = LD[2]
-	HIGHEST_ZONE = LD[3]
-	CURRENT_ZONE = LD[4]
-	ZONE_MOBS_KILLED = LD[5]
-	HEROES = LD[6]
+	if len(SD) == len(LD):
+		MONEY = LD[0]
+		HIT_DMG = LD[1]
+		DPS = LD[2]
+		HIGHEST_ZONE = LD[3]
+		CURRENT_ZONE = LD[4]
+		ZONE_MOBS_KILLED = LD[5]
+		HEROES = LD[6]
 
 def quit():
 	os.system("stty echo")
