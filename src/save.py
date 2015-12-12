@@ -4,7 +4,9 @@ l1.append(15)
 l1.append("test string 2")
 lsub = []
 lsub.append("test")
-lsub.append("test")
+lsub.append("test1")
+lsub.append("test2")
+lsub.append("test3")
 l1.append(lsub)
 lsub1 = []
 lsub1.append("test1")
@@ -53,6 +55,7 @@ def load():
 	isLoading2D = False
 	firstDim = []
 	for line in f:
+		line = line.rstrip()
 		if isLoading2D:
 			if line == "end":
 				isLoading2D = False
@@ -62,9 +65,9 @@ def load():
 			index = 0
 			while index < len(secondDim):
 				if secondDim[index][0:4] == "int:":
-					secondDim[index] = int(secondDim[index][:4])
+					secondDim[index] = int(secondDim[index][4:])
 				else:
-					secondDim[index] = secondDim[index][:4]
+					secondDim[index] = secondDim[index][4:]
 				index += 1
 			firstDim.append(secondDim)
 		else:
@@ -80,9 +83,9 @@ def load():
 				index = 0
 				while index < len(newList):
 					if newList[index][0:4] == "int:":
-						newList[index] = int(newList[index][:4])
+						newList[index] = int(newList[index][4:])
 					else:
-						newList[index] = newList[index][:4]
+						newList[index] = newList[index][4:]
 					index += 1
 				returnList.append(newList)
 			else:
