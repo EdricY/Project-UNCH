@@ -246,9 +246,9 @@ def updateVarsToSave():
 def checkTypes(list1, list2):
 	index = 0
 	for element in list1:
-		if element.__name__ != list2[index].__name__:
+		if type(element) != type(list2[index]):
 			return False
-		if element.__name__ == "list":
+		if type(element) == type([]):
 			if not checkTypes(element, list2[index]):
 				return False
 		index += 1
