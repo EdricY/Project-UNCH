@@ -12,7 +12,7 @@ import random
 #Module imports
 import gui
 import method
-import save
+import gamesave
 
 #Platform code
 os.system("clear")
