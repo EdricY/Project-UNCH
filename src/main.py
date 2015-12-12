@@ -243,7 +243,7 @@ def updateVarsToSave():
 	HEROES]
 	return SD
 	
-def checkTypes(list1, list2)
+def checkTypes(list1, list2):
 	index = 0
 	for element in list1:
 		if element.__name__ != list2[index].__name__:
