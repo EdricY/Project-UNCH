@@ -226,17 +226,7 @@ mainthread = threading.Thread(name='main', target=mainloop)
 mainthread.setDaemon(True)
 mainthread.start()
 
-SD = [MONEY,
-HIT_DMG,
-DPS,
-HIGHEST_ZONE,
-CURRENT_ZONE,
-ZONE_MOBS_KILLED,
-HEROES]
-
-#Data to save
-def save():
-	global SD
+def updateVarsToSave():
 	SD = [MONEY,
 	HIT_DMG,
 	DPS,
@@ -244,11 +234,16 @@ def save():
 	CURRENT_ZONE,
 	ZONE_MOBS_KILLED,
 	HEROES]
-	gamesave.save(SD)
+	return SD
+
+#Data to save
+def save():
+	SaveData = updateVarsToSave()
+	gamesave.save(SaveData)
 
 def load():
 	LD = save.load()
-	if len(SD) == len(LD):
+	if len(updateVarsToSave()) == len(LD):
 		MONEY = LD[0]
 		HIT_DMG = LD[1]
 		DPS = LD[2]
