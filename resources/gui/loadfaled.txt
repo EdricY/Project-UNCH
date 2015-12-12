@@ -1,0 +1,4 @@
+&RXO===============================O&XX
+&RX|   Failed to load save data!   |&XX
+&RX|           (Y)Ok :(            |&XX
+&RXO===============================O&XX
