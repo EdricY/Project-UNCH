@@ -281,7 +281,7 @@ def load():
 			HEROES = LD[6]
 		else:
 			loadMenuOpen = True
-	except Exception
+	except Exception:
 		loadMenuOpen = True
 
 def quit():
