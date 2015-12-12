@@ -16,6 +16,9 @@ def drawtitle(rows, columns):
 def drawquitmenu(rows, columns):
 	for i in range(0,len(QUIT_LINES)):
 		method.bufferxy(12, i+9,QUIT_LINES[i][:-1])
+def drawloadmenu(rows, columns):
+	for i in range(0,len(LOAD_LINES)):
+		method.bufferxy(12, i+9,LOAD_LINES[i][:-1])
 
 #load GUI file.
 f=open("../resources/gui/gui.txt")
@@ -36,4 +39,11 @@ f=open("../resources/gui/quitmenu.txt")
 QUIT_LINES = []
 for line in f:
 	QUIT_LINES.append(line)
+f.close()
+
+#load loadmenu file.
+f=open("../resources/gui/loadfaled.txt")
+LOAD_LINES = []
+for line in f:
+	LOAD_LINES.append(line)
 f.close()

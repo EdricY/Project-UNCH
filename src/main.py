@@ -44,6 +44,7 @@ ZONE_MOBS_KILLED=0
 BOSS_TIMER=0.0
 MOB_DEAD=False
 quitMenuOpen=False
+loadMenuOpen=False
 
 HEROES=[] # hero names 9 chars max
 HEROES.append(["Treebeast", 0, 0, 25]) # name, level, dps, cost
@@ -184,6 +185,8 @@ def draw():
 			method.bufferxy(49,22,"&MX>&XX  ")
 	else:
 		gui.drawquitmenu(ROWS,COLUMNS)
+	if loadMenuOpen:
+		gui.drawloadmenu(ROWS,COLUMNS)
 
 #Wait for SPACE before moving on.
 ch=' '
@@ -245,7 +248,7 @@ def checkTypes(list1, list2)
 		if element.__name__ == "list":
 			if !checkTypes(element, list2[index]):
 				return False
-		index++
+		index += 1
 	return True
 
 #Actually save
@@ -265,6 +268,8 @@ def load():
 		CURRENT_ZONE = LD[4]
 		ZONE_MOBS_KILLED = LD[5]
 		HEROES = LD[6]
+	else:
+		loadMenuOpen = True
 
 def quit():
 	os.system("stty echo")
@@ -289,6 +294,10 @@ while GAME_RUNNING:
 			quitMenuOpen = False
 	elif HERO_DISP_NUM != 0 and ch != lastch:
 		HERO_DISP_NUM = 0
+		ch = " "
+		lastch = " "
+	elif loadMenuOpen and ch != lastch:
+		loadMenuOpen = False
 		ch = " "
 		lastch = " "
 	elif lastch=='h':
