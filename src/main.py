@@ -235,7 +235,7 @@ def save():
 	CURRENT_ZONE,
 	ZONE_MOBS_KILLED,
 	HEROES]
-	save.save(SD)
+	gamesave.save(SD)
 
 def load():
 	LD = save.load()
