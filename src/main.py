@@ -234,6 +234,7 @@ def mainloop():
 
 #Data to save
 def updateVarsToSave():
+	#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
 	SD = [MONEY,
 	HIT_DMG,
 	DPS,
@@ -264,17 +265,23 @@ def save():
 #Actually load
 def load():
 	global loadMenuOpen
-	LD = gamesave.load()
-	typesMatch  = checkTypes(updateVarsToSave(), LD)
-	if typesMatch:
-		MONEY = LD[0]
-		HIT_DMG = LD[1]
-		DPS = LD[2]
-		HIGHEST_ZONE = LD[3]
-		CURRENT_ZONE = LD[4]
-		ZONE_MOBS_KILLED = LD[5]
-		HEROES = LD[6]
-	else:
+	#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
+	global MONEY, HIT_DMG, DPS, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, HEROES
+	try:
+		LD = gamesave.load()
+		typesMatch  = checkTypes(updateVarsToSave(), LD)
+		if typesMatch:
+			#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
+			MONEY = LD[0]
+			HIT_DMG = LD[1]
+			DPS = LD[2]
+			HIGHEST_ZONE = LD[3]
+			CURRENT_ZONE = LD[4]
+			ZONE_MOBS_KILLED = LD[5]
+			HEROES = LD[6]
+		else:
+			loadMenuOpen = True
+	except Exception
 		loadMenuOpen = True
 
 def quit():
