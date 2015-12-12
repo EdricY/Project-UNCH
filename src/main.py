@@ -52,6 +52,8 @@ quitMenuOpen=False
 
 HEROES=[]
 HEROES.append(["Cyd", 0])
+HEROES.append(["Cyd", 0])
+HEROES.append(["Cyd", 0])
 #Mob loading
 for i in MOB_FILES:
 	MOBS.append([])
