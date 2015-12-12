@@ -21,7 +21,7 @@ def save(list):
 	f = open("../save1.sav","w")
 	for index in list:
 		if type(index).__name__ == "int":
-			f.write("int:" + index + "\n")
+			f.write("int:" + str(index) + "\n")
 		elif type(index).__name__ == "str":
 			f.write("str:" + index + "\n")
 		elif type(index).__name__ == "list":
