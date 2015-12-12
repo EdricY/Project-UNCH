@@ -54,7 +54,7 @@ HEROES.append(["Betty", 0, 0, 12500])
 HEROES.append(["Sam", 0, 0, 62500])
 HEROES.append(["Leon", 0, 0, 5000000])
 HEROES.append(["Seer", 0, 0, 25000000])
-HERO_SCREEN=1 #for now this is 0 or 1
+HERO_SCREEN=0 #for now this is 0 or 1
 
 HERO_DESC=[]
 HERO_DESC.append(["Blah 1Blah Blah", "And More Blah"])#Treeb
@@ -297,8 +297,10 @@ while GAME_RUNNING:
 				createMob()
 		elif ch=='[' or ch=='{':
 			HERO_SCREEN=0
+			MONEY+=10
 		elif ch==']' or ch=='}':
 			HERO_SCREEN=1
+			MONEY+=11
 		else:
 			for i in range(8):
 				if ch==str(i+1):
