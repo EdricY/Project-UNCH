@@ -244,6 +244,8 @@ def updateVarsToSave():
 	return SD
 	
 def checkTypes(list1, list2):
+	if len(updateVarsToSave()) != len(LD):
+		return False
 	index = 0
 	for element in list1:
 		if type(element) != type(list2[index]):
@@ -263,7 +265,7 @@ def save():
 def load():
 	LD = gamesave.load()
 	typesMatch  = checkTypes(updateVarsToSave(), LD)
-	if typesMatch and len(updateVarsToSave()) == len(LD):
+	if typesMatch:
 		MONEY = LD[0]
 		HIT_DMG = LD[1]
 		DPS = LD[2]
