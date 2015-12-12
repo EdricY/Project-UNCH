@@ -265,8 +265,8 @@ def save():
 #Actually load
 def load():
 	LD = save.load()
-	typesMatch checkTypes(updateVarsToSave(), LD)
-	if typesMatch && len(updateVarsToSave()) == len(LD):
+	typesMatch  = checkTypes(updateVarsToSave(), LD)
+	if typesMatch and len(updateVarsToSave()) == len(LD):
 		MONEY = LD[0]
 		HIT_DMG = LD[1]
 		DPS = LD[2]
