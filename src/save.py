@@ -1,26 +1,26 @@
-l1 = []
-l1.append("test string")
-l1.append(15)
-l1.append("test string 2")
-lsub = []
-lsub.append("test")
-lsub.append("test1")
-lsub.append("test2")
-lsub.append("test3")
-l1.append(lsub)
-lsub1 = []
-lsub1.append("test1")
-lsub1.append("test2")
-lsub2 = []
-lsub2.append("test3")
-lsub2.append("test4")
-lsu = []
-lsu.append(lsub1)
-lsu.append(lsub2)
-l1.append(lsu)
+#l1 = []
+#l1.append("test string")
+#l1.append(15)
+#l1.append("test string 2")
+#lsub = []
+#lsub.append("test")
+#lsub.append("test1")
+#lsub.append("test2")
+#lsub.append("test3")
+#l1.append(lsub)
+#lsub1 = []
+#lsub1.append("test1")
+#lsub1.append("test2")
+#lsub2 = []
+#lsub2.append("test3")
+#lsub2.append("test4")
+#lsu = []
+#lsu.append(lsub1)
+#lsu.append(lsub2)
+#l1.append(lsu)
 
 def save(ls):
-	f = open("../save1.sav","w")
+	f = open("../saves/data.save","w")
 	for index in ls:
 		if type(index).__name__ == "int":
 			f.write("int:" + str(index) + "\n")
@@ -50,7 +50,7 @@ def save(ls):
 	f.close()
 		
 def load():
-	f = open("../save1.sav","r")
+	f = open("../saves/data.save","r")
 	returnList = []
 	isLoading2D = False
 	firstDim = []
@@ -94,5 +94,5 @@ def load():
 	f.close()
 	
 
-save(l1)
-print(load())
+#save(l1)
+#print(load())

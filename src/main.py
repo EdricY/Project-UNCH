@@ -239,7 +239,8 @@ def save():
 	DPS,
 	HIGHEST_ZONE,
 	CURRENT_ZONE,
-	ZONE_MOBS_KILLED]
+	ZONE_MOBS_KILLED,
+	HEROES]
 	save.save(SD)
 
 def load():
@@ -250,6 +251,7 @@ def load():
 	HIGHEST_ZONE = LD[3]
 	CURRENT_ZONE = LD[4]
 	ZONE_MOBS_KILLED = LD[5]
+	HEROES = LD[6]
 
 
 #Handle Input
@@ -261,6 +263,7 @@ while GAME_RUNNING:
 	if quitMenuOpen:
 		if ch=='y' or ch=='Y':
 			GAME_RUNNING=False
+			save()
 			quit()
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
