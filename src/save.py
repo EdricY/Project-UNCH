@@ -20,11 +20,11 @@ l1.append(lsu)
 def save(list):
 	f = open("../save1.sav","w")
 	for index in list:
-		if type(i).__name__ == "int":
+		if type(index).__name__ == "int":
 			f.write("int:" + index + "\n")
-		elif type(i).__name__ == "str":
+		elif type(index).__name__ == "str":
 			f.write("str:" + index + "\n")
-		elif type(i).__name__ == "list":
+		elif type(index).__name__ == "list":
 			if(isinstance(b in a in index, list)):
 				f.write("2st:" + "\n")
 				for list1 in index:
