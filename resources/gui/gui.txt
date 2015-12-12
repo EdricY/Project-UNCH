@@ -1,6 +1,6 @@
 &YXO=&GXMoney&YX========O&XX O=&YXTabs&XX======O O====================O I==I
 &YX|  &GX$&XX           |&XX |hero |stats| <(-)              (+)> |  |
-&YXO==============O&XX O=&BWF11&XX===&BWF12&XX=O O====================O |  |
+&YXO==============O&XX O=&CXF11&XX===&CXF12&XX=O O====================O |  |
 O=&YXHeroes&XX=======O O=&GXSkills&XX====O O====================O |  |
 |              | |           | |                    | |  |
 |              | |           | |                    | |  |
@@ -13,7 +13,7 @@ O=&YXHeroes&XX=======O O=&GXSkills&XX====O O====================O |  |
 |--------------| |-----------| |                    | |  |
 |              | |           | |                    | |  |
 |              | |           | |                    | |  |
-|&BW(Page Down/Up)&XX| |&BW(Pg Dn/Up)&XX | |                    | |  |
+|&CX(Page Down/Up)&XX| |&CX(Pg Dn/Up)&XX | |                    | |  |
 O==============O O===========O O=&RXHP:&XX================O |  |
 O=&GXInformation&XX=======================================O |  |
 |Press &KWH (KEY)&XX for more information                 | |  |
