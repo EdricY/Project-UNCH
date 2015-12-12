@@ -166,7 +166,7 @@ def draw():
 	for i in range(4):
 		method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
 		method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
-		method.bufferxy(1,5+3*i,"&CX" + str(1+i+HERO_SCREEN*4) + "&XX:")
+		method.bufferxy(1,5+3*i,"&CX" + str(1+i) + "&XX:")
 		method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
 	if not quitMenuOpen:
 		if lastch=='.' or lastch=='>': #characters at bottom
@@ -295,14 +295,14 @@ while GAME_RUNNING:
 			elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
 				CURRENT_ZONE=CURRENT_ZONE-1
 				createMob()
-		elif ch=='[' or ch=='{':
+		elif ch=="[" or ch=="{":
 			HERO_SCREEN=0
 			MONEY+=10
-		elif ch==']' or ch=='}':
+		elif ch=="]" or ch=="}":
 			HERO_SCREEN=1
 			MONEY+=11
 		else:
-			for i in range(8):
+			for i in range(4):
 				if ch==str(i+1):
-					MONEY-=HEROES[i][3]
-					HEROES[i][1]+=1
+					MONEY-=HEROES[i+4*HERO_SCREEN][3]
+					HEROES[i+4*HERO_SCREEN][1]+=1
