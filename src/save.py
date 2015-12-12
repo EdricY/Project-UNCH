@@ -42,7 +42,7 @@ def save(ls):
 					f.write("\n")
 		else:
 			f.write("not a real type\n")
-	close(f)
+	f.close()
 		
 def load():
 	f = open("../save1.sav","r")
@@ -59,7 +59,7 @@ def load():
 		else:
 			returnList.append("not a real type")
 	return returnList
-	close(f)
+	f.close()
 	
 
 save(l1)
