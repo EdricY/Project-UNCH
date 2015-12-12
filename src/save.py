@@ -17,9 +17,9 @@ lsu.append(lsub1)
 lsu.append(lsub2)
 l1.append(lsu)
 
-def save(list):
+def save(ls):
 	f = open("../save1.sav","w")
-	for index in list:
+	for index in ls:
 		if type(index).__name__ == "int":
 			f.write("int:" + str(index) + "\n")
 		elif type(index).__name__ == "str":
