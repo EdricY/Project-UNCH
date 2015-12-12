@@ -59,7 +59,7 @@ HEROES.append(["Betty", 0, 0, 12500])
 HEROES.append(["Sam", 0, 0, 62500])
 HEROES.append(["Leon", 0, 0, 5000000])
 HEROES.append(["Seer", 0, 0, 25000000]) 
-HERO_SCREEN=0
+HERO_SCREEN=0 #for now this is 0 or 1
 
 #Mob loading
 for i in MOB_FILES:
@@ -168,9 +168,9 @@ def draw():
 			method.bufferxy(36,16,method.dispBigNum(MOB_HP) + "&XX") #mob hp num
 	#Heroes
 	for i in range(4):
-		method.bufferxy(1,4+*3i,HEROES[0][i+HERO_SCREEN*4]) # hero name
-		method.bufferxy(11,5+*3i,str(HEROES[1][i+HERO_SCREEN*4])) # hero level
-		method.bufferxy(1,6+*3i,"&BX" + str(i+HERO_SCREEN*4)+"&XX:  " + str(HEROES[3][i+HERO_SCREEN*4])) # hero cost
+		method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
+		method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1]),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
+		method.bufferxy(1,5+3*i,"&BX" + str(i+HERO_SCREEN*4) +"&XX:  " + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])) # hero cost
 	if quitMenuOpen:
 		gui.drawquitmenu(ROWS,COLUMNS)
 
