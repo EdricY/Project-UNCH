@@ -183,7 +183,7 @@ def draw():
 			method.bufferxy(1,20,"Use &CX>&XX and &CX<&XX to attack (no need to press SHIFT)")
 		if HERO_DISP_NUM != 0:
 			for i in range(2):
-				method.bufferxy(1, 18+i,HERO_DESC[i])
+				method.bufferxy(1, 18+i,HERO_DESC[HERO_DISP_NUM][i])
 		else:
 			method.bufferxy(49,22,"&MX>&XX  ")
 	else:
