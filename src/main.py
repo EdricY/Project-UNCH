@@ -263,6 +263,7 @@ def save():
 
 #Actually load
 def load():
+	global MONEY
 	LD = gamesave.load()
 	typesMatch  = checkTypes(updateVarsToSave(), LD)
 	if typesMatch:
@@ -274,6 +275,7 @@ def load():
 		ZONE_MOBS_KILLED = LD[5]
 		HEROES = LD[6]
 	else:
+		MONEY+=12345
 		loadMenuOpen = True
 
 def quit():
@@ -306,6 +308,7 @@ while GAME_RUNNING:
 		ch = " "
 		lastch = " "
 	elif loadMenuOpen and ch != lastch:
+		MONEY += 123
 		loadMenuOpen = False
 		ch = " "
 		lastch = " "
