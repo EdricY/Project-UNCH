@@ -25,7 +25,7 @@ def save(list):
 		elif type(index).__name__ == "str":
 			f.write("str:" + index + "\n")
 		elif type(index).__name__ == "list":
-			if(index.ndim == 2):
+			if(isinstance(index.ndim[0][0],list)):
 				f.write("2st:" + "\n")
 				for list1 in index:
 					for list2 in list1:
