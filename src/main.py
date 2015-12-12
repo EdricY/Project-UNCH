@@ -177,9 +177,9 @@ def draw():
 			method.bufferxy(1,19,"Press &CXQ&XX to Quit.")
 			method.bufferxy(1,20,"Use &CX>&XX and &CX<&XX to attack (no need to press SHIFT)")
 		elif HERO_DISP_NUM != 0:
-			method.bufferxy(1, 18,HEROES[HERO_DISP_NUM-1][0] + "                                          ")
+			method.bufferxy(1, 18,HEROES[HERO_DISP_NUM-1+4*HERO_SCREEN][0] + "                                          ")
 			for i in range(2):
-				method.bufferxy(3, 19+i,HERO_DESC[HERO_DISP_NUM-1][i])
+				method.bufferxy(3, 19+i,HERO_DESC[HERO_DISP_NUM-1+4*HERO_SCREEN][i])
 		else:
 			method.bufferxy(49,22,"&MX>&XX  ")
 	else:
@@ -280,7 +280,7 @@ while GAME_RUNNING:
 	elif lastch=='h':
 		try:
 			HERO_DISP_NUM = int(ch)
-			if HERO_DISP_NUM == 9:
+			if HERO_DISP_NUM > 4:
 				HERO_DISP_NUM = 0
 		except ValueError:
 			pass
@@ -293,21 +293,19 @@ while GAME_RUNNING:
 			quitMenuOpen = True
 		elif ch=='0': #THIS IS DEBUG CODE ONLY
 			destroy()
-		elif MOB_DEAD==False:
-			if (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE:
-				CURRENT_ZONE=CURRENT_ZONE+1
-				createMob()
-			elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
-				CURRENT_ZONE=CURRENT_ZONE-1
-				createMob()
+		elif (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE and MOB_DEAD==False:
+			CURRENT_ZONE=CURRENT_ZONE+1
+			createMob()
+		elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0 and MOB_DEAD==False:
+			CURRENT_ZONE=CURRENT_ZONE-1
+			createMob()
 		elif ch=="[" or ch=="{":
 			HERO_SCREEN=0
-			MONEY+=10
 		elif ch=="]" or ch=="}":
 			HERO_SCREEN=1
-			MONEY+=11
 		else:
 			for i in range(4):
 				if ch==str(i+1):
 					MONEY-=HEROES[i+4*HERO_SCREEN][3]
 					HEROES[i+4*HERO_SCREEN][1]+=1
+
