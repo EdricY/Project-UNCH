@@ -24,34 +24,6 @@ COLUMNS = int(COLUMNS)
 lastROWS=0
 lastCOLS=0
 
-#Data to save
-def save():
-	SD = [MONEY,
-	HIT_DMG,
-	DPS,
-	HIGHEST_ZONE,
-	CURRENT_ZONE,
-	ZONE_MOBS_KILLED,
-	HEROES]
-	save.save(SD)
-
-def load():
-	LD = save.load()
-	MONEY = LD[0]
-	HIT_DMG = LD[1]
-	DPS = LD[2]
-	HIGHEST_ZONE = LD[3]
-	CURRENT_ZONE = LD[4]
-	ZONE_MOBS_KILLED = LD[5]
-	HEROES = LD[6]
-
-def quit():
-	os.system("stty echo")
-	os.system("setterm -cursor on")
-	print "Project UNCH has quit."
-	os.system('clear')
-	save()
-	sys.exit(0)
 
 #Global variables
 FRAMES_PER_SECOND = 20
@@ -250,11 +222,39 @@ def mainloop():
 			time.sleep(sleepTime)
 		except Exception:
 			pass
-
 mainthread = threading.Thread(name='main', target=mainloop)
 mainthread.setDaemon(True)
 mainthread.start()
 
+#Data to save
+def save():
+	SD = [MONEY,
+	HIT_DMG,
+	DPS,
+	HIGHEST_ZONE,
+	CURRENT_ZONE,
+	ZONE_MOBS_KILLED,
+	HEROES]
+	save.save(SD)
+
+def load():
+	LD = save.load()
+	MONEY = LD[0]
+	HIT_DMG = LD[1]
+	DPS = LD[2]
+	HIGHEST_ZONE = LD[3]
+	CURRENT_ZONE = LD[4]
+	ZONE_MOBS_KILLED = LD[5]
+	HEROES = LD[6]
+
+def quit():
+	os.system("stty echo")
+	os.system("setterm -cursor on")
+	print "Project UNCH has quit."
+	os.system('clear')
+	save()
+	sys.exit(0)
+	
 #Handle Input
 while GAME_RUNNING:
 	lastch=ch
@@ -295,7 +295,10 @@ while GAME_RUNNING:
 			elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
 				CURRENT_ZONE=CURRENT_ZONE-1
 				createMob()
-		
+		elif ch=='[' or ch=='{':
+			HERO_SCREEN=0
+		elif ch==']' or ch=='}':
+			HERO_SCREEN=1
 		else:
 			for i in range(8):
 				if ch==str(i+1):
