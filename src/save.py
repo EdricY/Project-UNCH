@@ -17,6 +17,7 @@ lsu.append(lsub1)
 lsu.append(lsub2)
 l1.append(lsu)
 
+save(l1)
 
 def save(list):
 	f = open("../save1.sav","w")
