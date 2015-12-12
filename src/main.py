@@ -285,4 +285,4 @@ while GAME_RUNNING:
 					pass
 				if x < 9  and x > 0:
 					for i in range(2):
-					method.bufferxy(1,18+i,HERO_DESC[i])
+						method.bufferxy(1,18+i,HERO_DESC[i])
