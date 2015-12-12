@@ -89,3 +89,4 @@ def load():
 	
 
 save(l1)
+print(load())
