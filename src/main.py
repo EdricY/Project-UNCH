@@ -169,8 +169,8 @@ def draw():
 	#Heroes
 	for i in range(4):
 		method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
-		method.bufferxy(11,5+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
-		method.bufferxy(1,6+3*i,"&BX" + str(i+HERO_SCREEN*4) +"&XX:  " + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])) # hero cost
+		method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1]),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
+		method.bufferxy(1,5+3*i,"&BX" + str(i+HERO_SCREEN*4) +"&XX:  " + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])) # hero cost
 	if quitMenuOpen:
 		gui.drawquitmenu(ROWS,COLUMNS)
 
