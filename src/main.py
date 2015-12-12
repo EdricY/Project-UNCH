@@ -291,3 +291,8 @@ while GAME_RUNNING:
 			elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
 				CURRENT_ZONE=CURRENT_ZONE-1
 				createMob()
+		else:
+			for i in range(8):
+				if ch==str(i+1):
+					MONEY-=HEROES[i][3]
+					HEROES[i][1]+=1
