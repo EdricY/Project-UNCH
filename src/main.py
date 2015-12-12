@@ -288,13 +288,12 @@ while GAME_RUNNING:
 			quitMenuOpen = True
 		elif ch=='0': #THIS IS DEBUG CODE ONLY
 			destroy()
-		elif MOB_DEAD==False:
-			if (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE:
-				CURRENT_ZONE=CURRENT_ZONE+1
-				createMob()
-			elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
-				CURRENT_ZONE=CURRENT_ZONE-1
-				createMob()
+		elif (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE and MOB_DEAD==False:
+			CURRENT_ZONE=CURRENT_ZONE+1
+			createMob()
+		elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0 and MOB_DEAD==False:
+			CURRENT_ZONE=CURRENT_ZONE-1
+			createMob()
 		elif ch=="[" or ch=="{":
 			HERO_SCREEN=0
 			MONEY+=10
@@ -306,3 +305,4 @@ while GAME_RUNNING:
 				if ch==str(i+1):
 					MONEY-=HEROES[i+4*HERO_SCREEN][3]
 					HEROES[i+4*HERO_SCREEN][1]+=1
+
