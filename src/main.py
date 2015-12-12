@@ -261,7 +261,7 @@ def save():
 
 #Actually load
 def load():
-	LD = save.load()
+	LD = gamesave.load()
 	typesMatch  = checkTypes(updateVarsToSave(), LD)
 	if typesMatch and len(updateVarsToSave()) == len(LD):
 		MONEY = LD[0]
