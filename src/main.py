@@ -59,7 +59,7 @@ HEROES.append(["Betty", 0, 0, 12500])
 HEROES.append(["Sam", 0, 0, 62500])
 HEROES.append(["Leon", 0, 0, 5000000])
 HEROES.append(["Seer", 0, 0, 25000000]) 
-HERO_SCREEN=0
+HERO_SCREEN=0 #for now this is 0 or 1
 
 #Mob loading
 for i in MOB_FILES:
