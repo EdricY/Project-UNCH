@@ -28,7 +28,7 @@ def save(ls):
 			if(isinstance(index[0],list)):
 				f.write("2st:" + "\n")
 				for list1 in index:
-					for element in list2:
+					for element in list1:
 						f.write(element + "	")
 					f.write("\n")
 				f.write("end\n")
