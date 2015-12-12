@@ -236,6 +236,7 @@ HEROES]
 
 #Data to save
 def save():
+	global SD
 	SD = [MONEY,
 	HIT_DMG,
 	DPS,
