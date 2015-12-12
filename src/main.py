@@ -25,10 +25,10 @@ lastROWS=0
 lastCOLS=0
 def quit():
 	os.system("stty echo")
-	os.system('clear')
 	os.system("setterm -cursor on")
 	print "Project UNCH has quit."
 	sys.exit(0)
+	os.system('clear')
 
 #Global variables
 FRAMES_PER_SECOND = 20
@@ -58,8 +58,19 @@ HEROES.append(["Fish", 0, 0, 2500])
 HEROES.append(["Betty", 0, 0, 12500])
 HEROES.append(["Sam", 0, 0, 62500])
 HEROES.append(["Leon", 0, 0, 5000000])
-HEROES.append(["Seer", 0, 0, 25000000]) 
+HEROES.append(["Seer", 0, 0, 25000000])
 HERO_SCREEN=0 #for now this is 0 or 1
+
+HERO_DESC=[]
+HERO_DESC.append(["Treebeast", "Blah 1Blah Blah", "And More Blah"])
+HERO_DESC.append(["Ivan","Blah Blah Bl2ah", "And More Blah"])
+HERO_DESC.append(["Brittany","Blah Blah Blah", "And 3More Blah"])
+HERO_DESC.append(["Fish", "Blah Blah B4lah", "And More Blah"])
+HERO_DESC.append(["Betty", "Blah Blah5 Blah", "And More Blah"])
+HERO_DESC.append(["Sam", "Blah Blah Blah", "And6 More Blah"])
+HERO_DESC.append(["Leon", "Blah Blah7 Blah", "And More Blah"])
+HERO_DESC.append(["Seer", "Blah Blah Blah", "An8d More Blah"])
+HERO_DISP_NUM=0
 
 #Mob loading
 for i in MOB_FILES:
@@ -266,5 +277,11 @@ while GAME_RUNNING:
 			elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
 				CURRENT_ZONE=CURRENT_ZONE-1
 				createMob()
-#		elif lastch=='h':
-#			if ch=='1':
+		elif lastch=='h':
+			try:
+				x = int(ch)
+			except ValueError:
+				pass
+			elif x < 9  and x > 0:
+				for i in range(2):
+				method.bufferxy(1,18+i,HERO_DESC[i])
