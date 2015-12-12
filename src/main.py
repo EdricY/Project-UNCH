@@ -50,10 +50,17 @@ BOSS_TIMER=0.0
 MOB_DEAD=False
 quitMenuOpen=False
 
-HEROES=[]
-HEROES.append(["Cyd", 0])
-HEROES.append(["Cyd", 0])
-HEROES.append(["Cyd", 0])
+HEROES=[] # hero names 9 chars max
+HEROES.append(["Treebeast", 0, 0, 25]) # name, level, dps, cost
+HEROES.append(["Ivan", 0, 0, 125])
+HEROES.append(["Brittany", 0, 0, 500])
+HEROES.append(["Fish", 0, 0, 2500])
+HEROES.append(["Betty", 0, 0, 12500])
+HEROES.append(["Sam", 0, 0, 62500])
+HEROES.append(["Leon", 0, 0, 5000000])
+HEROES.append(["Seer", 0, 0, 25000000]) 
+HERO_SCREEN=0
+
 #Mob loading
 for i in MOB_FILES:
 	MOBS.append([])
@@ -144,9 +151,8 @@ def draw():
 		else:
 			method.bufferxy(49,22,">  ")
 	Y=int((float(MOB_HP)/float(MOB_MAX_HP))*22.0)
-	X=55
 	for i in range(22-Y, 22):
-		method.bufferxy(X,i+1,("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX") #hashtag healthbar
+		method.bufferxy(55,i+1,("&GG" if Y > 0.5*22.0 else ("&YY" if Y > 0.25*22.0 else "&RR")) + "XX" + "&XX") #hashtag healthbar
 	if MOB_HP <= 0: #mob death animation
 		method.bufferxy(36,16,"rekt&XX")
 		if DEATH_FRAME == 20:
@@ -160,6 +166,11 @@ def draw():
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
 			method.bufferxy(32,4+i,MOBS[CURRENT_MOB][i][:-1])
 			method.bufferxy(36,16,method.dispBigNum(MOB_HP) + "&XX") #mob hp num
+	#Heroes
+	for i in range(4):
+		method.bufferxy(1,4+*3i,HEROES[0][i+HERO_SCREEN*4]) # hero name
+		method.bufferxy(11,5+*3i,str(HEROES[1][i+HERO_SCREEN*4])) # hero level
+		method.bufferxy(1,6+*3i,"&BX" + str(i+HERO_SCREEN*4)+"&XX:  " + str(HEROES[3][i+HERO_SCREEN*4])) # hero cost
 	if quitMenuOpen:
 		gui.drawquitmenu(ROWS,COLUMNS)
 
