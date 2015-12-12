@@ -277,11 +277,12 @@ while GAME_RUNNING:
 			elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
 				CURRENT_ZONE=CURRENT_ZONE-1
 				createMob()
-		elif lastch=='h':
-			try:
-				x = int(ch)
-			except ValueError:
-				pass
-			elif x < 9  and x > 0:
-				for i in range(2):
-				method.bufferxy(1,18+i,HERO_DESC[i])
+		else:
+			if lastch=='h':
+				try:
+					x = int(ch)
+				except ValueError:
+					pass
+				elif x < 9  and x > 0:
+					for i in range(2):
+					method.bufferxy(1,18+i,HERO_DESC[i])
