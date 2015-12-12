@@ -53,7 +53,7 @@ HEROES.append(["Ivan", 0, 0, 125])
 HEROES.append(["Brittany", 0, 0, 500])
 HEROES.append(["Fish", 0, 0, 2500])
 HEROES.append(["Betty", 0, 0, 12500])
-HEROES.append(["Sam", 0, 0, 62500])
+HEROES.append(["Samurai", 0, 0, 62500])
 HEROES.append(["Leon", 0, 0, 5000000])
 HEROES.append(["Seer", 0, 0, 25000000])
 HERO_SCREEN=0 #for now this is 0 or 1
@@ -64,7 +64,7 @@ HERO_DESC.append(["Blah Blah Bl2ah", "And More Blah"])#Ivan
 HERO_DESC.append(["Blah Blah Blah", "And 3More Blah"])#Brittany
 HERO_DESC.append(["Blah Blah B4lah", "And More Blah"])#Fish
 HERO_DESC.append(["Blah Blah5 Blah", "And More Blah"])#Betty
-HERO_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Sam
+HERO_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Samurai
 HERO_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
 HERO_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
 HERO_DISP_NUM=0 #display info for # hero
