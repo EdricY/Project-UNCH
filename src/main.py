@@ -231,9 +231,6 @@ def mainloop():
 			time.sleep(sleepTime)
 		except Exception:
 			pass
-mainthread = threading.Thread(name='main', target=mainloop)
-mainthread.setDaemon(True)
-mainthread.start()
 
 #Data to save
 def updateVarsToSave():
@@ -286,6 +283,10 @@ def quit():
 	sys.exit(0)
 	
 #Handle Input
+load()
+mainthread = threading.Thread(name='main', target=mainloop)
+mainthread.setDaemon(True)
+mainthread.start()
 while GAME_RUNNING:
 	lastch=ch
 	ch = getch.getch()
