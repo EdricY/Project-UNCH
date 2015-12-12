@@ -297,8 +297,10 @@ while GAME_RUNNING:
 				createMob()
 		elif ch=='[' or ch=='{':
 			HERO_SCREEN=0
+			MONEY+=10
 		elif ch==']' or ch=='}':
 			HERO_SCREEN=1
+			MONEY+=11
 		else:
 			for i in range(8):
 				if ch==str(i+1):
