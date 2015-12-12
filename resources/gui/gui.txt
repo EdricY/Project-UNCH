@@ -16,7 +16,7 @@ O=&YXHeroes&XX=======O O=&GXSkills&XX====O O====================O |  |
 |&CX(Page Down/Up)&XX| |&CX(Pg Dn/Up)&XX | |                    | |  |
 O==============O O===========O O=&RXHP:&XX================O |  |
 O=&GXInformation&XX=======================================O |  |
-|Press &KWH (KEY)&XX for more information                 | |  |
+|Press &CXH (KEY)&XX for more information                 | |  |
 |                                                   | |  |
 |                                                   | |  |
 O===================================================O |  |
