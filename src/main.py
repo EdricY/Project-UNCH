@@ -62,14 +62,14 @@ HEROES.append(["Seer", 0, 0, 25000000])
 HERO_SCREEN=0 #for now this is 0 or 1
 
 HERO_DESC=[]
-HERO_DESC.append(["Treebeast", "Blah 1Blah Blah", "And More Blah"])
-HERO_DESC.append(["Ivan","Blah Blah Bl2ah", "And More Blah"])
-HERO_DESC.append(["Brittany","Blah Blah Blah", "And 3More Blah"])
-HERO_DESC.append(["Fish", "Blah Blah B4lah", "And More Blah"])
-HERO_DESC.append(["Betty", "Blah Blah5 Blah", "And More Blah"])
-HERO_DESC.append(["Sam", "Blah Blah Blah", "And6 More Blah"])
-HERO_DESC.append(["Leon", "Blah Blah7 Blah", "And More Blah"])
-HERO_DESC.append(["Seer", "Blah Blah Blah", "An8d More Blah"])
+HERO_DESC.append(["Blah 1Blah Blah", "And More Blah"])#Treeb
+HERO_DESC.append(["Blah Blah Bl2ah", "And More Blah"])#Ivan
+HERO_DESC.append(["Blah Blah Blah", "And 3More Blah"])#Brittany
+HERO_DESC.append(["Blah Blah B4lah", "And More Blah"])#Fish
+HERO_DESC.append(["Blah Blah5 Blah", "And More Blah"])#Betty
+HERO_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Sam
+HERO_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
+HERO_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
 HERO_DISP_NUM=0
 
 #Mob loading
@@ -182,8 +182,9 @@ def draw():
 			method.bufferxy(1,19,"Press &CXQ&XX to Quit.")
 			method.bufferxy(1,20,"Use &CX>&XX and &CX<&XX to attack (no need to press SHIFT)")
 		if HERO_DISP_NUM != 0:
+			method.bufferxy(1, 18,HEROES[HERO_DISP_NUM][0] + "                                          ")
 			for i in range(2):
-				method.bufferxy(1, 18+i,HERO_DESC[HERO_DISP_NUM][i])
+				method.bufferxy(3, 19+i,HERO_DESC[HERO_DISP_NUM][i])
 		else:
 			method.bufferxy(49,22,"&MX>&XX  ")
 	else:
@@ -270,7 +271,7 @@ while GAME_RUNNING:
 	elif lastch=='h':
 		try:
 			HERO_DISP_NUM = int(ch)
-			if 0 > HERO_DISP_NUM or HERO_DISP_NUM > 9:
+			if HERO_DISP_NUM == 9:
 				HERO_DISP_NUM = 0
 		except ValueError:
 			pass
