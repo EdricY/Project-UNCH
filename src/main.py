@@ -122,7 +122,7 @@ def update():
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
 	#gui.drawgui()
-	method.bufferxy(4,1,method.dispBigNum(MONEY) + "&YX") #money
+	method.bufferxy(4,1,"&YX" + method.dispBigNum(MONEY) + "&YX") #money
 	method.bufferxy(33,3,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
 		method.bufferxy(35,1,str(CURRENT_ZONE-1)) #zone num -
