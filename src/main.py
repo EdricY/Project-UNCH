@@ -49,6 +49,9 @@ ZONE_MOBS_KILLED=0
 BOSS_TIMER=0.0
 MOB_DEAD=False
 quitMenuOpen=False
+
+HEROES=[]
+HEROES.append(["Cyd", 0])
 #Mob loading
 for i in MOB_FILES:
 	MOBS.append([])
