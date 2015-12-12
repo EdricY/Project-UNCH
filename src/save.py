@@ -19,14 +19,13 @@ l1.append(lsu)
 
 def save(list):
 	f = open("../save1.sav","w")
-	listcounter = 0
 	for index in list:
 		if type(index).__name__ == "int":
 			f.write("int:" + str(index) + "\n")
 		elif type(index).__name__ == "str":
 			f.write("str:" + index + "\n")
 		elif type(index).__name__ == "list":
-			if(index[listcounter].ndim == 2):
+			if(index.ndim == 2):
 				f.write("2st:" + "\n")
 				for list1 in index:
 					for list2 in list1:
@@ -43,7 +42,6 @@ def save(list):
 					f.write("\n")
 		else:
 			f.write("not a real type\n")
-		listcounter += 1
 	close(f)
 		
 def load():
