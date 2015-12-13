@@ -130,8 +130,8 @@ def update():
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
 	#gui.drawgui()
-	method.bufferxy(9,17,"Dn ]" if HERO_SCREEN==0 else "Up [") #scroll up/down
-	method.bufferxy(22,17,"Dn ]" if HERO_SCREEN==0 else "Up [") #scroll up/down
+	method.bufferxy(9,15,"Dn ]" if HERO_SCREEN==0 else "Up [") #scroll up/down
+	method.bufferxy(22,15,"Dn ]" if HERO_SCREEN==0 else "Up [") #scroll up/down
 	method.bufferxy(4,1,"&YX" + method.dispBigNum(MONEY) + "&YX") #money
 	method.bufferxy(33,3,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
