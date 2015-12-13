@@ -15,7 +15,7 @@ class _GetchUnix:
         fd = sys.stdin.fileno()
         old_settings = termios.tcgetattr(fd)
         try:
-            tty.setraw(sys.stdin.fileno())
+            #tty.setraw(sys.stdin.fileno())
             ch = sys.stdin.readline()
             ch = ch[1:]
         finally:
