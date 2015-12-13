@@ -196,6 +196,15 @@ def draw():
 	if loadMenuOpen:
 		gui.drawloadmenu(ROWS,COLUMNS)
 
+def quit(forced):
+	os.system("stty echo")
+	os.system("setterm -cursor on")
+	os.system('clear')
+	if not forced:
+		print "Project UNCH has quit."
+		save()
+	sys.exit(0)
+		
 #Wait for SPACE before moving on.
 ch=' '
 lastch=' '
@@ -295,15 +304,6 @@ def load():
 			loadMenuOpen = True
 	except Exception:
 		loadMenuOpen = True
-
-def quit(forced):
-	os.system("stty echo")
-	os.system("setterm -cursor on")
-	os.system('clear')
-	if not forced:
-		print "Project UNCH has quit."
-		save()
-	sys.exit(0)
 	
 #Handle Input
 load()
