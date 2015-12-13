@@ -317,14 +317,14 @@ mainthread.setDaemon(True)
 mainthread.start()
 while GAME_RUNNING:
 	lastch=ch
-	try
+	try:
 		ch=os.popen("./getch.sh").read()
 	except KeyboardInterrupt, EOFError:
 		GAME_RUNNING=False
 		quit(True)
 	ch=ch[:1]
 	while ch.isspace():
-		try
+		try:
 			ch=os.popen("./getch.sh").read()
 		except KeyboardInterrupt, EOFError:
 			GAME_RUNNING=False
