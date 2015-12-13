@@ -358,3 +358,4 @@ while GAME_RUNNING:
 						purchaseComplete=i+4*HERO_SCREEN
 					else:
 						purchaseComplete=-1
+	time.sleep(0.05)
