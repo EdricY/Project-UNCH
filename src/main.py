@@ -18,6 +18,8 @@ import gamesave
 os.system("clear")
 os.system("stty -echo")
 os.system("setterm -cursor off")
+os.system("stty -icanon time 0 min 0")
+
 ROWS, COLUMNS = os.popen('stty size', 'r').read().split()
 ROWS = int(ROWS)
 COLUMNS = int(COLUMNS)
@@ -200,6 +202,8 @@ def quit(forced):
 	os.system("stty echo")
 	os.system("setterm -cursor on")
 	os.system('clear')
+	os.system("stty icanon")
+
 	if not forced:
 		print "Project UNCH has quit."
 		save()
@@ -312,13 +316,18 @@ mainthread.setDaemon(True)
 mainthread.start()
 while GAME_RUNNING:
 	lastch=ch
-	try:
-		ch = getch.getch()
-	except KeyboardInterrupt, EOFError:
-		GAME_RUNNING=False
-		quit(True)
+	ch=os.popen("./getch.sh").read()
+	ch=ch[:1]
+	while ch.isspace():
+		ch=os.popen("./getch.sh").read()
+		ch=ch[:1]
+
+#	try:
+#		ch = getch.getch()
+#	except KeyboardInterrupt, EOFError:
+#		GAME_RUNNING=False
+#		quit(True)
 	#cases
-	
 	if quitMenuOpen:
 		if ch=='y' or ch=='Y':
 			GAME_RUNNING=False
@@ -373,4 +382,4 @@ while GAME_RUNNING:
 						purchaseComplete=i+4*HERO_SCREEN
 					else:
 						purchaseComplete=-1
-	time.sleep(0.05)
+#	time.sleep(0.05)
