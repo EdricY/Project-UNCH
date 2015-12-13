@@ -186,7 +186,7 @@ def draw():
 				method.bufferxy(3, 19+i,HERO_DESC[HERO_DISP_NUM-1+4*HERO_SCREEN][i])
 		else:
 			method.bufferxy(49,22,"&MX>&XX  ")
-	elif purchaseComplete!=0:
+	if purchaseComplete!=0:
 		if purchaseComplete==-1:
 			method.bufferxy(1,18,"Not enough money!                                  ")
 		else:
