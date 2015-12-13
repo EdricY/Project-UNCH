@@ -317,17 +317,23 @@ mainthread.setDaemon(True)
 mainthread.start()
 while GAME_RUNNING:
 	lastch=ch
-	ch=os.popen("./getch.sh").read()
+	try
+		ch=os.popen("./getch.sh").read()
+	except KeyboardInterrupt, EOFError:
+		GAME_RUNNING=False
+		quit(True)
 	ch=ch[:1]
 	while ch.isspace():
-		ch=os.popen("./getch.sh").read()
+		try
+			ch=os.popen("./getch.sh").read()
+		except KeyboardInterrupt, EOFError:
+			GAME_RUNNING=False
+			quit(True)
 		ch=ch[:1]
 
-#	try:
-#		ch = getch.getch()
-#	except KeyboardInterrupt, EOFError:
-#		GAME_RUNNING=False
-#		quit(True)
+	try:
+		ch = getch.getch()
+
 	#cases
 	if quitMenuOpen:
 		if ch=='y' or ch=='Y':
