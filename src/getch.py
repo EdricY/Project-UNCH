@@ -4,7 +4,13 @@ screen."""
     def __init__(self):
     	self.impl = _GetchUnix()
 
-    def __call__(self): return self.impl()
+    def __call__(self): 
+        char = self.impl()
+        if char == '\x03':
+            raise KeyboardInterrupt
+        elif char == '\x04':
+            raise EOFError
+        return char
 
 class _GetchUnix:
     def __init__(self):
