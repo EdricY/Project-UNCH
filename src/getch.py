@@ -1,31 +1,25 @@
 class _Getch:
-	"""Gets a single character from standard input.  Does not echo to the
+    """Gets a single character from standard input.  Does not echo to the
 screen."""
-	def __init__(self):
-			self.impl = _GetchUnix()
+    def __init__(self):
+    	self.impl = _GetchUnix()
 
-	def __call__(self): return self.impl()
-
+    def __call__(self): return self.impl()
 
 class _GetchUnix:
-	def __init__(self):
-		import tty, sys
+    def __init__(self):
+        import tty, sys
 
-	def __call__(self):
-		import sys, tty, termios
-		fd = sys.stdin.fileno()
-		old_settings = termios.tcgetattr(fd)
-		try:
-			tty.setraw(sys.stdin.fileno())
-			ch = None
-			futurech = None
-			while True:
-				futurech = sys.stdin.read(1)
-				if futurech != None or futurech != "":
-					ch = futurech
-				else:
-					break
-		finally:
-			termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
-		return ch
+    def __call__(self):
+        import sys, tty, termios
+        fd = sys.stdin.fileno()
+        old_settings = termios.tcgetattr(fd)
+        try:
+            tty.setraw(sys.stdin.fileno())
+            ch = raw_input()
+            ch=ch[:1]
+        finally:
+            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
+        return ch
+        
 getch = _Getch()
