@@ -199,10 +199,12 @@ def draw():
 def quit(forced):
 	os.system("stty echo")
 	os.system("setterm -cursor on")
-	os.system('clear')
 	if not forced:
 		print "Project UNCH has quit."
 		save()
+		os.system('clear')
+	else:
+		print "Keyboard Interrupt. Closing Project UNCH and destroying data."
 	sys.exit(0)
 		
 #Wait for SPACE before moving on.
@@ -212,14 +214,12 @@ try:
 	ch = getch.getch()
 except KeyboardInterrupt, EOFError:
 	GAME_RUNNING=False
-	print "Keyboard Interrupt. Closing Project UNCH and destroying data."
 	quit(True)
 while ch != ' ':
 	try:
 		ch = getch.getch()
 	except KeyboardInterrupt, EOFError:
 		GAME_RUNNING=False
-		print "Keyboard Interrupt. Closing Project UNCH and destroying data."
 		quit(True)
 #Create first mob	
 createMob()
@@ -316,7 +316,6 @@ while GAME_RUNNING:
 		ch = getch.getch()
 	except KeyboardInterrupt, EOFError:
 		GAME_RUNNING=False
-		print "Keyboard Interrupt. Closing Project UNCH and destroying data."
 		quit(True)
 	#cases
 	
