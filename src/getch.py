@@ -24,7 +24,7 @@ class _GetchUnix:
             tty.setraw(sys.stdin.fileno())
             ch = sys.stdin.read(1)
         finally:
-            termios.tcsetattr(fd, termios.TCSANOW, old_settings)
+            termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
         
 getch = _Getch()
