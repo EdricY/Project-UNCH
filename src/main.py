@@ -19,6 +19,7 @@ os.system("clear")
 os.system("stty -echo")
 os.system("setterm -cursor off")
 os.system("stty -icanon time 0 min 0")
+os.system("chmod 711 getch.sh")
 
 ROWS, COLUMNS = os.popen('stty size', 'r').read().split()
 ROWS = int(ROWS)
