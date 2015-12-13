@@ -199,10 +199,10 @@ def draw():
 def quit(forced):
 	os.system("stty echo")
 	os.system("setterm -cursor on")
+	os.system('clear')
 	if not forced:
 		print "Project UNCH has quit."
 		save()
-		os.system('clear')
 	else:
 		print "Keyboard Interrupt. Closing Project UNCH and destroying data."
 	sys.exit(0)
