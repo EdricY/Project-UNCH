@@ -17,7 +17,14 @@ class _GetchUnix:
         old_settings = termios.tcgetattr(fd)
         try:
             tty.setraw(sys.stdin.fileno())
-            ch = sys.stdin.read(1)
+			ch = None
+			futurech = None
+			while True:
+				futurech = sys.stdin.read(1)
+				if futurech != None or futurech != "":
+					ch = futurech
+				else:
+					break
         finally:
             termios.tcsetattr(fd, termios.TCSADRAIN, old_settings)
         return ch
