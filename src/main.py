@@ -199,9 +199,19 @@ def draw():
 #Wait for SPACE before moving on.
 ch=' '
 lastch=' '
-ch = getch.getch()
-while ch != ' ':
+try:
 	ch = getch.getch()
+except KeyboardInterrupt, EOFError:
+	GAME_RUNNING=False
+	print "Project-UNCH was forced to close. Data was lost!"
+	quit()
+while ch != ' ':
+	try:
+		ch = getch.getch()
+	except KeyboardInterrupt, EOFError:
+		GAME_RUNNING=False
+		print "Project-UNCH was forced to close. Data was lost!"
+		quit()
 #Create first mob	
 createMob()
 
@@ -301,7 +311,12 @@ mainthread.setDaemon(True)
 mainthread.start()
 while GAME_RUNNING:
 	lastch=ch
-	ch = getch.getch()
+	try:
+		ch = getch.getch()
+	except KeyboardInterrupt, EOFError:
+		GAME_RUNNING=False
+		print "Project-UNCH was forced to close. Data was lost!"
+		quit()
 	#cases
 	
 	if quitMenuOpen:
