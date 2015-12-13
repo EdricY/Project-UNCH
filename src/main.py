@@ -203,15 +203,15 @@ try:
 	ch = getch.getch()
 except KeyboardInterrupt, EOFError:
 	GAME_RUNNING=False
-	print "Project-UNCH was forced to close. Data was lost!"
-	quit()
+	print "Keyboard Interrupt. Closing Project UNCH and destroying data."
+	quit(True)
 while ch != ' ':
 	try:
 		ch = getch.getch()
 	except KeyboardInterrupt, EOFError:
 		GAME_RUNNING=False
-		print "Project-UNCH was forced to close. Data was lost!"
-		quit()
+		print "Keyboard Interrupt. Closing Project UNCH and destroying data."
+		quit(True)
 #Create first mob	
 createMob()
 
@@ -296,12 +296,13 @@ def load():
 	except Exception:
 		loadMenuOpen = True
 
-def quit():
+def quit(forced):
 	os.system("stty echo")
 	os.system("setterm -cursor on")
-	print "Project UNCH has quit."
 	os.system('clear')
-	save()
+	if not forced:
+		print "Project UNCH has quit."
+		save()
 	sys.exit(0)
 	
 #Handle Input
@@ -315,14 +316,14 @@ while GAME_RUNNING:
 		ch = getch.getch()
 	except KeyboardInterrupt, EOFError:
 		GAME_RUNNING=False
-		print "Project-UNCH was forced to close. Data was lost!"
-		quit()
+		print "Keyboard Interrupt. Closing Project UNCH and destroying data."
+		quit(True)
 	#cases
 	
 	if quitMenuOpen:
 		if ch=='y' or ch=='Y':
 			GAME_RUNNING=False
-			quit()
+			quit(False)
 
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
