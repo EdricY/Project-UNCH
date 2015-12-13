@@ -130,8 +130,8 @@ def update():
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
 	#gui.drawgui()
-	method.bufferxy(9,17,"Dn ]" if HERO_SCREEN==0 else "Up [") #scroll up/down
-	method.bufferxy(22,17,"Dn ]" if HERO_SCREEN==0 else "Up [") #scroll up/down
+	#method.bufferxy(8,15,"Dn] / Up[") #scroll up/down
+	#method.bufferxy(21,15,"Dn] / Up[") #scroll up/down
 	method.bufferxy(4,1,"&YX" + method.dispBigNum(MONEY) + "&YX") #money
 	method.bufferxy(33,3,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
@@ -172,6 +172,11 @@ def draw():
 		method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
 		method.bufferxy(1,5+3*i,"&CX" + str(1+i) + "&XX:")
 		method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
+	if purchaseComplete!=0:
+		if purchaseComplete==-1:
+			method.bufferxy(1,18,"Not enough money!                                  ")
+		else:
+			method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " Gained a level!                          ")
 	if not quitMenuOpen:
 		if lastch=='.' or lastch=='>': #characters at bottom
 			method.bufferxy(49,22," &MX<&XX ")
@@ -186,11 +191,6 @@ def draw():
 				method.bufferxy(3, 19+i,HERO_DESC[HERO_DISP_NUM-1+4*HERO_SCREEN][i])
 		else:
 			method.bufferxy(49,22,"&MX>&XX  ")
-	elif purchaseComplete!=0:
-		if purchaseComplete==-1:
-			method.bufferxy(1,18,"Not enough money!                                  ")
-		else:
-			method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " Gained a level!                          ")
 	else:
 		gui.drawquitmenu(ROWS,COLUMNS)
 	if loadMenuOpen:
@@ -358,3 +358,4 @@ while GAME_RUNNING:
 						purchaseComplete=i+4*HERO_SCREEN
 					else:
 						purchaseComplete=-1
+	time.sleep(0.05)
