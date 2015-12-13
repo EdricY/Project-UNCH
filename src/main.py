@@ -331,9 +331,6 @@ while GAME_RUNNING:
 			quit(True)
 		ch=ch[:1]
 
-	try:
-		ch = getch.getch()
-
 	#cases
 	if quitMenuOpen:
 		if ch=='y' or ch=='Y':
