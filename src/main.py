@@ -36,7 +36,7 @@ MOBS=[]
 DEATH_FRAME = 0
 MONEY=0
 HIT_DMG=1
-DPS=10
+DPS=500000
 DPS_BUFFER=0.0
 MOB_HP=10
 MOB_MAX_HP=10
@@ -51,26 +51,46 @@ loadMenuOpen=False
 purchaseComplete=0
 
 HEROES=[] # hero names 9 chars max
-HEROES.append(["Treebeast", 0, 0, 25]) # name, level, dps, cost
-HEROES.append(["Ivan", 0, 0, 125])
-HEROES.append(["Brittany", 0, 0, 500])
+HEROES.append(["Red", 0, 0, 25]) # name, level, dps, cost
+HEROES.append(["Yu", 0, 0, 125])
+HEROES.append(["Bleegel", 0, 0, 500])
 HEROES.append(["Fish", 0, 0, 2500])
 HEROES.append(["Betty", 0, 0, 12500])
 HEROES.append(["Samurai", 0, 0, 62500])
 HEROES.append(["Leon", 0, 0, 5000000])
 HEROES.append(["Seer", 0, 0, 25000000])
 HERO_SCREEN=0 #for now this is 0 or 1
-
-HERO_DESC=[]
-HERO_DESC.append(["Blah 1Blah Blah", "And More Blah"])#Treeb
-HERO_DESC.append(["Blah Blah Bl2ah", "And More Blah"])#Ivan
-HERO_DESC.append(["Blah Blah Blah", "And 3More Blah"])#Brittany
+                   
+HERO_DESC=[]     #"                                                   "
+HERO_DESC.append(["Known to be inquisitive. \"What's this button do?\"", "Every 5 levels, Red increases your hit damage."])#Red
+HERO_DESC.append(["Loves to spam OP abilities.", "Unlocks &MXFireball&XX which cools faster every 5 levels."])#Yu
+HERO_DESC.append(["Sometimes uncontrollably enters a state of rage.", "Unlocks &MXRage&XX which strengthens every 5 levels."])#Bleegel
 HERO_DESC.append(["Blah Blah B4lah", "And More Blah"])#Fish
 HERO_DESC.append(["Blah Blah5 Blah", "And More Blah"])#Betty
 HERO_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Samurai
 HERO_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
 HERO_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
 HERO_DISP_NUM=0 #display info for # hero
+
+SKILLS=[] # hero names 9 chars max
+SKILLS.append(["Fireball",30] # name, cd (seconds), 
+SKILLS.append(["Rage",30]
+SKILLS.append(["Fireball",30]
+SKILLS.append(["Fireball",30]
+SKILLS.append(["Fireball",30]
+SKILLS.append(["Fireball",30]
+SKILLS.append(["Fireball",30]
+SKILLS.append(["Fireball",30]
+
+SKILL_DESC=[]
+SKILL_DESC.append(["Blah 1Blah Blah", "And More Blah"])#Treeb
+SKILL_DESC.append(["Blah Blah Bl2ah", "And More Blah"])#Ivan
+SKILL_DESC.append(["Blah Blah Blah", "And 3More Blah"])#Brittany
+SKILL_DESC.append(["Blah Blah B4lah", "And More Blah"])#Fish
+SKILL_DESC.append(["Blah Blah5 Blah", "And More Blah"])#Betty
+SKILL_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Samurai
+SKILL_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
+SKILL_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
 
 #Mob loading
 for i in MOB_FILES:
@@ -128,7 +148,8 @@ def update():
         MOB_HP -= int(math.floor(DPS_BUFFER))
         DPS_BUFFER -= math.floor(DPS_BUFFER)
         DPS_BUFFER = float(DPS)/20.0 + DPS_BUFFER
-	if MOB_HP <= 0 and not MOB_DEAD:
+        c = os.popen("read ch; echo $ch").read()[:1] 
+	if MOB_HP <= 0 and not MOB_DEAD and c!="=" and c!="-" and c!="+" and c!="_":
 		killMob()
 	if CURRENT_ZONE % 5 == 0 and 30.0-time.time()+BOSS_TIMER<=0:
 		createMob()
@@ -195,9 +216,9 @@ def draw():
 			method.bufferxy(1,19,"Press &CXQ&XX to Quit.")
 			method.bufferxy(1,20,"Use &CX>&XX and &CX<&XX to attack (no need to press SHIFT)")
 		elif HERO_DISP_NUM != 0:
-			method.bufferxy(1, 18,HEROES[HERO_DISP_NUM-1+4*HERO_SCREEN][0] + "                                          ")
-			for i in range(2):
-				method.bufferxy(3, 19+i,HERO_DESC[HERO_DISP_NUM-1+4*HERO_SCREEN][i])
+			method.bufferxy(1, 18,"                                                   ")
+			for i in range(3):
+				method.bufferxy(1, 18+i,HEROES[HERO_DISP_NUM-1+4*HERO_SCREEN][i])
 		else:
 			method.bufferxy(49,22,"&MX>&XX  ")
 	else:
@@ -273,7 +294,8 @@ def updateVarsToSave():
 	HIGHEST_ZONE,
 	CURRENT_ZONE,
 	ZONE_MOBS_KILLED,
-	HEROES]
+	HEROES,
+	int(os.popen('date +%s').read())]
 	return SD
 	
 def checkTypes(list1, list2):
@@ -311,6 +333,7 @@ def load():
 			CURRENT_ZONE = LD[4]
 			ZONE_MOBS_KILLED = LD[5]
 			HEROES = LD[6]
+			
 		else:
 			loadMenuOpen = True
 	except Exception:
