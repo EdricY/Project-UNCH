@@ -107,5 +107,6 @@ def refreshBuffer():
 #Completely output the framebuffer to the frame.
 #24 X 58
 def printBuffer(rows, columns):
+	BUFFER_LINES[len(BUFFER_LINES)-1]=BUFFER_LINES[len(BUFFER_LINES)-1].strip()
 	for i in range(0,len(BUFFER_LINES)):
-		printxy(columns/2 - 28, rows/2-10+i,color(BUFFER_LINES[i]))
+		printxy(columns/2 - 28, rows/2-11+i,color(BUFFER_LINES[i]))
