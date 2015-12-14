@@ -324,7 +324,7 @@ while GAME_RUNNING:
 		quit(True)
 	ch=ch[:1]
 	while ch.isspace():
-		time.sleep(0.005)
+		time.sleep(0.01)
 		try:
 			ch=os.popen("read ch; echo $ch").read()
 		except KeyboardInterrupt, EOFError:
