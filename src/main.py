@@ -230,6 +230,8 @@ def draw():
 		gui.drawquitmenu(ROWS,COLUMNS)
 	if loadMenuOpen:
 		gui.drawloadmenu(ROWS,COLUMNS)
+	if newMenuOpen:
+		gui.drawnewmenu(ROWS,COLUMNS)
 
 def quit(forced):
 	os.system("stty echo")

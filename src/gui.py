@@ -19,6 +19,9 @@ def drawquitmenu(rows, columns):
 def drawloadmenu(rows, columns):
 	for i in range(0,len(LOAD_LINES)):
 		method.bufferxy(12, i+9,LOAD_LINES[i][:-1])
+def drawnewmenu(rows, columns):
+	for i in range(0,len(LOAD_LINES)):
+		method.bufferxy(11, i+9,LOAD_LINES[i][:-1])
 
 #load GUI file.
 f=open("../resources/gui/gui.txt")
@@ -46,4 +49,11 @@ f=open("../resources/gui/loadfaled.txt")
 LOAD_LINES = []
 for line in f:
 	LOAD_LINES.append(line)
+f.close()
+
+#load newmenu file.
+f=open("../resources/gui/welcome.txt")
+NEW_LINES = []
+for line in f:
+	NEW_LINES.append(line)
 f.close()
