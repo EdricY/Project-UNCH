@@ -1,0 +1,5 @@
+&GXO================================O&XX
+&GX|    Welcome to Project UNCH!    |&XX
+&GX|A &MXnew&XX save file has been created|&XX
+&GX|         &CXPress any key!&XX         |&XX
+&GXO================================O&XX
