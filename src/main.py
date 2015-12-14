@@ -44,6 +44,7 @@ MOB_MAX_HP=10
 CURRENT_MOB=0
 HIGHEST_ZONE=1
 CURRENT_ZONE=1
+MONEY_POS=0
 ZONE_MOBS_KILLED=0
 BOSS_TIMER=0.0
 MOB_DEAD=False
@@ -131,10 +132,11 @@ def createMob():
 	CURRENT_MOB=random.randint(0,COUNT_FILES-1)
 
 def killMob():
-	global ZONE_MOBS_KILLED, HIGHEST_ZONE, MOB_DEAD, MONEY, MONEY_BUFFER
+	global ZONE_MOBS_KILLED, HIGHEST_ZONE, MOB_DEAD, MONEY, MONEY_BUFFER, MONEY_POS
 	MOB_DEAD=True
 	MONEY_BUFFER = CURRENT_ZONE + random.randint(1,5)*(1+CURRENT_ZONE/10)
 	MONEY+=MONEY_BUFFER
+	MONEY_POS=random.randint(0,16)
 	if CURRENT_ZONE==HIGHEST_ZONE:
 		if CURRENT_ZONE % 5 != 0:
 			ZONE_MOBS_KILLED = min(ZONE_MOBS_KILLED + 1, 10)
@@ -191,7 +193,7 @@ def draw():
 		else:
 			for i in range(1,len(MOBS[CURRENT_MOB]) - (DEATH_FRAME/2)):
 				method.bufferxy(32,(4 + (DEATH_FRAME/2)) +i,MOBS[CURRENT_MOB][i][:-1])
-			method.bufferxy(33,16-DEATH_FRAME/2,"+&YX"+str(MONEY_BUFFER)+"&XX") #money animation
+			method.bufferxy(33+MONEY_POS,16-DEATH_FRAME/2,"+&YX"+str(MONEY_BUFFER)+"&XX") #money animation
 			DEATH_FRAME+=1
 	else:
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
