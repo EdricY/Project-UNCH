@@ -73,7 +73,8 @@ HERO_DESC.append(["Blah Blah5 Blah", "And More Blah"])#Betty
 HERO_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Samurai
 HERO_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
 HERO_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
-HERO_DISP_NUM=0 #display info for # hero
+
+HELP_DISP_NUM=0 #display info for # hero/skill
 
 SKILLS=[]
 SKILLS.append(["Big Hits",0,0.0]) # name, cd (seconds) (if 0, its a passive skill), cd timer
@@ -200,11 +201,18 @@ def draw():
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
 			method.bufferxy(32,4+i,MOBS[CURRENT_MOB][i][:-1])
 			method.bufferxy(36,16,method.dispBigNum(MOB_HP) + "&XX") #mob hp num
-	#Heroes
+	
 	for i in range(4):
+		#Heroes
 		method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
 		method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
 		method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
+		#Skills
+		method.bufferxy(19,3+3*i,SKILLS[i+HERO_SCREEN*4][0])
+		if(SKILLS[i+HERO_SCREEN*4][1]==0)
+			method.bufferxy(19,4+3*i,"(Passive)")
+		elif (SKILLS[i+HERO_SCREEN*4][2]==0)
+			method.bufferxy(19,4+3*i,"Ready")
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
 			method.bufferxy(1,18,"Not enough &GXmoney&XX!                                  ")
@@ -219,10 +227,15 @@ def draw():
 			method.bufferxy(1,18,"Press hero/skill key to find information about it.")
 			method.bufferxy(1,19,"Press &CXQ&XX to Quit.")
 			method.bufferxy(1,20,"Use &CX>&XX and &CX<&XX to attack (no need to press SHIFT)")
-		elif HERO_DISP_NUM != 0:
-			method.bufferxy(1, 18,"&YX"+HEROES[HERO_DISP_NUM-1+4*HERO_SCREEN][0] + "&XX                                          ")
-			for i in range(2):
-				method.bufferxy(1, 19+i,HERO_DESC[HERO_DISP_NUM-1+4*HERO_SCREEN][i])
+		elif HELP_DISP_NUM != 0:
+			if HELP_DISP_NUM<5 
+				method.bufferxy(1, 18,"&YX"+HEROES[HELP_DISP_NUM-1+4*HERO_SCREEN][0] + "&XX                                          ")
+				for i in range(2):
+					method.bufferxy(19, 19+i,HERO_DESC[HELP_DISP_NUM-1+4*HERO_SCREEN][i])
+			else #Skill descriptions
+				method.bufferxy(1, 18,"&YX"+SKILLS[HELP_DISP_NUM-5+4*HERO_SCREEN][0] + "&XX                                          ")
+				for i in range(2):
+					method.bufferxy(1, 19+i,SKILL_DESC[HELP_DISP_NUM-5+4*HERO_SCREEN][i])
 		else:
 			method.bufferxy(49,22,"&MX>&XX  ")
 	else:
@@ -383,8 +396,8 @@ while GAME_RUNNING:
 
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
-	elif HERO_DISP_NUM != 0 and ch != lastch:
-		HERO_DISP_NUM = 0
+	elif HELP_DISP_NUM != 0 and ch != lastch:
+		HELP_DISP_NUM = 0
 		ch = " "
 		lastch = " "
 	elif purchaseComplete != 0 and ch != lastch:
@@ -401,9 +414,9 @@ while GAME_RUNNING:
 		lastch = " "
 	elif lastch=='h':
 		try:
-			HERO_DISP_NUM = int(ch)
-			if HERO_DISP_NUM > 4:
-				HERO_DISP_NUM = 0
+			HELP_DISP_NUM = int(ch)
+			if HELP_DISP_NUM > 8:
+				HELP_DISP_NUM = 0
 		except ValueError:
 			pass
 	else:
