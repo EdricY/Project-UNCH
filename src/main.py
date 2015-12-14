@@ -329,7 +329,7 @@ def load():
 	global MONEY, HIT_DMG, DPS, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, HEROES
 	try:
 		LD = gamesave.load()
-		if type(LD) == type(""):
+		if type(LD) == type("NEW"):
 			if LD == "NEW":
 				newMenuOpen = True
 		else:

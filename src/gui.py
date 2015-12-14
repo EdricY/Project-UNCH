@@ -20,7 +20,7 @@ def drawloadmenu(rows, columns):
 	for i in range(0,len(LOAD_LINES)):
 		method.bufferxy(12, i+9,LOAD_LINES[i][:-1])
 def drawnewmenu(rows, columns):
-	for i in range(0,len(LOAD_LINES)):
+	for i in range(0,len(NEW_LINES)):
 		method.bufferxy(11, i+9,LOAD_LINES[i][:-1])
 
 #load GUI file.
