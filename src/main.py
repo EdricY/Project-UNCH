@@ -396,12 +396,14 @@ while GAME_RUNNING:
 			quitMenuOpen = True
 		elif ch=='0': #THIS IS DEBUG CODE ONLY
 			destroy()
-		elif (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE and MOB_DEAD==False:
+		elif (ch=='=' or ch=='+') and CURRENT_ZONE<HIGHEST_ZONE:
 			CURRENT_ZONE=CURRENT_ZONE+1
-			createMob()
-		elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0 and MOB_DEAD==False:
+			if MOB_DEAD==False:
+				createMob()
+		elif (ch=='-' or ch=='_') and CURRENT_ZONE-1>0:
 			CURRENT_ZONE=CURRENT_ZONE-1
-			createMob()
+			if MOB_DEAD==False:
+				createMob()
 		elif ch=="[" or ch=="{":
 			HERO_SCREEN=0
 		elif ch=="]" or ch=="}":
