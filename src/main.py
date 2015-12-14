@@ -50,6 +50,7 @@ BOSS_TIMER=0.0
 MOB_DEAD=False
 quitMenuOpen=False
 loadMenuOpen=False
+newMenuOpen=False
 purchaseComplete=0
 
 HEROES=[] # hero names 9 chars max
@@ -322,24 +323,28 @@ def save():
 
 #Actually load
 def load():
-	global loadMenuOpen
+	global loadMenuOpen, newMenuOpen
 	#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
 	global MONEY, HIT_DMG, DPS, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, HEROES
 	try:
 		LD = gamesave.load()
-		typesMatch  = checkTypes(updateVarsToSave(), LD)
-		if typesMatch:
-			#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
-			MONEY = LD[0]
-			HIT_DMG = LD[1]
-			DPS = LD[2]
-			HIGHEST_ZONE = LD[3]
-			CURRENT_ZONE = LD[4]
-			ZONE_MOBS_KILLED = LD[5]
-			HEROES = LD[6]
-			
+		if type(LD) == type(""):
+			if LD == "NEW":
+				newMenuOpen = True
 		else:
-			loadMenuOpen = True
+			typesMatch  = checkTypes(updateVarsToSave(), LD)
+			if typesMatch:
+				#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
+				MONEY = LD[0]
+				HIT_DMG = LD[1]
+				DPS = LD[2]
+				HIGHEST_ZONE = LD[3]
+				CURRENT_ZONE = LD[4]
+				ZONE_MOBS_KILLED = LD[5]
+				HEROES = LD[6]
+			
+			else:
+				loadMenuOpen = True
 	except Exception:
 		loadMenuOpen = True
 	
@@ -383,6 +388,10 @@ while GAME_RUNNING:
 		lastch = " "
 	elif loadMenuOpen and ch != lastch:
 		loadMenuOpen = False
+		ch = " "
+		lastch = " "
+	elif newMenuOpen and ch != lastch:
+		newMenuOpen = False
 		ch = " "
 		lastch = " "
 	elif lastch=='h':

@@ -50,6 +50,8 @@ def save(ls):
 	f.close()
 		
 def load():
+	if os.stat("../saves/data.save").st_size == 0:
+		return "NEW"
 	f = open("../saves/data.save","r")
 	returnList = []
 	isLoading2D = False
