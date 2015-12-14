@@ -137,7 +137,7 @@ def killMob():
 	MOB_DEAD=True
 	MONEY_BUFFER = CURRENT_ZONE + random.randint(1,5)*(1+CURRENT_ZONE/10)
 	MONEY+=MONEY_BUFFER
-	MONEY_POS=random.randint(0,16)
+	MONEY_POS=random.randint(0,17-len(str(MONEY_BUFFER)))
 	if CURRENT_ZONE==HIGHEST_ZONE:
 		if CURRENT_ZONE % 5 != 0:
 			ZONE_MOBS_KILLED = min(ZONE_MOBS_KILLED + 1, 10)
@@ -194,7 +194,7 @@ def draw():
 		else:
 			for i in range(1,len(MOBS[CURRENT_MOB]) - (DEATH_FRAME/2)):
 				method.bufferxy(32,(4 + (DEATH_FRAME/2)) +i,MOBS[CURRENT_MOB][i][:-1])
-			method.bufferxy(33+MONEY_POS,16-DEATH_FRAME/2,"+&YX"+str(MONEY_BUFFER)+"&XX") #money animation
+			method.bufferxy(33+MONEY_POS,14-DEATH_FRAME/2,"+&YX"+str(MONEY_BUFFER)+"&XX") #money animation
 			DEATH_FRAME+=1
 	else:
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
@@ -204,7 +204,6 @@ def draw():
 	for i in range(4):
 		method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
 		method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
-		method.bufferxy(1,5+3*i,"&CX" + str(1+i) + "&XX:")
 		method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
