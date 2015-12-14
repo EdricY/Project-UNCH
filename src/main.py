@@ -76,17 +76,17 @@ HERO_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
 HERO_DISP_NUM=0 #display info for # hero
 
 SKILLS=[]
-SKILLS.append(["Fireball",30]) # name, cd (seconds), 
-SKILLS.append(["Rage",30])
-SKILLS.append(["Fireball",30])
-SKILLS.append(["Fireball",30])
-SKILLS.append(["Fireball",30])
-SKILLS.append(["Fireball",30])
-SKILLS.append(["Fireball",30])
-SKILLS.append(["Fireball",30])
+SKILLS.append(["Big Hits",0,0.0]) # name, cd (seconds) (if 0, its a passive skill), cd timer
+SKILLS.append(["Fireball",30,0.0])
+SKILLS.append(["Rage",30,0.0])
+SKILLS.append(["Fireball",30,0.0])
+SKILLS.append(["Fireball",30,0.0])
+SKILLS.append(["Fireball",30,0.0])
+SKILLS.append(["Fireball",30,0.0])
+SKILLS.append(["Fireball",30,0.0])
 
 SKILL_DESC=[]
-SKILL_DESC.append(["Blah 1Blah Blah", "And More Blah"])
+SKILL_DESC.append(["Increases Hit Damage.", "Every 5 leves, Red"])
 SKILL_DESC.append(["Blah Blah Bl2ah", "And More Blah"])
 SKILL_DESC.append(["Blah Blah Blah", "And 3More Blah"])
 SKILL_DESC.append(["Blah Blah B4lah", "And More Blah"])
@@ -259,6 +259,10 @@ while ch != ' ':
 	except KeyboardInterrupt, EOFError:
 		GAME_RUNNING=False
 		quit(True)
+
+for y in range(1, ROWS+1): #refresh screen
+	for x in range(1, COLUMNS+1):
+		method.printxy(x,y," ")
 #Create first mob	
 createMob()
 
