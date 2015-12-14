@@ -208,11 +208,11 @@ def draw():
 		method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
 		method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
 		#Skills
-		method.bufferxy(19,3+3*i,SKILLS[i+HERO_SCREEN*4][0])
+		method.bufferxy(19,4+3*i,SKILLS[i+HERO_SCREEN*4][0])
 		if(SKILLS[i+HERO_SCREEN*4][1]==0):
-			method.bufferxy(19,4+3*i,"(Passive)")
-		elif (SKILLS[i+HERO_SCREEN*4][2]==0):
-			method.bufferxy(19,4+3*i,"Ready")
+			method.bufferxy(19,5+3*i,"(Passive)")
+		elif (SKILLS[i+HERO_SCREEN*4][2]==0 and HEROES[i+HERO_SCREEN*4][1]>0):
+			method.bufferxy(19,5+3*i,"Ready")
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
 			method.bufferxy(1,18,"Not enough &GXmoney&XX!                                  ")
