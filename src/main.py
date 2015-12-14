@@ -35,8 +35,9 @@ COUNT_FILES=0
 MOBS=[]
 DEATH_FRAME = 0
 MONEY=0
+MONEY_BUFFER=0
 HIT_DMG=1
-DPS=500000
+DPS=1
 DPS_BUFFER=0.0
 MOB_HP=10
 MOB_MAX_HP=10
@@ -132,7 +133,8 @@ def createMob():
 def killMob():
 	global ZONE_MOBS_KILLED, HIGHEST_ZONE, MOB_DEAD, MONEY
 	MOB_DEAD=True
-	MONEY += 15
+	MONEY_BUFFER = 15
+	MONEY+=15
 	if CURRENT_ZONE==HIGHEST_ZONE:
 		if CURRENT_ZONE % 5 != 0:
 			ZONE_MOBS_KILLED = min(ZONE_MOBS_KILLED + 1, 10)
@@ -189,6 +191,7 @@ def draw():
 		else:
 			for i in range(1,len(MOBS[CURRENT_MOB]) - (DEATH_FRAME/2)):
 				method.bufferxy(32,(4 + (DEATH_FRAME/2)) +i,MOBS[CURRENT_MOB][i][:-1])
+			method.bufferxy(33,16-DEATH_FRAME/2,"+&YX"+str(MONEY_BUFFER)+"&XX") #money animation
 			DEATH_FRAME+=1
 	else:
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
