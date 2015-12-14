@@ -138,8 +138,8 @@ def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
 	#gui.drawgui()
 	method.bufferxy(26,15,str(1+HERO_SCREEN)) #scroll up/down
-	method.bufferxy(15,25,method.dispBigNum(HIT_DMG)) #Hit Dmg
-	method.bufferxy(37,25,method.dispBigNum(DPS)) #DPS
+	method.bufferxy(15,22,method.dispBigNum(HIT_DMG)) #Hit Dmg
+	method.bufferxy(37,22,method.dispBigNum(DPS)) #DPS
 	method.bufferxy(4,1,"&YX" + method.dispBigNum(MONEY) + "&YX") #money
 	method.bufferxy(33,3,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
