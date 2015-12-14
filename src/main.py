@@ -216,9 +216,9 @@ def draw():
 			method.bufferxy(1,19,"Press &CXQ&XX to Quit.")
 			method.bufferxy(1,20,"Use &CX>&XX and &CX<&XX to attack (no need to press SHIFT)")
 		elif HERO_DISP_NUM != 0:
-			method.bufferxy(1, 18,"                                                   ")
-			for i in range(3):
-				method.bufferxy(1, 18+i,HEROES[HERO_DISP_NUM-1+4*HERO_SCREEN][i])
+			method.bufferxy(1, 18,HEROES[HERO_DISP_NUM-1+4*HERO_SCREEN][0] + "                                          ")
+			for i in range(2):
+				method.bufferxy(3, 19+i,HERO_DESC[HERO_DISP_NUM-1+4*HERO_SCREEN][i])
 		else:
 			method.bufferxy(49,22,"&MX>&XX  ")
 	else:
