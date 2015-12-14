@@ -50,7 +50,7 @@ def save(ls):
 	f.close()
 		
 def load():
-	if os.stat("../saves/data.save").st_size == 0:
+	if os.stat("../saves/data.save").st_size <= 2:
 		return "NEW"
 	f = open("../saves/data.save","r")
 	returnList = []
