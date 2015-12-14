@@ -318,7 +318,7 @@ mainthread.start()
 while GAME_RUNNING:
 	lastch=ch
 	try:
-		ch=os.popen("./getch.sh").read()
+		ch=os.popen("read ch; echo $ch").read()
 	except KeyboardInterrupt, EOFError:
 		GAME_RUNNING=False
 		quit(True)
