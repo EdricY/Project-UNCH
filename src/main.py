@@ -176,7 +176,7 @@ def draw():
 		method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
-			method.bufferxy(1,18,"&RXNot enough &GXmoney!&XX                                  ")
+			method.bufferxy(1,18,"Not enough &GXmoney&XX!                                  ")
 		else:
 			method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " gained a level!                          ")
 		method.bufferxy(1,20,"Press any key to continue...")
@@ -383,7 +383,7 @@ while GAME_RUNNING:
 					if MONEY>=HEROES[i+4*HERO_SCREEN][3]:
 						MONEY-=HEROES[i+4*HERO_SCREEN][3]
 						HEROES[i+4*HERO_SCREEN][1]+=1
-						purchaseComplete=i+4*HERO_SCREEN
+						purchaseComplete=i+1+4*HERO_SCREEN
 					else:
 						purchaseComplete=-1
 #	time.sleep(0.05)
