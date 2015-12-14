@@ -203,7 +203,6 @@ def draw():
 	for i in range(4):
 		method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
 		method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
-		method.bufferxy(1,5+3*i,"&CX" + str(1+i) + "&XX:")
 		method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
