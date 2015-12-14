@@ -111,7 +111,7 @@ def createMob():
 def killMob():
 	global ZONE_MOBS_KILLED, HIGHEST_ZONE, MOB_DEAD, MONEY
 	MOB_DEAD=True
-	MONEY += 1
+	MONEY += 15
 	if CURRENT_ZONE==HIGHEST_ZONE:
 		if CURRENT_ZONE % 5 != 0:
 			ZONE_MOBS_KILLED = min(ZONE_MOBS_KILLED + 1, 10)
@@ -176,9 +176,10 @@ def draw():
 		method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
-			method.bufferxy(1,18,"Not enough money!                                  ")
+			method.bufferxy(1,18,"&RXNot enough &GXmoney!&XX                                  ")
 		else:
-			method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " Gained a level!                          ")
+			method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " gained a level!                          ")
+		method.bufferxy(1,20,"Press any key to continue...")
 	if not quitMenuOpen:
 		if lastch=='.' or lastch=='>': #characters at bottom
 			method.bufferxy(49,22," &MX<&XX ")
