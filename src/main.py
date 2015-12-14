@@ -193,7 +193,7 @@ def draw():
 		else:
 			for i in range(1,len(MOBS[CURRENT_MOB]) - (DEATH_FRAME/2)):
 				method.bufferxy(32,(4 + (DEATH_FRAME/2)) +i,MOBS[CURRENT_MOB][i][:-1])
-			method.bufferxy(33+MONEY_POS,18-DEATH_FRAME/2,"+&YX"+str(MONEY_BUFFER)+"&XX") #money animation
+			method.bufferxy(33+MONEY_POS,14-DEATH_FRAME/2,"+&YX"+str(MONEY_BUFFER)+"&XX") #money animation
 			DEATH_FRAME+=1
 	else:
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
