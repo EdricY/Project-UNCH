@@ -72,25 +72,25 @@ HERO_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
 HERO_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
 HERO_DISP_NUM=0 #display info for # hero
 
-SKILLS=[] # hero names 9 chars max
-SKILLS.append(["Fireball",30] # name, cd (seconds), 
-SKILLS.append(["Rage",30]
-SKILLS.append(["Fireball",30]
-SKILLS.append(["Fireball",30]
-SKILLS.append(["Fireball",30]
-SKILLS.append(["Fireball",30]
-SKILLS.append(["Fireball",30]
-SKILLS.append(["Fireball",30]
+SKILLS=[]
+SKILLS.append(["Fireball",30]) # name, cd (seconds), 
+SKILLS.append(["Rage",30])
+SKILLS.append(["Fireball",30])
+SKILLS.append(["Fireball",30])
+SKILLS.append(["Fireball",30])
+SKILLS.append(["Fireball",30])
+SKILLS.append(["Fireball",30])
+SKILLS.append(["Fireball",30])
 
 SKILL_DESC=[]
-SKILL_DESC.append(["Blah 1Blah Blah", "And More Blah"])#Treeb
-SKILL_DESC.append(["Blah Blah Bl2ah", "And More Blah"])#Ivan
-SKILL_DESC.append(["Blah Blah Blah", "And 3More Blah"])#Brittany
-SKILL_DESC.append(["Blah Blah B4lah", "And More Blah"])#Fish
-SKILL_DESC.append(["Blah Blah5 Blah", "And More Blah"])#Betty
-SKILL_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Samurai
-SKILL_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
-SKILL_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
+SKILL_DESC.append(["Blah 1Blah Blah", "And More Blah"])
+SKILL_DESC.append(["Blah Blah Bl2ah", "And More Blah"])
+SKILL_DESC.append(["Blah Blah Blah", "And 3More Blah"])
+SKILL_DESC.append(["Blah Blah B4lah", "And More Blah"])
+SKILL_DESC.append(["Blah Blah5 Blah", "And More Blah"])
+SKILL_DESC.append(["Blah Blah Blah", "And6 More Blah"])
+SKILL_DESC.append(["Blah Blah7 Blah", "And More Blah"])
+SKILL_DESC.append(["Blah Blah Blah", "An8d More Blah"])
 
 #Mob loading
 for i in MOB_FILES:
