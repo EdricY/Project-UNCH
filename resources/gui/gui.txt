@@ -13,7 +13,7 @@ O=&YXHeroes&XX=========&GXSkills&XX======O O====================O |  |
 |--------------|-------------| |                    | |  |
 |              |             | |                    | |  |
 |              |             | |                    | |  |
-|     ^^^&CX[&XX^^^     vvv&CX]&XXvvv    | |                    | |  |
+| &GXScroll Up &CX[  &GX/  Down &CX]     | |                    | |  |
 O============================O O=&RXHP:&XX================O |  |
 O=&GXInformation&XX=======================================O |  |
 |Press &CXH (KEY)&XX for more information                 | |  |
