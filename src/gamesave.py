@@ -18,6 +18,7 @@
 #lsu.append(lsub1)
 #lsu.append(lsub2)
 #l1.append(lsu)
+import os
 
 def save(ls):
 	f = open("../saves/data.save","w")
