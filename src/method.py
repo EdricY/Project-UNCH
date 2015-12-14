@@ -108,4 +108,4 @@ def refreshBuffer():
 #24 X 58
 def printBuffer(rows, columns):
 	for i in range(0,len(BUFFER_LINES)):
-		printxy(columns/2 - 28, rows/2-12+i,color(BUFFER_LINES[i]))
+		printxy(columns/2 - 28, rows/2-10+i,color(BUFFER_LINES[i]))
