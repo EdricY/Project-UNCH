@@ -56,8 +56,8 @@ purchaseComplete=0
 skillActivated=0
 
 HEROES=[] # hero names 9 chars max
-HEROES.append(["Red ", 0, 0, 25]) # name, level, dps, cost
-HEROES.append(["Yu  ", 0, 0, 125])
+HEROES.append(["Mr. Red ", 0, 0, 25]) # name, level, dps, cost
+HEROES.append(["Evil Yu", 0, 0, 125])
 HEROES.append(["Thebleegel", 0, 0, 500])
 HEROES.append(["Brickster", 0, 0, 2500])
 HEROES.append(["Edge", 0, 0, 12500])
