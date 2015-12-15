@@ -248,7 +248,7 @@ def draw():
 		method.bufferxy(1,4,"Lifetime hits: " + str(STATS[0]))
 		method.bufferxy(1,5,"Lifetime mob kills: " + str(STATS[1]))
 		method.bufferxy(1,6,"Lifetime Hero Levelups: " + str(STATS[2]))
-		method.bufferxy(1,7,"Total Play Time: " + str(int(time.time())-STATS[3]))
+		method.bufferxy(1,7,"Time since start: " + str(int(time.time())-STATS[3]) + "sec")
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
 			method.bufferxy(1,18,"Not enough &GXmoney&XX!            ")
