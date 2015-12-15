@@ -173,7 +173,7 @@ def draw():
 	#gui.drawgui()
 	method.bufferxy(26,15,str(1+HERO_SCREEN)) #scroll up/down
 	if RAGE:
-		method.bufferxy(15,22,"&RX"+method.dispBigNum(int(HIT_DMG*(1.5+.2*HEROES[2][1]/5)))+"&RX")
+		method.bufferxy(15,22,"&RX"+method.dispBigNum(int(HIT_DMG*(1.5+.2*HEROES[2][1]/5)))+"&XX")
 	else:
 		method.bufferxy(15,22,method.dispBigNum(HIT_DMG)) #Hit Dmg
 	method.bufferxy(37,22,method.dispBigNum(DPS)) #DPS
