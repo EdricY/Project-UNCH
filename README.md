@@ -18,3 +18,6 @@ UNCH is a recursive acronym that stands for “UNCH’s not Clicker Heroes.” U
 ![Project-UNCH info system.](/screenshots/information.png?raw=true "Information System")
 ![Statistics tab.](/screenshots/statistics.png?raw=true "Statistics")
 ![Activating and using skills.](/screenshots/skills.png?raw=true "Skills")
+
+###Using git
+![Git example.](/screenshots/git.png?raw=true "GitHub")
