@@ -173,7 +173,7 @@ def draw():
 	#gui.drawgui()
 	method.bufferxy(26,15,str(1+HERO_SCREEN)) #scroll up/down
 	if RAGE:
-		method.bufferxy(15,22,method.dispBigNum(HIT_DMG*(1.5+.2*HEROES[2][1]/5)))
+		method.bufferxy(15,22,method.dispBigNum(int(HIT_DMG*(1.5+.2*HEROES[2][1]/5))))
 	else:
 		method.bufferxy(15,22,method.dispBigNum(HIT_DMG)) #Hit Dmg
 	method.bufferxy(37,22,method.dispBigNum(DPS)) #DPS
@@ -418,8 +418,11 @@ while GAME_RUNNING:
 	if quitMenuOpen:
 		if ch=='y' or ch=='Y':
 			GAME_RUNNING=False
+			os.system("stty echo")
+			os.system("setterm -cursor on")
+			os.system('clear')
+			os.system("stty icanon")
 			quit(False)
-
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
 	elif HELP_DISP_NUM != 0 and ch != lastch:
