@@ -399,20 +399,20 @@ while GAME_RUNNING:
 			quitMenuOpen = False
 	elif HELP_DISP_NUM != 0 and ch != lastch:
 		HELP_DISP_NUM = 0
-		ch = " "
-		lastch = " "
+		ch = "|"
+		lastch = "|"
 	elif purchaseComplete != 0 and ch != lastch:
 		purchaseComplete = 0
-		ch = " "
-		lastch = " "
+		ch = "|"
+		lastch = "|"
 	elif loadMenuOpen and ch != lastch:
 		loadMenuOpen = False
-		ch = " "
-		lastch = " "
+		ch = "|"
+		lastch = "|"
 	elif newMenuOpen and ch != lastch:
 		newMenuOpen = False
-		ch = " "
-		lastch = " "
+		ch = "|"
+		lastch = "|"
 	elif lastch=='h':
 		try:
 			HELP_DISP_NUM = int(ch)
@@ -447,7 +447,8 @@ while GAME_RUNNING:
 					if MONEY>=HEROES[i+4*HERO_SCREEN][3]:
 						MONEY-=HEROES[i+4*HERO_SCREEN][3]
 						HEROES[i+4*HERO_SCREEN][1]+=1
-						HEROES[i+4*HERO_SCREEN][2]+=HEROES[i+4*HERO_SCREEN][1]+i+4*HERO_SCREEN*HEROES[i+4*HERO_SCREEN][1]
+						HEROES[i+4*HERO_SCREEN][2]+=(i+4*HERO_SCREEN)*HEROES[i+4*HERO_SCREEN][1]
+						HEROES[i+4*HERO_SCREEN][3]+=(i+4*HERO_SCREEN)*HEROES[i+4*HERO_SCREEN][3]/25
 						DPS += HEROES[i+4*HERO_SCREEN][2]
 						purchaseComplete=i+1+4*HERO_SCREEN
 					else:
