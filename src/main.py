@@ -505,9 +505,9 @@ while GAME_RUNNING:
 			HERO_SCREEN=0
 		elif ch=="]" or ch=="}":
 			HERO_SCREEN=1
-		elif ch=="h" or ch=="H":
-			dispStats = False
 		elif ch=="j" or ch=="J":
+			dispStats = False
+		elif ch=="k" or ch=="K":
 			dispStats = True
 		elif dispStats == False:
 			for i in range(4):
