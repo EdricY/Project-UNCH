@@ -270,7 +270,7 @@ def draw():
 	elif newMenuOpen:
 		gui.drawnewmenu(ROWS,COLUMNS)
 	elif ReturnMenuOpen:
-		gui.drawnewmenu(ROWS,COLUMNS, LD[8])
+		gui.drawreturnmenu(ROWS,COLUMNS, LD[8])
 def quit(forced):
 	os.system("stty echo")
 	os.system("setterm -cursor on")
