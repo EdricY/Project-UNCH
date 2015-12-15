@@ -170,7 +170,6 @@ def update():
 
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
-	#gui.drawgui()
 	method.bufferxy(26,15,str(1+HERO_SCREEN)) #scroll up/down
 	if RAGE:
 		method.bufferxy(15,22,"&RX"+method.dispBigNum(int(HIT_DMG*(1.5+.2*HEROES[2][1]/5)))+"&XX")
@@ -335,6 +334,9 @@ def mainloop():
 
 #Data to save
 def updateVarsToSave():
+	global SKILLS
+	for i in range(3):
+		SKILLS[i+1] = int(SKILLS[i+1])
 	#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
 	SD = [MONEY,
 	HIT_DMG,
@@ -344,7 +346,7 @@ def updateVarsToSave():
 	ZONE_MOBS_KILLED,
 	HEROES,
 	SKILLS,
-	int(os.popen('date +%s').read())]
+	int(time.time())] #int(os.popen('date +%s').read())
 	return SD
 	
 def checkTypes(list1, list2):
