@@ -118,8 +118,9 @@ def hit():
 		MOB_HP = 0
 
 def destroy():
-	global MOB_HP
+	global MOB_HP, MONEY
 	MOB_HP -= 10000
+	MONEY +=10000
 	if MOB_HP < 0:
 		MOB_HP = 0
 
