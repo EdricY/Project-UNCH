@@ -210,12 +210,14 @@ def draw():
 			method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
 			#Skills
 			method.bufferxy(19,4+3*i,SKILLS[i+HERO_SCREEN*4][0])
-			if(SKILLS[i+HERO_SCREEN*4][1]==0):
-				method.bufferxy(16,5+3*i,"(Passive)")
-			elif(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1)<=0 and HEROES[i+HERO_SCREEN*4][1]>0):
-				method.bufferxy(16,5+3*i,"Ready")
-			else:
-				method.bufferxy(16,5+3*i,str(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1)))
+			if HEROES[i+HERO_SCREEN*4][1]>0
+				if(SKILLS[i+HERO_SCREEN*4][1]==0):
+					method.bufferxy(16,5+3*i,"(Passive)")
+				
+				elif round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1)<=0:
+					method.bufferxy(16,5+3*i,"Ready")
+				else:
+					method.bufferxy(16,5+3*i,str(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1)))
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
 			method.bufferxy(1,18,"Not enough &GXmoney&XX!                                  ")
