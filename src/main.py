@@ -59,9 +59,9 @@ HEROES.append(["Yu", 0, 0, 125])
 HEROES.append(["Thebleegel", 0, 0, 500])
 HEROES.append(["Fish", 0, 0, 2500])
 HEROES.append(["Betty", 0, 0, 12500])
-HEROES.append(["Samurai", 0, 0, 62500])
-HEROES.append(["Leon", 0, 0, 5000000])
-HEROES.append(["Seer", 0, 0, 25000000])
+#HEROES.append(["Samurai", 0, 0, 62500])
+#HEROES.append(["Leon", 0, 0, 5000000])
+#HEROES.append(["Seer", 0, 0, 25000000])
 HERO_SCREEN=0 #for now this is 0 or 1
                    
 HERO_DESC=[]     #"                                                   "
@@ -70,9 +70,9 @@ HERO_DESC.append(["Loves to spam OP abilities.", "Unlocks &MXFireball&XX which c
 HERO_DESC.append(["Sometimes uncontrollably enters a state of rage.", "Unlocks &MXRage&XX which strengthens every 5 levels."])#Bleegel
 HERO_DESC.append(["Blah Blah B4lah", "And More Blah"])#Fish
 HERO_DESC.append(["Blah Blah5 Blah", "And More Blah"])#Betty
-HERO_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Samurai
-HERO_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
-HERO_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
+#HERO_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Samurai
+#HERO_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
+#HERO_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
 
 HELP_DISP_NUM=0 #display info for # hero/skill
 
@@ -82,9 +82,9 @@ SKILLS.append(["Fireball",30,0.0])
 SKILLS.append(["Rage",30,0.0])
 SKILLS.append(["Fireball",30,0.0])
 SKILLS.append(["Fireball",30,0.0])
-SKILLS.append(["Fireball",30,0.0])
-SKILLS.append(["Fireball",30,0.0])
-SKILLS.append(["Fireball",30,0.0])
+#SKILLS.append(["Fireball",30,0.0])
+#SKILLS.append(["Fireball",30,0.0])
+#SKILLS.append(["Fireball",30,0.0])
 
 SKILL_DESC=[]
 SKILL_DESC.append(["Increases Hit Damage.", "Every 5 leves, Red"])
@@ -92,9 +92,9 @@ SKILL_DESC.append(["Blah Blah Bl2ah", "And More Blah"])
 SKILL_DESC.append(["Blah Blah Blah", "And 3More Blah"])
 SKILL_DESC.append(["Blah Blah B4lah", "And More Blah"])
 SKILL_DESC.append(["Blah Blah5 Blah", "And More Blah"])
-SKILL_DESC.append(["Blah Blah Blah", "And6 More Blah"])
-SKILL_DESC.append(["Blah Blah7 Blah", "And More Blah"])
-SKILL_DESC.append(["Blah Blah Blah", "An8d More Blah"])
+#SKILL_DESC.append(["Blah Blah Blah", "And6 More Blah"])
+#SKILL_DESC.append(["Blah Blah7 Blah", "And More Blah"])
+#SKILL_DESC.append(["Blah Blah Blah", "An8d More Blah"])
 
 #Mob loading
 for i in MOB_FILES:
@@ -210,9 +210,9 @@ def draw():
 		#Skills
 		method.bufferxy(19,4+3*i,SKILLS[i+HERO_SCREEN*4][0])
 		if(SKILLS[i+HERO_SCREEN*4][1]==0):
-			method.bufferxy(19,5+3*i,"(Passive)")
+			method.bufferxy(16,5+3*i,"(Passive)")
 		elif (SKILLS[i+HERO_SCREEN*4][2]==0 and HEROES[i+HERO_SCREEN*4][1]>0):
-			method.bufferxy(19,5+3*i,"Ready")
+			method.bufferxy(16,5+3*i,"Ready")
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
 			method.bufferxy(1,18,"Not enough &GXmoney&XX!                                  ")
@@ -416,7 +416,7 @@ while GAME_RUNNING:
 	elif lastch=='h':
 		try:
 			HELP_DISP_NUM = int(ch)
-			if HELP_DISP_NUM > 8:
+			if HELP_DISP_NUM > 8 or (HERO_SCREEN == 1 and HELP_DISP_NUM!= 1 and HELP_DISP_NUM!=5):
 				HELP_DISP_NUM = 0
 		except ValueError:
 			pass
@@ -443,7 +443,7 @@ while GAME_RUNNING:
 			HERO_SCREEN=1
 		else:
 			for i in range(4):
-				if ch==str(i+1):
+				if ch==str(i+1) and i+4*HERO_SCREEN<len(HEROES):
 					if MONEY>=HEROES[i+4*HERO_SCREEN][3]:
 						MONEY-=HEROES[i+4*HERO_SCREEN][3]
 						HEROES[i+4*HERO_SCREEN][1]+=1 #level
