@@ -336,7 +336,7 @@ def mainloop():
 def updateVarsToSave():
 	global SKILLS
 	for i in range(3):
-		SKILLS[i+1] = int(SKILLS[i+1])
+		SKILLS[i+1][2] = int(SKILLS[i+1][2])
 	#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
 	SD = [MONEY,
 	HIT_DMG,
