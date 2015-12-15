@@ -54,10 +54,15 @@ quitMenuOpen=False
 loadMenuOpen=False
 newMenuOpen=False
 returnMenuOpen=False
+dispStats = False
 purchaseComplete=0
 skillActivated=0
 timeSinceLastSession = 0
 goldGained = 0
+STATS =[]
+HEROES.append()
+HEROES.append()
+HEROES.append()
 
 HEROES=[] # hero names 9 chars max
 HEROES.append(["Mr. Red ", 0, 0, 25]) # name, level, dps, cost
@@ -117,14 +122,14 @@ gui.drawtitle(ROWS,COLUMNS)
 
 #Definitions and methods
 def hit():
-	global HIT_DMG
-	global MOB_HP
+	global HIT_DMG, MOB_HP, STATS
 	if RAGE:
 		MOB_HP -= int(HIT_DMG*(1.5+.2*HEROES[2][1]/5))
 	else:
 		MOB_HP -= HIT_DMG
 	if MOB_HP < 0:
 		MOB_HP = 0
+	STATS[0]+=1
 
 def destroy():
 	global MOB_HP, MONEY
@@ -144,7 +149,8 @@ def createMob():
 	CURRENT_MOB=random.randint(0,COUNT_FILES-1)
 
 def killMob():
-	global ZONE_MOBS_KILLED, HIGHEST_ZONE, MOB_DEAD, MONEY, MONEY_BUFFER, MONEY_POS
+	global ZONE_MOBS_KILLED, HIGHEST_ZONE, MOB_DEAD, MONEY, MONEY_BUFFER, MONEY_POS, STATS
+	STATS[1]+=1
 	MOB_DEAD=True
 	MONEY_BUFFER = CURRENT_ZONE*3 + random.randint(1,5)*(1+CURRENT_ZONE/10)
 	if CURRENT_ZONE % 5 == 0:
@@ -216,23 +222,30 @@ def draw():
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
 			method.bufferxy(32,4+i,MOBS[CURRENT_MOB][i][:-1])
 			method.bufferxy(36,16,method.dispBigNum(MOB_HP) + "&XX") #mob hp num
-	
-	for i in range(4):
-		if (i+HERO_SCREEN*4<len(HEROES)):
-			#Heroes
-			method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
-			method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
-			method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
-			#Skills
-			method.bufferxy(19,4+3*i,SKILLS[i+HERO_SCREEN*4][0])
-			if HEROES[i+HERO_SCREEN*4][1]>0:
-				if(SKILLS[i+HERO_SCREEN*4][1]==0):
-					method.bufferxy(16,5+3*i,"(Passive)")
-				
-				elif round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1)<=0:
-					method.bufferxy(16,5+3*i,"Ready")
-				else:
-					method.bufferxy(16,5+3*i,"&RX"+str(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1))+"&XX")
+	if dispStats == False:
+		for i in range(4):
+			if (i+HERO_SCREEN*4<len(HEROES)):
+				#Heroes
+				method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
+				method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
+				method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
+				#Skills
+				method.bufferxy(19,4+3*i,SKILLS[i+HERO_SCREEN*4][0])
+				if HEROES[i+HERO_SCREEN*4][1]>0:
+					if(SKILLS[i+HERO_SCREEN*4][1]==0):
+						method.bufferxy(16,5+3*i,"(Passive)")
+					
+					elif round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1)<=0:
+						method.bufferxy(16,5+3*i,"Ready")
+					else:
+						method.bufferxy(16,5+3*i,"&RX"+str(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1))+"&XX")
+	else:
+		method.bufferxy(1,3,"=Stats======================")
+		for y in range(4,16):
+			for x in range(1,29)
+				method.bufferxy(x,y," ")
+		method.bufferxy(1,4,"Lifetime hits: " + str(STATS[0]))
+		method.bufferxy(1,4,"Lifetime hits: " + str(STATS[0]))
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
 			method.bufferxy(1,18,"Not enough &GXmoney&XX!            ")
@@ -352,7 +365,8 @@ def updateVarsToSave():
 	ZONE_MOBS_KILLED,
 	HEROES,
 	SKILLS,
-	int(time.time())] #int(os.popen('date +%s').read())
+	int(time.time()),#int(os.popen('date +%s').read())
+	STATS] 
 	return SD
 	
 def checkTypes(list1, list2):
@@ -377,7 +391,7 @@ def save():
 def load():
 	global loadMenuOpen, newMenuOpen, returnMenuOpen, timeSinceLastSession, goldGained
 	#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
-	global MONEY, HIT_DMG, DPS, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, HEROES, SKILLS
+	global MONEY, HIT_DMG, DPS, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, HEROES, SKILLS, STATS
 	try:
 		LD = gamesave.load()
 		if type(LD) == type("NEW"):
@@ -399,6 +413,7 @@ def load():
 				goldGained = 1 + timeSinceLastSession*DPS/10 * 6
 				MONEY += goldGained
 				returnMenuOpen=True
+				STATS = LD[9]
 			else:
 				loadMenuOpen = True
 	except Exception:
@@ -461,7 +476,7 @@ while GAME_RUNNING:
 		returnMenuOpen = False
 		ch = "|"
 		lastch = "|"
-	elif lastch=='h':
+	elif lastch=='h' and dispStats==False:
 		try:
 			HELP_DISP_NUM = int(ch)
 			if HELP_DISP_NUM > 8 or (HERO_SCREEN == 1 and HELP_DISP_NUM!= 1 and HELP_DISP_NUM!=5):
@@ -489,7 +504,11 @@ while GAME_RUNNING:
 			HERO_SCREEN=0
 		elif ch=="]" or ch=="}":
 			HERO_SCREEN=1
-		else:
+		elif ch=="h" or ch=="H":
+			dispStats = False
+		elif ch=="j" or ch=="J":
+			dispStats = True
+		elif dispStats == False:
 			for i in range(4):
 				if ch==str(i+1) and i+4*HERO_SCREEN<len(HEROES):
 					if MONEY>=HEROES[i+4*HERO_SCREEN][3]:
@@ -509,6 +528,7 @@ while GAME_RUNNING:
 						HEROES[i+4*HERO_SCREEN][3]+=(1+i+4*HERO_SCREEN)+HEROES[i+4*HERO_SCREEN][3]/5 #cost
 						DPS += (1+i+4*HERO_SCREEN)*(1+i+4*HERO_SCREEN)
 						purchaseComplete=i+1+4*HERO_SCREEN
+						STATS[2] += 1
 					else:
 						purchaseComplete=-1
 			for i in range(4):
