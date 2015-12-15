@@ -93,7 +93,7 @@ SKILL_DESC=[]     #"                                                   "
 SKILL_DESC.append(["Increases Hit Damage.", "Every 5 leves, &MXRed&XX complains about the hit damage."])
 SKILL_DESC.append(["Shoots a Fireball to deal a lot of damage.", "(R)&MXYu&XX likes to spam this."])
 SKILL_DESC.append(["&MXThebleegel&XX enters a state of rage, making hits", "do double damage."])
-SKILL_DESC.append(["Through the power of creativity, &MXthe Brickster&XX", "doubles your &GXmoney&XX."])
+SKILL_DESC.append(["Through the power of creativity, the &MXBrickster&XX", "doubles your &GXmoney&XX."])
 SKILL_DESC.append(["The dev doesn't know what to do.", "So he buffs &MXYu&XX's attack."])
 #SKILL_DESC.append(["Blah Blah Blah", "And6 More Blah"])
 #SKILL_DESC.append(["Blah Blah7 Blah", "And More Blah"])
@@ -173,7 +173,7 @@ def draw():
 	#gui.drawgui()
 	method.bufferxy(26,15,str(1+HERO_SCREEN)) #scroll up/down
 	if RAGE:
-		method.bufferxy(15,22,method.dispBigNum(int(HIT_DMG*(1.5+.2*HEROES[2][1]/5))))
+		method.bufferxy(15,22,"&RX"+method.dispBigNum(int(HIT_DMG*(1.5+.2*HEROES[2][1]/5)))+"&RX")
 	else:
 		method.bufferxy(15,22,method.dispBigNum(HIT_DMG)) #Hit Dmg
 	method.bufferxy(37,22,method.dispBigNum(DPS)) #DPS
@@ -241,7 +241,7 @@ def draw():
 		elif skillActivated == -2:
 			method.bufferxy(1,18,"That skill is passive!                             ")
 		else:
-			method.bufferxy(1,18,SKILLS[skillActivated-1][0] + " activated!                            ")
+			method.bufferxy(1,18,SKILLS[skillActivated][0] + " activated!                            ")
 		method.bufferxy(1,20,"Press any key to continue...")
 	if not quitMenuOpen:
 		if lastch=='.' or lastch=='>': #characters at bottom
@@ -343,6 +343,7 @@ def updateVarsToSave():
 	CURRENT_ZONE,
 	ZONE_MOBS_KILLED,
 	HEROES,
+	SKILLS,
 	int(os.popen('date +%s').read())]
 	return SD
 	
@@ -368,7 +369,7 @@ def save():
 def load():
 	global loadMenuOpen, newMenuOpen
 	#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
-	global MONEY, HIT_DMG, DPS, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, HEROES
+	global MONEY, HIT_DMG, DPS, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, HEROES, SKILLS
 	try:
 		LD = gamesave.load()
 		if type(LD) == type("NEW"):
@@ -385,6 +386,7 @@ def load():
 				CURRENT_ZONE = LD[4]
 				ZONE_MOBS_KILLED = LD[5]
 				HEROES = LD[6]
+				SKILLS = LD[7]
 				for hero in HEROES:
 					DPS += hero[2]
 			else:
