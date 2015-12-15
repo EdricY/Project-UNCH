@@ -100,7 +100,7 @@ SKILLS.append(["Firestorm",0,0])
 
 SKILL_DESC=[]     #"                                                   "
 SKILL_DESC.append(["Increases Hit Damage.", "Every 5 leves, &MXRed&XX complains about the hit damage."])
-SKILL_DESC.append(["Shoots a Fireball to deal a lot of damage.", "(R)&MXYu&XX likes to spam this."])
+SKILL_DESC.append(["Shoots a Fireball to deal a lot of damage.", "Ryu... I mean &MXYu&XX likes to spam this."])
 SKILL_DESC.append(["&MXThebleegel&XX enters a state of rage, making hits", "do double damage."])
 SKILL_DESC.append(["Through the power of creativity, the &MXBrickster&XX", "doubles your &GXmoney&XX."])
 SKILL_DESC.append(["The dev doesn't know what to do.", "So he buffs &MXYu&XX's attack."])
