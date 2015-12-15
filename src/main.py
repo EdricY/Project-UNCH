@@ -205,7 +205,7 @@ def draw():
 	for i in range(4):
 		if (i+HERO_SCREEN*4<len(HEROES)):
 			#Heroes
-			method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0] + "  (DPS: " + HEROES[i+HERO_SCREEN*4][2]+")") # hero name
+			method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0] + "  (DPS: " + str(HEROES[i+HERO_SCREEN*4][2])+")") # hero name
 			method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
 			method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
 			#Skills
