@@ -48,14 +48,16 @@ MONEY_POS=0
 ZONE_MOBS_KILLED=0
 BOSS_TIMER=0.0
 MOB_DEAD=False
+RAGE=False
 quitMenuOpen=False
 loadMenuOpen=False
 newMenuOpen=False
 purchaseComplete=0
+skillActivated=0
 
 HEROES=[] # hero names 9 chars max
-HEROES.append(["Red", 0, 0, 25]) # name, level, dps, cost
-HEROES.append(["Yu", 0, 0, 125])
+HEROES.append(["Red ", 0, 0, 25]) # name, level, dps, cost
+HEROES.append(["Yu  ", 0, 0, 125])
 HEROES.append(["Thebleegel", 0, 0, 500])
 HEROES.append(["Brickster", 0, 0, 2500])
 HEROES.append(["Edge", 0, 0, 12500])
@@ -120,7 +122,7 @@ def hit():
 def destroy():
 	global MOB_HP, MONEY
 	MOB_HP -= 10000
-	MONEY +=10000
+	MONEY += 10000
 	if MOB_HP < 0:
 		MOB_HP = 0
 
@@ -224,6 +226,14 @@ def draw():
 			method.bufferxy(1,18,"Not enough &GXmoney&XX!                                  ")
 		else:
 			method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " gained a level!                          ")
+		method.bufferxy(1,20,"Press any key to continue...")
+	if skillActivated!=0:
+		if skillActivated==-1:
+			method.bufferxy(1,18,+"Skill not ready!                                         ")
+		elif skillActivated == -2:
+			method.bufferxy(1,18,+"Skill is passive!                                        ")
+		else:
+			method.bufferxy(1,18,SKILLS[skillActivated-1][0] + " activated!                            ")
 		method.bufferxy(1,20,"Press any key to continue...")
 	if not quitMenuOpen:
 		if lastch=='.' or lastch=='>': #characters at bottom
@@ -412,6 +422,10 @@ while GAME_RUNNING:
 		purchaseComplete = 0
 		ch = "|"
 		lastch = "|"
+	elif skillActivated != 0 and ch != lastch:
+		skillActivated = 0
+		ch = "|"
+		lastch = "|"
 	elif loadMenuOpen and ch != lastch:
 		loadMenuOpen = False
 		ch = "|"
@@ -458,13 +472,31 @@ while GAME_RUNNING:
 						HEROES[i+4*HERO_SCREEN][1]+=1 #level
 						#power up skills every 5 levels
 						if HEROES[i+4*HERO_SCREEN][1]%5 == 0:
-							if i+4*HERO_SCREEN==0 # big hits:
-							if i+4*HERO_SCREEN==0 # big hits:
-							if i+4*HERO_SCREEN==0 # big hits:
-							if i+4*HERO_SCREEN==0 # big hits:
+							if i+4*HERO_SCREEN==0: #big hits
+								HIT_DMG += HEROES[0][1]/5
+							elif i+4*HERO_SCREEN==1: #fireball
+								SKILLS[i+HERO_SCREEN*4][1] = max(SKILLS[i+HERO_SCREEN*4][1]-2,10)
+							elif i+4*HERO_SCREEN==3: # money bag
+								SKILLS[3][1] = max(SKILLS[i+HERO_SCREEN*4][1]-2,60)
 						HEROES[i+4*HERO_SCREEN][2]+=(1+i+4*HERO_SCREEN)*(1+i+4*HERO_SCREEN) #dps
 						HEROES[i+4*HERO_SCREEN][3]+=(1+i+4*HERO_SCREEN)*HEROES[i+4*HERO_SCREEN][3]/25 *HEROES[i+4*HERO_SCREEN][3]/25 #cost
 						DPS += (1+i+4*HERO_SCREEN)*(1+i+4*HERO_SCREEN)
 						purchaseComplete=i+1+4*HERO_SCREEN
 					else:
 						purchaseComplete=-1
+			for i in range(4):
+				if ch==str(i+5) and i+4*HERO_SCREEN<len(SKILLS):
+					if SKILLS[i+HERO_SCREEN*4][1] == 0:
+						skillActivated = -2
+					elif SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2]>0:
+						skillActivated = -1
+					else:
+						if(i+HERO_SCREEN*4==1): # fireball
+							MOB_HP-=20+HEROES[4][1]/5
+							SKILLS[i+HERO_SCREEN*4][2] = time.time()
+						elif(i+HERO_SCREEN*4==2): #rage
+							RAGE = True
+							SKILLS[i+HERO_SCREEN*4][2] = time.time()
+						elif(i+HERO_SCREEN*4==3): #money bag
+							MONEY += MONEY
+							SKILLS[i+HERO_SCREEN*4][2] = time.time()
