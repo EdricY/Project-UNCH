@@ -449,7 +449,7 @@ while GAME_RUNNING:
 						HEROES[i+4*HERO_SCREEN][1]+=1 #level
 						HEROES[i+4*HERO_SCREEN][2]+=(1+i+4*HERO_SCREEN)*(1+i+4*HERO_SCREEN) #dps
 						HEROES[i+4*HERO_SCREEN][3]+=(1+i+4*HERO_SCREEN)*HEROES[i+4*HERO_SCREEN][3]/25 *HEROES[i+4*HERO_SCREEN][3]/25 #cost
-						DPS += HEROES[i+4*HERO_SCREEN][2]
+						DPS += (1+i+4*HERO_SCREEN)*(1+i+4*HERO_SCREEN)
 						purchaseComplete=i+1+4*HERO_SCREEN
 					else:
 						purchaseComplete=-1
