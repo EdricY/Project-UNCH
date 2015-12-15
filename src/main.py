@@ -240,13 +240,13 @@ def draw():
 					else:
 						method.bufferxy(16,5+3*i,"&RX"+str(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1))+"&XX")
 	else:
-		method.bufferxy(1,3,"=Stats======================")
+		method.bufferxy(1,3,"=&MXStats&XX======================")
 		for y in range(4,16):
 			for x in range(1,29):
 				method.bufferxy(x,y," ")
 		method.bufferxy(1,4,"Lifetime hits: " + str(STATS[0]))
-		method.bufferxy(1,4,"Lifetime mob kills: " + str(STATS[1]))
-		method.bufferxy(1,4,"Lifetime Hero Levelups: " + str(STATS[2]))
+		method.bufferxy(1,5,"Lifetime mob kills: " + str(STATS[1]))
+		method.bufferxy(1,6,"Lifetime Hero Levelups: " + str(STATS[2]))
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
 			method.bufferxy(1,18,"Not enough &GXmoney&XX!            ")
