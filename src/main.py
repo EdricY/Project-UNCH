@@ -56,7 +56,7 @@ newMenuOpen=False
 returnMenuOpen=False
 purchaseComplete=0
 skillActivated=0
-sessionStart = time.time()
+timeSinceLastSession = 0
 goldGained = 0
 
 HEROES=[] # hero names 9 chars max
@@ -274,7 +274,7 @@ def draw():
 	if newMenuOpen:
 		gui.drawnewmenu()
 	if returnMenuOpen:
-		gui.drawreturnmenu(LD[8]-int(sessionStart),goldGained)
+		gui.drawreturnmenu(timeSinceLastSession,goldGained)
 def quit(forced):
 	os.system("stty echo")
 	os.system("setterm -cursor on")
@@ -395,8 +395,8 @@ def load():
 				ZONE_MOBS_KILLED = LD[5]
 				HEROES = LD[6]
 				SKILLS = LD[7]
-				sessionStart = time.time()
-				goldGained = (LD[8]-int(sessionStart))/(CURRENT_ZONE*CURRENT_ZONE+9+CURRENT_ZONE/2)*DPS*(CURRENT_ZONE*3 + 3*(1+CURRENT_ZONE/10))
+				timeSinceLastSession = int(time.time() - LD[8])
+				goldGained = timeSinceLastSession/(CURRENT_ZONE*CURRENT_ZONE+9+CURRENT_ZONE/2)*DPS*(CURRENT_ZONE*3 + 3*(1+CURRENT_ZONE/10))
 				MONEY += goldGained
 				returnMenuOpen=True
 			else:
