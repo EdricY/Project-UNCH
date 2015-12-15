@@ -174,7 +174,7 @@ def draw():
 	if CURRENT_ZONE-1>0:
 		method.bufferxy(35,1,str(CURRENT_ZONE-1)) #zone num -
 	if CURRENT_ZONE != HIGHEST_ZONE:
-		method.bufferxy(49-len(str(CURRENT_ZONE)),1,str(CURRENT_ZONE+1)) #zone num + 
+		method.bufferxy(49-len(str(CURRENT_ZONE+1)),1,str(CURRENT_ZONE+1)) #zone num + 
 	method.bufferxy(42-len(str(CURRENT_ZONE))/2,1,str(CURRENT_ZONE)) #zone num
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
 		method.bufferxy(36,15,"&RXTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX") #boss timer
