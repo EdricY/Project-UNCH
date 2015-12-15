@@ -13,11 +13,12 @@ UNCH is a recursive acronym that stands for “UNCH’s not Clicker Heroes.” U
 - http://code.activestate.com/recipes/134892/
 
 ###Screenshots
-![Screenshot of the title screen.](/screenshots/title.png?raw=true "Title Screen")
-![View of a boss.](/screenshots/boss.png?raw=true "Boss")
-![Project-UNCH info system.](/screenshots/information.png?raw=true "Information System")
-![Statistics tab.](/screenshots/statistics.png?raw=true "Statistics")
-![Activating and using skills.](/screenshots/skills.png?raw=true "Skills")
-
+<p align="center">
+<img src="/screenshots/title.png?raw=true" alt="Title Screen">
+<img src="/screenshots/boss.png?raw=true" alt="Boss">
+<img src="/screenshots/information.png?raw=true" alt="Information System">
+<img src="/screenshots/statistics.png?raw=true" alt="Statistics">
+<img src="/screenshots/skills.png?raw=true alt="Skills">
+</p>
 ###Using git
 ![Git example.](/screenshots/git.png?raw=true "GitHub")
