@@ -63,7 +63,7 @@ STATS =[]
 STATS.append(0)
 STATS.append(0)
 STATS.append(0)
-STATS.append(int(time.time))#start time
+STATS.append(int(time.time()))#start time
 
 HEROES=[] # hero names 9 chars max
 HEROES.append(["Mr. Red ", 0, 0, 25]) # name, level, dps, cost
