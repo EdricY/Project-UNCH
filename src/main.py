@@ -231,9 +231,9 @@ def draw():
 					method.bufferxy(16,5+3*i,"&RX"+str(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1))+"&XX")
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
-			method.bufferxy(1,18,"Not enough &GXmoney&XX!                            ")
+			method.bufferxy(1,18,"Not enough &GXmoney&XX!            ")
 		else:
-			method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " gained a level!                                   ")
+			method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " gained a level!              ")
 		method.bufferxy(1,20,"Press any key to continue...")
 	if skillActivated!=0:
 		if skillActivated==-1:
