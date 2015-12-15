@@ -49,6 +49,7 @@ ZONE_MOBS_KILLED=0
 BOSS_TIMER=0.0
 MOB_DEAD=False
 RAGE=False
+RAGE_TIMER=0.0
 quitMenuOpen=False
 loadMenuOpen=False
 newMenuOpen=False
@@ -115,7 +116,10 @@ gui.drawtitle(ROWS,COLUMNS)
 def hit():
 	global HIT_DMG
 	global MOB_HP
-	MOB_HP -= HIT_DMG
+	if RAGE:
+		MOB_HP -= HIT_DMG*(1.5+.2*HEROES[2][1]/5)
+	else:
+		MOB_HP -= HIT_DMG
 	if MOB_HP < 0:
 		MOB_HP = 0
 
@@ -161,13 +165,17 @@ def update():
 		killMob()
 	if CURRENT_ZONE % 5 == 0 and 30.0-time.time()+BOSS_TIMER<=0:
 		createMob()
-
+	if 10.0-time.time()+RAGE_TIMER<=0:
+		RAGE=False
 
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
 	#gui.drawgui()
 	method.bufferxy(26,15,str(1+HERO_SCREEN)) #scroll up/down
-	method.bufferxy(15,22,method.dispBigNum(HIT_DMG)) #Hit Dmg
+	if RAGE:
+		method.bufferxy(15,22,method.dispBigNum(HIT_DMG*(1.5+.2*HEROES[2][1]/5)))
+	else:
+		method.bufferxy(15,22,method.dispBigNum(HIT_DMG)) #Hit Dmg
 	method.bufferxy(37,22,method.dispBigNum(DPS)) #DPS
 	method.bufferxy(4,1,"&YX" + method.dispBigNum(MONEY) + "&YX") #money
 	method.bufferxy(33,3,MOBS[CURRENT_MOB][0]) #mob name
@@ -223,15 +231,15 @@ def draw():
 					method.bufferxy(16,5+3*i,"&RX"+str(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1))+"&XX")
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
-			method.bufferxy(1,18,"Not enough &GXmoney&XX!                                  ")
+			method.bufferxy(1,18,"Not enough &GXmoney&XX!                            ")
 		else:
-			method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " gained a level!                          ")
+			method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " gained a level!                                   ")
 		method.bufferxy(1,20,"Press any key to continue...")
 	if skillActivated!=0:
 		if skillActivated==-1:
-			method.bufferxy(1,18,"That skill is not ready!                                  ")
+			method.bufferxy(1,18,"That skill is not ready!                           ")
 		elif skillActivated == -2:
-			method.bufferxy(1,18,"That skill is passive!                                    ")
+			method.bufferxy(1,18,"That skill is passive!                             ")
 		else:
 			method.bufferxy(1,18,SKILLS[skillActivated-1][0] + " activated!                            ")
 		method.bufferxy(1,20,"Press any key to continue...")
@@ -496,6 +504,7 @@ while GAME_RUNNING:
 							SKILLS[i+HERO_SCREEN*4][2] = time.time()
 						elif(i+HERO_SCREEN*4==2): #rage
 							RAGE = True
+							RAGE_TIMER = time.time()
 							SKILLS[i+HERO_SCREEN*4][2] = time.time()
 						elif(i+HERO_SCREEN*4==3): #money bag
 							MONEY += MONEY
