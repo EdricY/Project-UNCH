@@ -165,7 +165,7 @@ def update():
 		killMob()
 	if CURRENT_ZONE % 5 == 0 and 30.0-time.time()+BOSS_TIMER<=0:
 		createMob()
-	if 10.0-time.time()+RAGE_TIMER<=0:
+	if RAGE and 10.0-time.time()+RAGE_TIMER<=0:
 		RAGE=False
 
 def draw():
@@ -502,6 +502,7 @@ while GAME_RUNNING:
 					elif SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2]>0:
 						skillActivated = -1
 					else:
+						skillActivated = i+HERO_SCREEN*4
 						if(i+HERO_SCREEN*4==1): # fireball
 							MOB_HP-=20+HEROES[4][1]/5
 							SKILLS[i+HERO_SCREEN*4][2] = time.time()
