@@ -14,11 +14,11 @@ UNCH is a recursive acronym that stands for “UNCH’s not Clicker Heroes.” U
 
 ###Screenshots
 <p align="center">
-<img src="/screenshots/title.png?raw=true" 			alt="The title screen of Project-UNCH." 		title="Title Screen">
-<img src="/screenshots/boss.png?raw=true"	 		alt="A preview of a boss and its timer." 		title="Boss">
-<img src="/screenshots/information.png?raw=true" 	alt="The help and information system." 			title="Information System">
-<img src="/screenshots/statistics.png?raw=true"		alt="Some simple statistics in the stats tab." 	title="Statistics">
-<img src="/screenshots/skills.png?raw=true" 		alt="A skill  called fireball being used." 		title="Skills">
+<img src="/screenshots/title.png?raw=true" 			alt="The title screen of Project-UNCH." 		title="Title Screen"><br>
+<img src="/screenshots/boss.png?raw=true"	 		alt="A preview of a boss and its timer." 		title="Boss"><br>
+<img src="/screenshots/information.png?raw=true" 	alt="The help and information system." 			title="Information System"><br>
+<img src="/screenshots/statistics.png?raw=true"		alt="Some simple statistics in the stats tab." 	title="Statistics"><br>
+<img src="/screenshots/skills.png?raw=true" 		alt="A skill  called fireball being used." 		title="Skills"><br>
 </p>
 ###Using git
 ![Git example.](/screenshots/git.png?raw=true "GitHub")
