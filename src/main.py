@@ -245,7 +245,8 @@ def draw():
 			for x in range(1,29)
 				method.bufferxy(x,y," ")
 		method.bufferxy(1,4,"Lifetime hits: " + str(STATS[0]))
-		method.bufferxy(1,4,"Lifetime hits: " + str(STATS[0]))
+		method.bufferxy(1,4,"Lifetime mob kills: " + str(STATS[1]))
+		method.bufferxy(1,4,"Lifetime Hero Levelups: " + str(STATS[2]))
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
 			method.bufferxy(1,18,"Not enough &GXmoney&XX!            ")
