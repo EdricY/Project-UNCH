@@ -242,7 +242,7 @@ def draw():
 	else:
 		method.bufferxy(1,3,"=Stats======================")
 		for y in range(4,16):
-			for x in range(1,29)
+			for x in range(1,29):
 				method.bufferxy(x,y," ")
 		method.bufferxy(1,4,"Lifetime hits: " + str(STATS[0]))
 		method.bufferxy(1,4,"Lifetime mob kills: " + str(STATS[1]))
