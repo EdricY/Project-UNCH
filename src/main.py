@@ -60,9 +60,9 @@ skillActivated=0
 timeSinceLastSession = 0
 goldGained = 0
 STATS =[]
-HEROES.append()
-HEROES.append()
-HEROES.append()
+STATS.append()
+STATS.append()
+STATS.append()
 
 HEROES=[] # hero names 9 chars max
 HEROES.append(["Mr. Red ", 0, 0, 25]) # name, level, dps, cost
