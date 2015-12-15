@@ -456,6 +456,12 @@ while GAME_RUNNING:
 						if HEROES[i+4*HERO_SCREEN][1] == 0 and SKILLS[i+4*HERO_SCREEN][1]>0:
 							SKILLS[i+4*HERO_SCREEN][2]=time.time()-SKILLS[i+4*HERO_SCREEN][1]
 						HEROES[i+4*HERO_SCREEN][1]+=1 #level
+						#power up skills every 5 levels
+						if HEROES[i+4*HERO_SCREEN][1]%5 == 0:
+							if i+4*HERO_SCREEN==0 # big hits:
+							if i+4*HERO_SCREEN==0 # big hits:
+							if i+4*HERO_SCREEN==0 # big hits:
+							if i+4*HERO_SCREEN==0 # big hits:
 						HEROES[i+4*HERO_SCREEN][2]+=(1+i+4*HERO_SCREEN)*(1+i+4*HERO_SCREEN) #dps
 						HEROES[i+4*HERO_SCREEN][3]+=(1+i+4*HERO_SCREEN)*HEROES[i+4*HERO_SCREEN][3]/25 *HEROES[i+4*HERO_SCREEN][3]/25 #cost
 						DPS += (1+i+4*HERO_SCREEN)*(1+i+4*HERO_SCREEN)
