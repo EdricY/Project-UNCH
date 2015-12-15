@@ -82,7 +82,7 @@ HELP_DISP_NUM=0 #display info for # hero/skill
 SKILLS=[]
 SKILLS.append(["Big Hits  ",0,0]) # name, cd (seconds) (if 0, its a passive skill), cd timer (time used last)
 SKILLS.append(["Fireball",30,time.time()])
-SKILLS.append(["Rage",30,time.time()])
+SKILLS.append(["Rage",120,time.time()])
 SKILLS.append(["Money Bag",3600,time.time()])
 SKILLS.append(["Firestorm",0,0])
 #SKILLS.append(["Fireball",30,0.0])
