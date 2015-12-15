@@ -91,7 +91,7 @@ SKILL_DESC.append(["Increases Hit Damage.", "Every 5 leves, &MXRed&XX complains 
 SKILL_DESC.append(["Shoots a Fireball to deal a lot of damage.", "(R)&MXYu&XX likes to spam this."])
 SKILL_DESC.append(["&MXThebleegel&XX enters a state of rage, making hits", "do double damage."])
 SKILL_DESC.append(["Through the power of creativity, &MXthe Brickster&XX", "doubles your &GXmoney&XX."])
-SKILL_DESC.append(["The dev doesn't now what to do.", "So he buffs &MXYu&XX's attack."])
+SKILL_DESC.append(["The dev doesn't know what to do.", "So he buffs &MXYu&XX's attack."])
 #SKILL_DESC.append(["Blah Blah Blah", "And6 More Blah"])
 #SKILL_DESC.append(["Blah Blah7 Blah", "And More Blah"])
 #SKILL_DESC.append(["Blah Blah Blah", "An8d More Blah"])
@@ -129,7 +129,7 @@ def createMob():
 	MOB_DEAD=False
 	MOB_MAX_HP = CURRENT_ZONE*CURRENT_ZONE+random.randint(9,CURRENT_ZONE+9)
 	if CURRENT_ZONE % 5 == 0:
-		MOB_MAX_HP = 10*CURRENT_ZONE+5*CURRENT_ZONE
+		MOB_MAX_HP = 10*MOB_MAX_HP+5*CURRENT_ZONE
 		BOSS_TIMER = time.time()
 	MOB_HP = MOB_MAX_HP
 	CURRENT_MOB=random.randint(0,COUNT_FILES-1)
@@ -218,7 +218,7 @@ def draw():
 				elif round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1)<=0:
 					method.bufferxy(16,5+3*i,"Ready")
 				else:
-					method.bufferxy(16,5+3*i,str(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1)))
+					method.bufferxy(16,5+3*i,"&RX"+str(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1))+"&XX")
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
 			method.bufferxy(1,18,"Not enough &GXmoney&XX!                                  ")
@@ -453,6 +453,8 @@ while GAME_RUNNING:
 				if ch==str(i+1) and i+4*HERO_SCREEN<len(HEROES):
 					if MONEY>=HEROES[i+4*HERO_SCREEN][3]:
 						MONEY-=HEROES[i+4*HERO_SCREEN][3]
+						if HEROES[i+4*HERO_SCREEN][1] == 0 and SKILLS[i+4*HERO_SCREEN][1]>0:
+							SKILLS[i+4*HERO_SCREEN][2]=time.time()-SKILLS[i+4*HERO_SCREEN][1]
 						HEROES[i+4*HERO_SCREEN][1]+=1 #level
 						HEROES[i+4*HERO_SCREEN][2]+=(1+i+4*HERO_SCREEN)*(1+i+4*HERO_SCREEN) #dps
 						HEROES[i+4*HERO_SCREEN][3]+=(1+i+4*HERO_SCREEN)*HEROES[i+4*HERO_SCREEN][3]/25 *HEROES[i+4*HERO_SCREEN][3]/25 #cost
