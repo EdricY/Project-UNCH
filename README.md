@@ -2,7 +2,6 @@
 UNCH is a recursive acronym that stands for “UNCH’s not Clicker Heroes.” UNCH will be based on the popular game Clicker Heroes, but without its core element: clicking. Written in Python and runnable on any linux machine, UNCH is played using the keyboard. Fight your way through the levels, upgrade your heroes, and enjoy the colorful text-based GUI.
 
 ###Todo
-- DPS
 - Hit damage
 - Skills
 - Save slots
