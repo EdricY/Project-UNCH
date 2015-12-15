@@ -157,7 +157,7 @@ def killMob():
 			ZONE_MOBS_KILLED=0
 
 def update():
-	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, DPS_BUFFER
+	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, DPS_BUFFER, RAGE
         MOB_HP -= int(math.floor(DPS_BUFFER))
         DPS_BUFFER -= math.floor(DPS_BUFFER)
         DPS_BUFFER = float(DPS)/20.0 + DPS_BUFFER
