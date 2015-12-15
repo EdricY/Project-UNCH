@@ -389,8 +389,6 @@ def load():
 				ZONE_MOBS_KILLED = LD[5]
 				HEROES = LD[6]
 				SKILLS = LD[7]
-				for hero in HEROES:
-					DPS += hero[2]
 			else:
 				loadMenuOpen = True
 	except Exception:
