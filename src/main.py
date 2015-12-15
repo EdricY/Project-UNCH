@@ -274,7 +274,7 @@ def draw():
 	elif newMenuOpen:
 		gui.drawnewmenu()
 	elif returnMenuOpen:
-		gui.drawreturnmenu(LD[8]-int(sessionStart),goldGained)
+		gui.drawreturnmenu(LD[8]-int(sessionStart),int(goldGained))
 def quit(forced):
 	os.system("stty echo")
 	os.system("setterm -cursor on")
@@ -397,7 +397,7 @@ def load():
 				SKILLS = LD[7]
 				sessionStart = time.time()
 				goldGained = LD[8]/(CURRENT_ZONE*CURRENT_ZONE+9+CURRENT_ZONE/2)*DPS*(CURRENT_ZONE*3 + 3*(1+CURRENT_ZONE/10))
-				MONEY += goldGained
+				MONEY += int(goldGained)
 				returnMenuOpen=True
 			else:
 				loadMenuOpen = True
