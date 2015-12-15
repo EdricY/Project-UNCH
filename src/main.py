@@ -53,6 +53,7 @@ RAGE_TIMER=0.0
 quitMenuOpen=False
 loadMenuOpen=False
 newMenuOpen=False
+returnMenuOpen=False
 purchaseComplete=0
 skillActivated=0
 
@@ -266,9 +267,10 @@ def draw():
 		gui.drawquitmenu(ROWS,COLUMNS)
 	if loadMenuOpen:
 		gui.drawloadmenu(ROWS,COLUMNS)
-	if newMenuOpen:
+	elif newMenuOpen:
 		gui.drawnewmenu(ROWS,COLUMNS)
-
+	elif ReturnMenuOpen:
+		gui.drawnewmenu(ROWS,COLUMNS, LD[8])
 def quit(forced):
 	os.system("stty echo")
 	os.system("setterm -cursor on")
@@ -389,6 +391,7 @@ def load():
 				ZONE_MOBS_KILLED = LD[5]
 				HEROES = LD[6]
 				SKILLS = LD[7]
+				returnMenuOpen=True
 			else:
 				loadMenuOpen = True
 	except Exception:
@@ -445,6 +448,10 @@ while GAME_RUNNING:
 		lastch = "|"
 	elif newMenuOpen and ch != lastch:
 		newMenuOpen = False
+		ch = "|"
+		lastch = "|"
+	elif returnMenuOpen and ch != lastch:
+		returnMenuOpen = False
 		ch = "|"
 		lastch = "|"
 	elif lastch=='h':
