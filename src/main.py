@@ -37,7 +37,7 @@ DEATH_FRAME = 0
 MONEY=0
 MONEY_BUFFER=0
 HIT_DMG=1
-DPS=1
+DPS=0
 DPS_BUFFER=0.0
 MOB_HP=10
 MOB_MAX_HP=10
@@ -360,7 +360,8 @@ def load():
 				CURRENT_ZONE = LD[4]
 				ZONE_MOBS_KILLED = LD[5]
 				HEROES = LD[6]
-			
+				for hero in HEROES
+					DPS += hero[2]
 			else:
 				loadMenuOpen = True
 	except Exception:
@@ -446,6 +447,8 @@ while GAME_RUNNING:
 					if MONEY>=HEROES[i+4*HERO_SCREEN][3]:
 						MONEY-=HEROES[i+4*HERO_SCREEN][3]
 						HEROES[i+4*HERO_SCREEN][1]+=1
+						HEROES[i+4*HERO_SCREEN][2]+=HEROES[i+4*HERO_SCREEN][1]+i+4*HERO_SCREEN*HEROES[i+4*HERO_SCREEN][1]
+						DPS += HEROES[i+4*HERO_SCREEN][2]
 						purchaseComplete=i+1+4*HERO_SCREEN
 					else:
 						purchaseComplete=-1
