@@ -229,9 +229,9 @@ def draw():
 		method.bufferxy(1,20,"Press any key to continue...")
 	if skillActivated!=0:
 		if skillActivated==-1:
-			method.bufferxy(1,18,+"Skill not ready!                                         ")
+			method.bufferxy(1,18,"That skill is not ready!                                  ")
 		elif skillActivated == -2:
-			method.bufferxy(1,18,+"Skill is passive!                                        ")
+			method.bufferxy(1,18,"That skill is passive!                                    ")
 		else:
 			method.bufferxy(1,18,SKILLS[skillActivated-1][0] + " activated!                            ")
 		method.bufferxy(1,20,"Press any key to continue...")
