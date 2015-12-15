@@ -27,7 +27,7 @@ def drawreturnmenu(seconds, gold):
 		method.bufferxy(10, i+9,RETURN_LINES[i][:-1])
 	m, s = divmod(seconds, 60)
 	h, m = divmod(m, 60)
-	method.bufferxy(14,11,"&MX" + str(h) + " hrs " + str(m) + " mins and " + str(seconds) + " secs&XX.&GX")
+	method.bufferxy(14,11,"&MX" + str(h) + " hrs " + str(m) + " mins and " + str(s) + " secs&XX.&GX")
 	method.bufferxy(34,13,"&YX" + method.dispBigNum(gold) + "&GX")
 
 #load GUI file.
