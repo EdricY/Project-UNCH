@@ -210,7 +210,7 @@ def draw():
 			method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
 			#Skills
 			method.bufferxy(19,4+3*i,SKILLS[i+HERO_SCREEN*4][0])
-			if HEROES[i+HERO_SCREEN*4][1]>0
+			if HEROES[i+HERO_SCREEN*4][1]>0:
 				if(SKILLS[i+HERO_SCREEN*4][1]==0):
 					method.bufferxy(16,5+3*i,"(Passive)")
 				
