@@ -23,7 +23,7 @@ def drawnewmenu():
 	for i in range(0,len(NEW_LINES)):
 		method.bufferxy(11, i+9,NEW_LINES[i][:-1])
 def drawreturnmenu(seconds, gold):
-	for i in range(0,len(NEW_LINES)):
+	for i in range(0,len(RETURN_LINES)):
 		method.bufferxy(10, i+9,RETURN_LINES[i][:-1])
 	m, s = divmod(seconds, 60)
 	h, m = divmod(m, 60)
