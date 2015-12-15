@@ -13,16 +13,16 @@ import method
 def drawtitle(rows, columns):
 	for i in range(0,len(TITLE_LINES)):
 		method.printxy(columns/2 - 29, rows/2-11 + i,TITLE_LINES[i])
-def drawquitmenu(rows, columns):
+def drawquitmenu():
 	for i in range(0,len(QUIT_LINES)):
 		method.bufferxy(12, i+9,QUIT_LINES[i][:-1])
-def drawloadmenu(rows, columns):
+def drawloadmenu():
 	for i in range(0,len(LOAD_LINES)):
 		method.bufferxy(12, i+9,LOAD_LINES[i][:-1])
-def drawnewmenu(rows, columns):
+def drawnewmenu():
 	for i in range(0,len(NEW_LINES)):
 		method.bufferxy(11, i+9,NEW_LINES[i][:-1])
-def drawreturnmenu(rows, columns, seconds, gold):
+def drawreturnmenu(seconds, gold):
 	for i in range(0,len(NEW_LINES)):
 		method.bufferxy(10, i+9,RETURN_LINES[i][:-1])
 	m, s = divmod(seconds, 60)
