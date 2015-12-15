@@ -490,9 +490,9 @@ while GAME_RUNNING:
 							elif i+4*HERO_SCREEN==1: #fireball
 								SKILLS[i+HERO_SCREEN*4][1] = max(SKILLS[i+HERO_SCREEN*4][1]-2,10)
 							elif i+4*HERO_SCREEN==3: # money bag
-								SKILLS[3][1] = max(SKILLS[i+HERO_SCREEN*4][1]-2,60)
+								SKILLS[3][1] = max(SKILLS[i+HERO_SCREEN*4][1]-300,60)
 						HEROES[i+4*HERO_SCREEN][2]+=(1+i+4*HERO_SCREEN)*(1+i+4*HERO_SCREEN) #dps
-						HEROES[i+4*HERO_SCREEN][3]+=(1+i+4*HERO_SCREEN)*HEROES[i+4*HERO_SCREEN][3]/25 *HEROES[i+4*HERO_SCREEN][3]/25 #cost
+						HEROES[i+4*HERO_SCREEN][3]+=(1+i+4*HERO_SCREEN)+HEROES[i+4*HERO_SCREEN][3]/5 #cost
 						DPS += (1+i+4*HERO_SCREEN)*(1+i+4*HERO_SCREEN)
 						purchaseComplete=i+1+4*HERO_SCREEN
 					else:
