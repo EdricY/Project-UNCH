@@ -203,12 +203,13 @@ def draw():
 			method.bufferxy(36,16,method.dispBigNum(MOB_HP) + "&XX") #mob hp num
 	
 	for i in range(4):
-		#Heroes
-		method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
-		method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
-		method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
-		#Skills
-		method.bufferxy(19,4+3*i,SKILLS[i+HERO_SCREEN*4][0])
+		if (i+HERO_SCREEN*4<len(HEROES)):
+			#Heroes
+			method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
+			method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
+			method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
+			#Skills
+			method.bufferxy(19,4+3*i,SKILLS[i+HERO_SCREEN*4][0])
 		if(SKILLS[i+HERO_SCREEN*4][1]==0):
 			method.bufferxy(16,5+3*i,"(Passive)")
 		elif (SKILLS[i+HERO_SCREEN*4][2]==0 and HEROES[i+HERO_SCREEN*4][1]>0):
