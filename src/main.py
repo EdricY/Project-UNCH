@@ -117,7 +117,7 @@ def hit():
 	global HIT_DMG
 	global MOB_HP
 	if RAGE:
-		MOB_HP -= HIT_DMG*(1.5+.2*HEROES[2][1]/5)
+		MOB_HP -= int(HIT_DMG*(1.5+.2*HEROES[2][1]/5))
 	else:
 		MOB_HP -= HIT_DMG
 	if MOB_HP < 0:
