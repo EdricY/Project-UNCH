@@ -207,7 +207,7 @@ def draw():
 			#Heroes
 			method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
 			method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
-			method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][2]) + "&XX") #hero cost
+			method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
 			#Skills
 			method.bufferxy(19,4+3*i,SKILLS[i+HERO_SCREEN*4][0])
 			if(SKILLS[i+HERO_SCREEN*4][1]==0):
@@ -231,7 +231,7 @@ def draw():
 		elif HELP_DISP_NUM != 0:
 			if HELP_DISP_NUM<5:
 				method.bufferxy(1, 18,"                                                   ")
-				method.bufferxy(1, 18,"&YX"+HEROES[HELP_DISP_NUM-1+4*HERO_SCREEN][0] + "&XX  (DPS: " + str(HEROES[HELP_DISP_NUM+HERO_SCREEN*4][3])+")")
+				method.bufferxy(1, 18,"&YX"+HEROES[HELP_DISP_NUM-1+4*HERO_SCREEN][0] + "&XX  (DPS: " + str(HEROES[HELP_DISP_NUM-1+4*HERO_SCREEN][2])+")")
 				for i in range(2):
 					method.bufferxy(1, 19+i,HERO_DESC[HELP_DISP_NUM-1+4*HERO_SCREEN][i])
 			else: #Skill descriptions
