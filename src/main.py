@@ -375,7 +375,7 @@ def save():
 
 #Actually load
 def load():
-	global loadMenuOpen, newMenuOpen
+	global loadMenuOpen, newMenuOpen, returnMenuOpen
 	#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
 	global MONEY, HIT_DMG, DPS, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, HEROES, SKILLS
 	try:
