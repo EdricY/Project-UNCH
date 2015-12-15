@@ -37,7 +37,7 @@ DEATH_FRAME = 0
 MONEY=0
 MONEY_BUFFER=0
 HIT_DMG=1
-DPS=1
+DPS=0
 DPS_BUFFER=0.0
 MOB_HP=10
 MOB_MAX_HP=10
@@ -48,52 +48,65 @@ MONEY_POS=0
 ZONE_MOBS_KILLED=0
 BOSS_TIMER=0.0
 MOB_DEAD=False
+RAGE=False
+RAGE_TIMER=0.0
 quitMenuOpen=False
 loadMenuOpen=False
 newMenuOpen=False
+returnMenuOpen=False
+dispStats = False
 purchaseComplete=0
+skillActivated=0
+timeSinceLastSession = 0
+goldGained = 0
+STATS =[]
+STATS.append(0)
+STATS.append(0)
+STATS.append(0)
+STATS.append(int(time.time()))#start time
 
 HEROES=[] # hero names 9 chars max
-HEROES.append(["Red", 0, 0, 25]) # name, level, dps, cost
-HEROES.append(["Yu", 0, 0, 125])
-HEROES.append(["Bleegel", 0, 0, 500])
-HEROES.append(["Fish", 0, 0, 2500])
-HEROES.append(["Betty", 0, 0, 12500])
-HEROES.append(["Samurai", 0, 0, 62500])
-HEROES.append(["Leon", 0, 0, 5000000])
-HEROES.append(["Seer", 0, 0, 25000000])
+HEROES.append(["Mr. Red ", 0, 0, 25]) # name, level, dps, cost
+HEROES.append(["Evil Yu", 0, 0, 125])
+HEROES.append(["Thebleegel", 0, 0, 500])
+HEROES.append(["Brickster", 0, 0, 2500])
+HEROES.append(["Edge", 0, 0, 12500])
+#HEROES.append(["Samurai", 0, 0, 62500])
+#HEROES.append(["Leon", 0, 0, 5000000])
+#HEROES.append(["Seer", 0, 0, 25000000])
 HERO_SCREEN=0 #for now this is 0 or 1
                    
 HERO_DESC=[]     #"                                                   "
 HERO_DESC.append(["Known to be inquisitive. \"What's this button do?\"", "Every 5 levels, Red increases your hit damage."])#Red
 HERO_DESC.append(["Loves to spam OP abilities.", "Unlocks &MXFireball&XX which cools faster every 5 levels."])#Yu
 HERO_DESC.append(["Sometimes uncontrollably enters a state of rage.", "Unlocks &MXRage&XX which strengthens every 5 levels."])#Bleegel
-HERO_DESC.append(["Blah Blah B4lah", "And More Blah"])#Fish
-HERO_DESC.append(["Blah Blah5 Blah", "And More Blah"])#Betty
-HERO_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Samurai
-HERO_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
-HERO_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
-HERO_DISP_NUM=0 #display info for # hero
+HERO_DESC.append(["Enjoys long walks on short bridges.", "\"The best thing since Betty White.\""])#Brickster
+HERO_DESC.append(["The Dev", "'sup"])#Edge
+#HERO_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Samurai
+#HERO_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
+#HERO_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
+
+HELP_DISP_NUM=0 #display info for # hero/skill
 
 SKILLS=[]
-SKILLS.append(["Fireball",30]) # name, cd (seconds), 
-SKILLS.append(["Rage",30])
-SKILLS.append(["Fireball",30])
-SKILLS.append(["Fireball",30])
-SKILLS.append(["Fireball",30])
-SKILLS.append(["Fireball",30])
-SKILLS.append(["Fireball",30])
-SKILLS.append(["Fireball",30])
+SKILLS.append(["Big Hits  ",0,0]) # name, cd (seconds) (if 0, its a passive skill), cd timer (time used last)
+SKILLS.append(["Fireball",30,time.time()])
+SKILLS.append(["Rage",120,time.time()])
+SKILLS.append(["Money Bag",3600,time.time()])
+SKILLS.append(["Firestorm",0,0])
+#SKILLS.append(["Fireball",30,0.0])
+#SKILLS.append(["Fireball",30,0.0])
+#SKILLS.append(["Fireball",30,0.0])
 
-SKILL_DESC=[]
-SKILL_DESC.append(["Blah 1Blah Blah", "And More Blah"])
-SKILL_DESC.append(["Blah Blah Bl2ah", "And More Blah"])
-SKILL_DESC.append(["Blah Blah Blah", "And 3More Blah"])
-SKILL_DESC.append(["Blah Blah B4lah", "And More Blah"])
-SKILL_DESC.append(["Blah Blah5 Blah", "And More Blah"])
-SKILL_DESC.append(["Blah Blah Blah", "And6 More Blah"])
-SKILL_DESC.append(["Blah Blah7 Blah", "And More Blah"])
-SKILL_DESC.append(["Blah Blah Blah", "An8d More Blah"])
+SKILL_DESC=[]     #"                                                   "
+SKILL_DESC.append(["Increases Hit Damage.", "Every 5 leves, &MXRed&XX complains about the hit damage."])
+SKILL_DESC.append(["Shoots a Fireball to deal a lot of damage.", "Ryu... I mean &MXYu&XX likes to spam this."])
+SKILL_DESC.append(["&MXThebleegel&XX enters a state of rage, making hits", "do double damage."])
+SKILL_DESC.append(["Through the power of creativity, the &MXBrickster&XX", "doubles your &GXmoney&XX."])
+SKILL_DESC.append(["The dev doesn't know what to do.", "So he buffs &MXYu&XX's attack."])
+#SKILL_DESC.append(["Blah Blah Blah", "And6 More Blah"])
+#SKILL_DESC.append(["Blah Blah7 Blah", "And More Blah"])
+#SKILL_DESC.append(["Blah Blah Blah", "An8d More Blah"])
 
 #Mob loading
 for i in MOB_FILES:
@@ -110,32 +123,39 @@ gui.drawtitle(ROWS,COLUMNS)
 
 #Definitions and methods
 def hit():
-	global HIT_DMG
-	global MOB_HP
-	MOB_HP -= HIT_DMG
+	global HIT_DMG, MOB_HP, STATS
+	if RAGE:
+		MOB_HP -= int(HIT_DMG*(1.5+.2*HEROES[2][1]/5))
+	else:
+		MOB_HP -= HIT_DMG
 	if MOB_HP < 0:
 		MOB_HP = 0
+	STATS[0]+=1
 
 def destroy():
-	global MOB_HP
+	global MOB_HP, MONEY
 	MOB_HP -= 10000
+	MONEY += 10000
 	if MOB_HP < 0:
 		MOB_HP = 0
 
 def createMob():
 	global MOB_MAX_HP, MOB_HP, CURRENT_MOB, MOB_DEAD, BOSS_TIMER
 	MOB_DEAD=False
-	MOB_MAX_HP = CURRENT_ZONE+random.randint(0,5)
+	MOB_MAX_HP = CURRENT_ZONE*CURRENT_ZONE+random.randint(9,CURRENT_ZONE+9)
 	if CURRENT_ZONE % 5 == 0:
-		MOB_MAX_HP = 10*CURRENT_ZONE+50
+		MOB_MAX_HP = 10*MOB_MAX_HP+5*CURRENT_ZONE
 		BOSS_TIMER = time.time()
 	MOB_HP = MOB_MAX_HP
 	CURRENT_MOB=random.randint(0,COUNT_FILES-1)
 
 def killMob():
-	global ZONE_MOBS_KILLED, HIGHEST_ZONE, MOB_DEAD, MONEY, MONEY_BUFFER, MONEY_POS
+	global ZONE_MOBS_KILLED, HIGHEST_ZONE, MOB_DEAD, MONEY, MONEY_BUFFER, MONEY_POS, STATS
+	STATS[1]+=1
 	MOB_DEAD=True
-	MONEY_BUFFER = CURRENT_ZONE + random.randint(1,5)*(1+CURRENT_ZONE/10)
+	MONEY_BUFFER = CURRENT_ZONE*3 + random.randint(1,5)*(1+CURRENT_ZONE/10)
+	if CURRENT_ZONE % 5 == 0:
+		MONEY_BUFFER += MONEY_BUFFER
 	MONEY+=MONEY_BUFFER
 	MONEY_POS=random.randint(0,17-len(str(MONEY_BUFFER)))
 	if CURRENT_ZONE==HIGHEST_ZONE:
@@ -149,7 +169,7 @@ def killMob():
 			ZONE_MOBS_KILLED=0
 
 def update():
-	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, DPS_BUFFER
+	global MOB_HP, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, DPS_BUFFER, RAGE
         MOB_HP -= int(math.floor(DPS_BUFFER))
         DPS_BUFFER -= math.floor(DPS_BUFFER)
         DPS_BUFFER = float(DPS)/20.0 + DPS_BUFFER
@@ -157,20 +177,23 @@ def update():
 		killMob()
 	if CURRENT_ZONE % 5 == 0 and 30.0-time.time()+BOSS_TIMER<=0:
 		createMob()
-
+	if RAGE and 10.0-time.time()+RAGE_TIMER<=0:
+		RAGE=False
 
 def draw():
 	global DEATH_FRAME, ZONE_MOBS_KILLED, MOB_MAX_HP, HIGHEST_ZONE, CURRENT_ZONE, lastch
-	#gui.drawgui()
 	method.bufferxy(26,15,str(1+HERO_SCREEN)) #scroll up/down
-	method.bufferxy(15,22,method.dispBigNum(HIT_DMG)) #Hit Dmg
+	if RAGE:
+		method.bufferxy(15,22,"&RX"+method.dispBigNum(int(HIT_DMG*(1.5+.2*HEROES[2][1]/5)))+"&XX")
+	else:
+		method.bufferxy(15,22,method.dispBigNum(HIT_DMG)) #Hit Dmg
 	method.bufferxy(37,22,method.dispBigNum(DPS)) #DPS
 	method.bufferxy(4,1,"&YX" + method.dispBigNum(MONEY) + "&YX") #money
 	method.bufferxy(33,3,MOBS[CURRENT_MOB][0]) #mob name
 	if CURRENT_ZONE-1>0:
 		method.bufferxy(35,1,str(CURRENT_ZONE-1)) #zone num -
 	if CURRENT_ZONE != HIGHEST_ZONE:
-		method.bufferxy(49-len(str(CURRENT_ZONE)),1,str(CURRENT_ZONE+1)) #zone num + 
+		method.bufferxy(49-len(str(CURRENT_ZONE+1)),1,str(CURRENT_ZONE+1)) #zone num + 
 	method.bufferxy(42-len(str(CURRENT_ZONE))/2,1,str(CURRENT_ZONE)) #zone num
 	if CURRENT_ZONE % 5 == 0: #zone mob nums
 		method.bufferxy(36,15,"&RXTime: "+str(round(30.0-time.time()+BOSS_TIMER,1)) + "&XX") #boss timer
@@ -200,16 +223,45 @@ def draw():
 		for i in range(1,len(MOBS[CURRENT_MOB])): #mob drawing
 			method.bufferxy(32,4+i,MOBS[CURRENT_MOB][i][:-1])
 			method.bufferxy(36,16,method.dispBigNum(MOB_HP) + "&XX") #mob hp num
-	#Heroes
-	for i in range(4):
-		method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
-		method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
-		method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
+	if dispStats == False:
+		for i in range(4):
+			if (i+HERO_SCREEN*4<len(HEROES)):
+				#Heroes
+				method.bufferxy(1,4+3*i,HEROES[i+HERO_SCREEN*4][0]) # hero name
+				method.bufferxy(15-len(str(HEROES[i+HERO_SCREEN*4][1])),4+3*i,str(HEROES[i+HERO_SCREEN*4][1])) # hero level
+				method.bufferxy(14-len(method.dispBigNum(HEROES[i+HERO_SCREEN*4][3])),5+3*i,"&GX$&YX" + method.dispBigNum(HEROES[i+HERO_SCREEN*4][3]) + "&XX") #hero cost
+				#Skills
+				method.bufferxy(19,4+3*i,SKILLS[i+HERO_SCREEN*4][0])
+				if HEROES[i+HERO_SCREEN*4][1]>0:
+					if(SKILLS[i+HERO_SCREEN*4][1]==0):
+						method.bufferxy(16,5+3*i,"(Passive)")
+					
+					elif round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1)<=0:
+						method.bufferxy(16,5+3*i,"Ready")
+					else:
+						method.bufferxy(16,5+3*i,"&RX"+str(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1))+"&XX")
+	else:
+		method.bufferxy(1,3,"=&MXStats&XX======================")
+		for y in range(4,16):
+			for x in range(1,29):
+				method.bufferxy(x,y," ")
+		method.bufferxy(1,4,"Lifetime hits: " + str(STATS[0]))
+		method.bufferxy(1,5,"Lifetime mob kills: " + str(STATS[1]))
+		method.bufferxy(1,6,"Lifetime Hero Levelups: " + str(STATS[2]))
+		method.bufferxy(1,7,"Time since start: " + str(int(time.time())-STATS[3]) + "sec")
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
-			method.bufferxy(1,18,"Not enough &GXmoney&XX!                                  ")
+			method.bufferxy(1,18,"Not enough &GXmoney&XX!            ")
 		else:
-			method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " gained a level!                          ")
+			method.bufferxy(1,18,HEROES[purchaseComplete-1][0] + " gained a level!              ")
+		method.bufferxy(1,20,"Press any key to continue...")
+	if skillActivated!=0:
+		if skillActivated==-1:
+			method.bufferxy(1,18,"That skill is not ready!                           ")
+		elif skillActivated == -2:
+			method.bufferxy(1,18,"That skill is passive!                             ")
+		else:
+			method.bufferxy(1,18,SKILLS[skillActivated][0] + " activated!                            ")
 		method.bufferxy(1,20,"Press any key to continue...")
 	if not quitMenuOpen:
 		if lastch=='.' or lastch=='>': #characters at bottom
@@ -219,19 +271,26 @@ def draw():
 			method.bufferxy(1,18,"Press hero/skill key to find information about it.")
 			method.bufferxy(1,19,"Press &CXQ&XX to Quit.")
 			method.bufferxy(1,20,"Use &CX>&XX and &CX<&XX to attack (no need to press SHIFT)")
-		elif HERO_DISP_NUM != 0:
-			method.bufferxy(1, 18,"&YX"+HEROES[HERO_DISP_NUM-1+4*HERO_SCREEN][0] + "&XX                                          ")
-			for i in range(2):
-				method.bufferxy(1, 19+i,HERO_DESC[HERO_DISP_NUM-1+4*HERO_SCREEN][i])
+		elif HELP_DISP_NUM != 0:
+			if HELP_DISP_NUM<5:
+				method.bufferxy(1, 18,"                                                   ")
+				method.bufferxy(1, 18,"&YX"+HEROES[HELP_DISP_NUM-1+4*HERO_SCREEN][0] + "&XX  (DPS: " + str(HEROES[HELP_DISP_NUM-1+4*HERO_SCREEN][2])+")")
+				for i in range(2):
+					method.bufferxy(1, 19+i,HERO_DESC[HELP_DISP_NUM-1+4*HERO_SCREEN][i])
+			else: #Skill descriptions
+				method.bufferxy(1, 18,"&YX"+SKILLS[HELP_DISP_NUM-5+4*HERO_SCREEN][0] + "&XX                                          ")
+				for i in range(2):
+					method.bufferxy(1, 19+i,SKILL_DESC[HELP_DISP_NUM-5+4*HERO_SCREEN][i])
 		else:
 			method.bufferxy(49,22,"&MX>&XX  ")
 	else:
-		gui.drawquitmenu(ROWS,COLUMNS)
+		gui.drawquitmenu()
 	if loadMenuOpen:
-		gui.drawloadmenu(ROWS,COLUMNS)
+		gui.drawloadmenu()
 	if newMenuOpen:
-		gui.drawnewmenu(ROWS,COLUMNS)
-
+		gui.drawnewmenu()
+	if returnMenuOpen:
+		gui.drawreturnmenu(timeSinceLastSession,goldGained)
 def quit(forced):
 	os.system("stty echo")
 	os.system("setterm -cursor on")
@@ -259,6 +318,10 @@ while ch != ' ':
 	except KeyboardInterrupt, EOFError:
 		GAME_RUNNING=False
 		quit(True)
+
+for y in range(1, ROWS+1): #refresh screen
+	for x in range(1, COLUMNS+1):
+		method.printxy(x,y," ")
 #Create first mob	
 createMob()
 
@@ -293,6 +356,9 @@ def mainloop():
 
 #Data to save
 def updateVarsToSave():
+	global SKILLS
+	for i in range(3):
+		SKILLS[i+1][2] = int(SKILLS[i+1][2])
 	#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
 	SD = [MONEY,
 	HIT_DMG,
@@ -301,7 +367,9 @@ def updateVarsToSave():
 	CURRENT_ZONE,
 	ZONE_MOBS_KILLED,
 	HEROES,
-	int(os.popen('date +%s').read())]
+	SKILLS,
+	int(time.time()),#int(os.popen('date +%s').read())
+	STATS] 
 	return SD
 	
 def checkTypes(list1, list2):
@@ -324,9 +392,9 @@ def save():
 
 #Actually load
 def load():
-	global loadMenuOpen, newMenuOpen
+	global loadMenuOpen, newMenuOpen, returnMenuOpen, timeSinceLastSession, goldGained
 	#FOR NEW SAVEABLE VARIABLE, APPEND A VARIABLE TO THIS LIST
-	global MONEY, HIT_DMG, DPS, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, HEROES
+	global MONEY, HIT_DMG, DPS, HIGHEST_ZONE, CURRENT_ZONE, ZONE_MOBS_KILLED, HEROES, SKILLS, STATS
 	try:
 		LD = gamesave.load()
 		if type(LD) == type("NEW"):
@@ -343,7 +411,12 @@ def load():
 				CURRENT_ZONE = LD[4]
 				ZONE_MOBS_KILLED = LD[5]
 				HEROES = LD[6]
-			
+				SKILLS = LD[7]
+				timeSinceLastSession = int(time.time() - LD[8])
+				goldGained = 1 + timeSinceLastSession*DPS/10 * 6
+				MONEY += goldGained
+				returnMenuOpen=True
+				STATS = LD[9]
 			else:
 				loadMenuOpen = True
 	except Exception:
@@ -375,31 +448,42 @@ while GAME_RUNNING:
 	if quitMenuOpen:
 		if ch=='y' or ch=='Y':
 			GAME_RUNNING=False
+			os.system("stty echo")
+			os.system("setterm -cursor on")
+			os.system('clear')
+			os.system("stty icanon")
 			quit(False)
-
 		elif ch=='n' or ch=='N':
 			quitMenuOpen = False
-	elif HERO_DISP_NUM != 0 and ch != lastch:
-		HERO_DISP_NUM = 0
-		ch = " "
-		lastch = " "
+	elif HELP_DISP_NUM != 0 and ch != lastch:
+		HELP_DISP_NUM = 0
+		ch = "|"
+		lastch = "|"
 	elif purchaseComplete != 0 and ch != lastch:
 		purchaseComplete = 0
-		ch = " "
-		lastch = " "
+		ch = "|"
+		lastch = "|"
+	elif skillActivated != 0 and ch != lastch:
+		skillActivated = 0
+		ch = "|"
+		lastch = "|"
 	elif loadMenuOpen and ch != lastch:
 		loadMenuOpen = False
-		ch = " "
-		lastch = " "
+		ch = "|"
+		lastch = "|"
 	elif newMenuOpen and ch != lastch:
 		newMenuOpen = False
-		ch = " "
-		lastch = " "
-	elif lastch=='h':
+		ch = "|"
+		lastch = "|"
+	elif returnMenuOpen and ch != lastch:
+		returnMenuOpen = False
+		ch = "|"
+		lastch = "|"
+	elif lastch=='h' and dispStats==False:
 		try:
-			HERO_DISP_NUM = int(ch)
-			if HERO_DISP_NUM > 4:
-				HERO_DISP_NUM = 0
+			HELP_DISP_NUM = int(ch)
+			if HELP_DISP_NUM > 8 or (HERO_SCREEN == 1 and HELP_DISP_NUM!= 1 and HELP_DISP_NUM!=5):
+				HELP_DISP_NUM = 0
 		except ValueError:
 			pass
 	else:
@@ -423,12 +507,48 @@ while GAME_RUNNING:
 			HERO_SCREEN=0
 		elif ch=="]" or ch=="}":
 			HERO_SCREEN=1
-		else:
+		elif ch=="j" or ch=="J":
+			dispStats = False
+		elif ch=="k" or ch=="K":
+			dispStats = True
+		elif dispStats == False:
 			for i in range(4):
-				if ch==str(i+1):
+				if ch==str(i+1) and i+4*HERO_SCREEN<len(HEROES):
 					if MONEY>=HEROES[i+4*HERO_SCREEN][3]:
 						MONEY-=HEROES[i+4*HERO_SCREEN][3]
-						HEROES[i+4*HERO_SCREEN][1]+=1
+						if HEROES[i+4*HERO_SCREEN][1] == 0 and SKILLS[i+4*HERO_SCREEN][1]>0:
+							SKILLS[i+4*HERO_SCREEN][2]=time.time()-SKILLS[i+4*HERO_SCREEN][1]
+						HEROES[i+4*HERO_SCREEN][1]+=1 #level
+						#power up skills every 5 levels
+						if HEROES[i+4*HERO_SCREEN][1]%5 == 0:
+							if i+4*HERO_SCREEN==0: #big hits
+								HIT_DMG += HEROES[0][1]/5
+							elif i+4*HERO_SCREEN==1: #fireball
+								SKILLS[i+HERO_SCREEN*4][1] = max(SKILLS[i+HERO_SCREEN*4][1]-2,10)
+							elif i+4*HERO_SCREEN==3: # money bag
+								SKILLS[3][1] = max(SKILLS[i+HERO_SCREEN*4][1]-300,60)
+						HEROES[i+4*HERO_SCREEN][2]+=(1+i+4*HERO_SCREEN)*(1+i+4*HERO_SCREEN) #dps
+						HEROES[i+4*HERO_SCREEN][3]+=(1+i+4*HERO_SCREEN)+HEROES[i+4*HERO_SCREEN][3]/5 #cost
+						DPS += (1+i+4*HERO_SCREEN)*(1+i+4*HERO_SCREEN)
 						purchaseComplete=i+1+4*HERO_SCREEN
+						STATS[2] += 1
 					else:
 						purchaseComplete=-1
+			for i in range(4):
+				if ch==str(i+5) and i+4*HERO_SCREEN<len(SKILLS):
+					if SKILLS[i+HERO_SCREEN*4][1] == 0:
+						skillActivated = -2
+					elif SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2]>0:
+						skillActivated = -1
+					else:
+						skillActivated = i+HERO_SCREEN*4
+						if(i+HERO_SCREEN*4==1): # fireball
+							MOB_HP-=20+HEROES[4][1]/5
+							SKILLS[i+HERO_SCREEN*4][2] = time.time()
+						elif(i+HERO_SCREEN*4==2): #rage
+							RAGE = True
+							RAGE_TIMER = time.time()
+							SKILLS[i+HERO_SCREEN*4][2] = time.time()
+						elif(i+HERO_SCREEN*4==3): #money bag
+							MONEY += MONEY
+							SKILLS[i+HERO_SCREEN*4][2] = time.time()

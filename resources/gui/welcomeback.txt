@@ -1,0 +1,7 @@
+&GXO================================O&XX
+&GX|Welcome back! It's been a while.|&XX
+&GX|Or                              |&XX
+&GX|While you were away your heroes |&XX
+&GX|farmed this much gold:          |&XX
+&GX|         &CXPress any key!&GX         |&XX
+&GXO================================O&XX
