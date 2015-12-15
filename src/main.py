@@ -446,9 +446,9 @@ while GAME_RUNNING:
 				if ch==str(i+1):
 					if MONEY>=HEROES[i+4*HERO_SCREEN][3]:
 						MONEY-=HEROES[i+4*HERO_SCREEN][3]
-						HEROES[i+4*HERO_SCREEN][1]+=1
-						HEROES[i+4*HERO_SCREEN][2]+=(i+4*HERO_SCREEN)*HEROES[i+4*HERO_SCREEN][1]
-						HEROES[i+4*HERO_SCREEN][3]+=(i+4*HERO_SCREEN)*HEROES[i+4*HERO_SCREEN][3]/25
+						HEROES[i+4*HERO_SCREEN][1]+=1 #level
+						HEROES[i+4*HERO_SCREEN][2]+=(1+i+4*HERO_SCREEN)*HEROES[i+4*HERO_SCREEN][1] #dps
+						HEROES[i+4*HERO_SCREEN][3]+=(1+i+4*HERO_SCREEN)*HEROES[i+4*HERO_SCREEN][3]/25 #cost
 						DPS += HEROES[i+4*HERO_SCREEN][2]
 						purchaseComplete=i+1+4*HERO_SCREEN
 					else:
