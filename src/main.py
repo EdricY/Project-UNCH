@@ -57,8 +57,8 @@ HEROES=[] # hero names 9 chars max
 HEROES.append(["Red", 0, 0, 25]) # name, level, dps, cost
 HEROES.append(["Yu", 0, 0, 125])
 HEROES.append(["Thebleegel", 0, 0, 500])
-HEROES.append(["Fish", 0, 0, 2500])
-HEROES.append(["Betty", 0, 0, 12500])
+HEROES.append(["Brickster", 0, 0, 2500])
+HEROES.append(["Edge", 0, 0, 12500])
 #HEROES.append(["Samurai", 0, 0, 62500])
 #HEROES.append(["Leon", 0, 0, 5000000])
 #HEROES.append(["Seer", 0, 0, 25000000])
@@ -68,8 +68,8 @@ HERO_DESC=[]     #"                                                   "
 HERO_DESC.append(["Known to be inquisitive. \"What's this button do?\"", "Every 5 levels, Red increases your hit damage."])#Red
 HERO_DESC.append(["Loves to spam OP abilities.", "Unlocks &MXFireball&XX which cools faster every 5 levels."])#Yu
 HERO_DESC.append(["Sometimes uncontrollably enters a state of rage.", "Unlocks &MXRage&XX which strengthens every 5 levels."])#Bleegel
-HERO_DESC.append(["Blah Blah B4lah", "And More Blah"])#Fish
-HERO_DESC.append(["Blah Blah5 Blah", "And More Blah"])#Betty
+HERO_DESC.append(["Enjoys long walks on short bridges.", "\"The best thing since Betty White.\""])#Brickster
+HERO_DESC.append(["The Dev", "'sup"])#Edge
 #HERO_DESC.append(["Blah Blah Blah", "And6 More Blah"])#Samurai
 #HERO_DESC.append(["Blah Blah7 Blah", "And More Blah"])#Leon
 #HERO_DESC.append(["Blah Blah Blah", "An8d More Blah"])#Seer
@@ -77,21 +77,21 @@ HERO_DESC.append(["Blah Blah5 Blah", "And More Blah"])#Betty
 HELP_DISP_NUM=0 #display info for # hero/skill
 
 SKILLS=[]
-SKILLS.append(["Big Hits",0,0.0]) # name, cd (seconds) (if 0, its a passive skill), cd timer
-SKILLS.append(["Fireball",30,0.0])
-SKILLS.append(["Rage",30,0.0])
-SKILLS.append(["Fireball",30,0.0])
-SKILLS.append(["Fireball",30,0.0])
+SKILLS.append(["Big Hits  ",0,0]) # name, cd (seconds) (if 0, its a passive skill), cd timer (time used last)
+SKILLS.append(["Fireball",30,time.time()])
+SKILLS.append(["Rage",30,time.time()])
+SKILLS.append(["Money Bag",3600,time.time()])
+SKILLS.append(["Firestorm",0,0])
 #SKILLS.append(["Fireball",30,0.0])
 #SKILLS.append(["Fireball",30,0.0])
 #SKILLS.append(["Fireball",30,0.0])
 
-SKILL_DESC=[]
-SKILL_DESC.append(["Increases Hit Damage.", "Every 5 leves, Red"])
-SKILL_DESC.append(["Instantly deal a lot of damage.", "Yu likes to spam this."])
-SKILL_DESC.append(["Blah Blah Blah", "And 3More Blah"])
-SKILL_DESC.append(["Blah Blah B4lah", "And More Blah"])
-SKILL_DESC.append(["Blah Blah5 Blah", "And More Blah"])
+SKILL_DESC=[]     #"                                                   "
+SKILL_DESC.append(["Increases Hit Damage.", "Every 5 leves, &MXRed&XX complains about the hit damage."])
+SKILL_DESC.append(["Shoots a Fireball to deal a lot of damage.", "(R)&MXYu&XX likes to spam this."])
+SKILL_DESC.append(["&MXThebleegel&XX enters a state of rage, making hits", "do double damage."])
+SKILL_DESC.append(["Through the power of creativity, &MXthe Brickster&XX", "doubles your &GXmoney&XX."])
+SKILL_DESC.append(["The dev doesn't now what to do.", "So he buffs &MXYu&XX's attack."])
 #SKILL_DESC.append(["Blah Blah Blah", "And6 More Blah"])
 #SKILL_DESC.append(["Blah Blah7 Blah", "And More Blah"])
 #SKILL_DESC.append(["Blah Blah Blah", "An8d More Blah"])
@@ -212,8 +212,10 @@ def draw():
 			method.bufferxy(19,4+3*i,SKILLS[i+HERO_SCREEN*4][0])
 			if(SKILLS[i+HERO_SCREEN*4][1]==0):
 				method.bufferxy(16,5+3*i,"(Passive)")
-			elif (SKILLS[i+HERO_SCREEN*4][2]==0 and HEROES[i+HERO_SCREEN*4][1]>0):
+			elif(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1)<=0 and HEROES[i+HERO_SCREEN*4][1]>0):
 				method.bufferxy(16,5+3*i,"Ready")
+			else:
+				method.bufferxy(16,5+3*i,str(round(SKILLS[i+HERO_SCREEN*4][1]-time.time()+SKILLS[i+HERO_SCREEN*4][2],1)))
 	if purchaseComplete!=0:
 		if purchaseComplete==-1:
 			method.bufferxy(1,18,"Not enough &GXmoney&XX!                                  ")
