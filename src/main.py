@@ -273,7 +273,7 @@ def draw():
 		gui.drawloadmenu()
 	elif newMenuOpen:
 		gui.drawnewmenu()
-	elif ReturnMenuOpen:
+	elif returnMenuOpen:
 		gui.drawreturnmenu(LD[8]-int(sessionStart),goldGained)
 def quit(forced):
 	os.system("stty echo")
