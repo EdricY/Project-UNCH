@@ -360,7 +360,7 @@ def load():
 				CURRENT_ZONE = LD[4]
 				ZONE_MOBS_KILLED = LD[5]
 				HEROES = LD[6]
-				for hero in HEROES
+				for hero in HEROES:
 					DPS += hero[2]
 			else:
 				loadMenuOpen = True
