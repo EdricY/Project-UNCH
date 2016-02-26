@@ -1,5 +1,5 @@
 &RXO===============================O&XX
-&RX|&XX Are you sure you want to quit?&RK|&XX
-&RX|&GX    Your game will be saved.   &RK|&XX
+&RX|&XX Are you sure you want to quit?&RX|&XX
+&RX|&GX    Your game will be saved.   &RX|&XX
 &RX|&XX       &RX(Y)&XXes       &GX(N)&XXo        &RX|&XX
 &RXO===============================O&XX
