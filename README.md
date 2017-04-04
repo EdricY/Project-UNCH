@@ -20,5 +20,6 @@ UNCH is a recursive acronym that stands for “UNCH’s not Clicker Heroes.” U
 <img src="/screenshots/statistics.png?raw=true"		alt="Some simple statistics in the stats tab." 	title="Statistics"><br>
 <img src="/screenshots/skills.png?raw=true" 		alt="A skill  called fireball being used." 		title="Skills"><br>
 </p>
+
 ### Using git
 <img src="/screenshots/git.png?raw=true" title="GitHub">
