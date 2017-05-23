@@ -331,9 +331,13 @@ def mainloop():
 	while GAME_RUNNING:
 		startTime=time.time()
 		update()
-		ROWS, COLUMNS = os.popen('stty size', 'r').read().split()
-		ROWS = int(ROWS)
-		COLUMNS = int(COLUMNS)
+		try:
+			ROWS, COLUMNS = os.popen('stty size', 'r').read().split()
+			ROWS = int(ROWS)
+			COLUMNS = int(COLUMNS)
+		except ValueError:
+			ROWS = lastROWS
+			COLUMNS = lastCOLS
 		if ROWS!=lastROWS or COLUMNS!=lastCOLS: #refresh screen
 			for y in range(1, ROWS+1):
 				for x in range(1, COLUMNS+1):
